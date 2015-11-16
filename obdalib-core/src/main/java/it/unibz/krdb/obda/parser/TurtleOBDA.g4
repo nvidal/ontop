@@ -20,7 +20,7 @@
  
 grammar TurtleOBDA;
 
-@header {
+@parser::header {
 package it.unibz.krdb.obda.parser;
 
 import it.unibz.krdb.obda.model.CQIE;
@@ -107,7 +107,7 @@ public Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet foll
 }
 }
 
-@members {
+@parser::members {
 /** Map of directives */
 private HashMap<String, String> directives = new HashMap<String, String>();
 
@@ -883,7 +883,7 @@ PREFIXED_NAME
   ;
 
 STRING_WITH_QUOTE
-  : '\'' ( options {greedy=false  ;} : ~('\u0027' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '\''
+  : '\'' ( ~('\u0027' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '\''
   ;
 /*
 STRING_WITH_QUOTE_DOUBLE_CURLY_BRACKET
@@ -895,20 +895,23 @@ STRING_CONSTANT_LITERAL
 ;
 */
 STRING_WITH_QUOTE_DOUBLE
-  : '"'  ( options {greedy=false  ;} : ~('\u0022' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '"'
+  : '"'  ( ~('\u0022' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '"'
   ;
 
 STRING_WITH_BRACKET
-  : '<' ( options {greedy=false  ;} : ~('\u0022' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '>'
+  : '<' ( ~('\u0022' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '>'
   ;
 
 STRING_WITH_CURLY_BRACKET
-  : '{' ( options {greedy=false  ;} : ~('\u0022' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '}'
+  : '{' ( ~('\u0022' | '\u005C' | '\u000A' | '\u000D') | ECHAR )* '}'
   ;
 
 STRING_URI
   : SCHEMA COLON DOUBLE_SLASH (URI_PATH)*
   ;
-  
-WS: (' '|'\t'|('\n'|'\r'('\n')))+ {$channel=HIDDEN;};
+
+
+
+
+WS: (' '|'\t'|('\n'|'\r'('\n')))+ -> skip;
   

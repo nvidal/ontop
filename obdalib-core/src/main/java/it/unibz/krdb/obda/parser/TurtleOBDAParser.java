@@ -1,4 +1,4 @@
-// Generated from TurtleOBDA.g4 by ANTLR 4.5.1
+// Generated from obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g4 by ANTLR 4.5.1
 
 package it.unibz.krdb.obda.parser;
 
@@ -447,14 +447,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parse; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterParse(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitParse(this);
-		}
 	}
 
 	public final ParseContext parse() throws RecognitionException {
@@ -529,14 +521,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_directiveStatement; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDirectiveStatement(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDirectiveStatement(this);
-		}
 	}
 
 	public final DirectiveStatementContext directiveStatement() throws RecognitionException {
@@ -564,6 +548,7 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class TriplesStatementContext extends ParserRuleContext {
 		public List<Function> value;
+		public TriplesContext triples;
 		public TriplesContext triples() {
 			return getRuleContext(TriplesContext.class,0);
 		}
@@ -576,14 +561,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_triplesStatement; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTriplesStatement(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTriplesStatement(this);
-		}
 	}
 
 	public final TriplesStatementContext triplesStatement() throws RecognitionException {
@@ -594,7 +571,7 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(95);
-			triples();
+			((TriplesStatementContext)_localctx).triples = triples();
 			setState(99);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -636,14 +613,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_directive; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDirective(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDirective(this);
-		}
 	}
 
 	public final DirectiveContext directive() throws RecognitionException {
@@ -689,14 +658,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_base; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterBase(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitBase(this);
-		}
 	}
 
 	public final BaseContext base() throws RecognitionException {
@@ -725,6 +686,9 @@ public class TurtleOBDAParser extends Parser {
 	}
 
 	public static class PrefixIDContext extends ParserRuleContext {
+		public NamespaceContext namespace;
+		public DefaultNamespaceContext defaultNamespace;
+		public UrirefContext uriref;
 		public TerminalNode AT() { return getToken(TurtleOBDAParser.AT, 0); }
 		public TerminalNode PREFIX() { return getToken(TurtleOBDAParser.PREFIX, 0); }
 		public UrirefContext uriref() {
@@ -740,14 +704,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_prefixID; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterPrefixID(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitPrefixID(this);
-		}
 	}
 
 	public final PrefixIDContext prefixID() throws RecognitionException {
@@ -768,14 +724,14 @@ public class TurtleOBDAParser extends Parser {
 			case NAMESPACE:
 				{
 				setState(115);
-				namespace();
+				((PrefixIDContext)_localctx).namespace = namespace();
 				 prefix = (((PrefixIDContext)_localctx).namespace!=null?_input.getText(((PrefixIDContext)_localctx).namespace.start,((PrefixIDContext)_localctx).namespace.stop):null); 
 				}
 				break;
 			case COLON:
 				{
 				setState(118);
-				defaultNamespace();
+				((PrefixIDContext)_localctx).defaultNamespace = defaultNamespace();
 				 prefix = (((PrefixIDContext)_localctx).defaultNamespace!=null?_input.getText(((PrefixIDContext)_localctx).defaultNamespace.start,((PrefixIDContext)_localctx).defaultNamespace.stop):null); 
 				}
 				break;
@@ -783,7 +739,7 @@ public class TurtleOBDAParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			setState(123);
-			uriref();
+			((PrefixIDContext)_localctx).uriref = uriref();
 
 			      String uriref = ((PrefixIDContext)_localctx).uriref.value;
 			      directives.put(prefix.substring(0, prefix.length()-1), uriref); // remove the end colon
@@ -803,6 +759,8 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class TriplesContext extends ParserRuleContext {
 		public List<Function> value;
+		public SubjectContext subject;
+		public PredicateObjectListContext predicateObjectList;
 		public SubjectContext subject() {
 			return getRuleContext(SubjectContext.class,0);
 		}
@@ -813,14 +771,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_triples; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTriples(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTriples(this);
-		}
 	}
 
 	public final TriplesContext triples() throws RecognitionException {
@@ -830,10 +780,10 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(126);
-			subject();
+			((TriplesContext)_localctx).subject = subject();
 			 currentSubject = ((TriplesContext)_localctx).subject.value; 
 			setState(128);
-			predicateObjectList();
+			((TriplesContext)_localctx).predicateObjectList = predicateObjectList();
 
 			      ((TriplesContext)_localctx).value =  ((TriplesContext)_localctx).predicateObjectList.value;
 			    
@@ -876,14 +826,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_predicateObjectList; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterPredicateObjectList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitPredicateObjectList(this);
-		}
 	}
 
 	public final PredicateObjectListContext predicateObjectList() throws RecognitionException {
@@ -945,6 +887,7 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class VerbContext extends ParserRuleContext {
 		public Term value;
+		public PredicateContext predicate;
 		public PredicateContext predicate() {
 			return getRuleContext(PredicateContext.class,0);
 		}
@@ -952,14 +895,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_verb; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterVerb(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitVerb(this);
-		}
 	}
 
 	public final VerbContext verb() throws RecognitionException {
@@ -973,7 +908,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(144);
-				predicate();
+				((VerbContext)_localctx).predicate = predicate();
 				 ((VerbContext)_localctx).value =  ((VerbContext)_localctx).predicate.value; 
 				}
 				break;
@@ -1021,14 +956,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_objectList; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterObjectList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitObjectList(this);
-		}
 	}
 
 	public final ObjectListContext objectList() throws RecognitionException {
@@ -1076,6 +1003,8 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class SubjectContext extends ParserRuleContext {
 		public Term value;
+		public ResourceContext resource;
+		public VariableContext variable;
 		public ResourceContext resource() {
 			return getRuleContext(ResourceContext.class,0);
 		}
@@ -1086,14 +1015,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_subject; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterSubject(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitSubject(this);
-		}
 	}
 
 	public final SubjectContext subject() throws RecognitionException {
@@ -1107,7 +1028,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(162);
-				resource();
+				((SubjectContext)_localctx).resource = resource();
 				 ((SubjectContext)_localctx).value =  ((SubjectContext)_localctx).resource.value; 
 				}
 				break;
@@ -1115,7 +1036,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(165);
-				variable();
+				((SubjectContext)_localctx).variable = variable();
 				 ((SubjectContext)_localctx).value =  ((SubjectContext)_localctx).variable.value; 
 				}
 				break;
@@ -1136,6 +1057,7 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class PredicateContext extends ParserRuleContext {
 		public Term value;
+		public ResourceContext resource;
 		public ResourceContext resource() {
 			return getRuleContext(ResourceContext.class,0);
 		}
@@ -1143,14 +1065,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_predicate; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterPredicate(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitPredicate(this);
-		}
 	}
 
 	public final PredicateContext predicate() throws RecognitionException {
@@ -1160,7 +1074,7 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(170);
-			resource();
+			((PredicateContext)_localctx).resource = resource();
 
 			  	((PredicateContext)_localctx).value =  ((PredicateContext)_localctx).resource.value; 
 			//      Term nl = ((PredicateContext)_localctx).resource.value;
@@ -1186,6 +1100,10 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class ObjectContext extends ParserRuleContext {
 		public Term value;
+		public ResourceContext resource;
+		public LiteralContext literal;
+		public TypedLiteralContext typedLiteral;
+		public VariableContext variable;
 		public ResourceContext resource() {
 			return getRuleContext(ResourceContext.class,0);
 		}
@@ -1202,14 +1120,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_object; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterObject(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitObject(this);
-		}
 	}
 
 	public final ObjectContext object() throws RecognitionException {
@@ -1222,7 +1132,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(173);
-				resource();
+				((ObjectContext)_localctx).resource = resource();
 				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).resource.value; 
 				}
 				break;
@@ -1230,7 +1140,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(176);
-				literal();
+				((ObjectContext)_localctx).literal = literal();
 				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).literal.value; 
 				}
 				break;
@@ -1238,7 +1148,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(179);
-				typedLiteral();
+				((ObjectContext)_localctx).typedLiteral = typedLiteral();
 				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).typedLiteral.value; 
 				}
 				break;
@@ -1246,7 +1156,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(182);
-				variable();
+				((ObjectContext)_localctx).variable = variable();
 				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).variable.value; 
 				}
 				break;
@@ -1265,6 +1175,8 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class ResourceContext extends ParserRuleContext {
 		public Term value;
+		public UrirefContext uriref;
+		public QnameContext qname;
 		public UrirefContext uriref() {
 			return getRuleContext(UrirefContext.class,0);
 		}
@@ -1275,14 +1187,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_resource; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterResource(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitResource(this);
-		}
 	}
 
 	public final ResourceContext resource() throws RecognitionException {
@@ -1295,7 +1199,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(187);
-				uriref();
+				((ResourceContext)_localctx).uriref = uriref();
 				 ((ResourceContext)_localctx).value =  construct(((ResourceContext)_localctx).uriref.value); 
 				}
 				break;
@@ -1303,7 +1207,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(190);
-				qname();
+				((ResourceContext)_localctx).qname = qname();
 				 ((ResourceContext)_localctx).value =  construct(((ResourceContext)_localctx).qname.value); 
 				}
 				break;
@@ -1324,19 +1228,12 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class UrirefContext extends ParserRuleContext {
 		public String value;
+		public Token STRING_WITH_BRACKET;
 		public TerminalNode STRING_WITH_BRACKET() { return getToken(TurtleOBDAParser.STRING_WITH_BRACKET, 0); }
 		public UrirefContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_uriref; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterUriref(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitUriref(this);
-		}
 	}
 
 	public final UrirefContext uriref() throws RecognitionException {
@@ -1346,7 +1243,7 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(195);
-			match(STRING_WITH_BRACKET);
+			((UrirefContext)_localctx).STRING_WITH_BRACKET = match(STRING_WITH_BRACKET);
 			 ((UrirefContext)_localctx).value =  removeBrackets((((UrirefContext)_localctx).STRING_WITH_BRACKET!=null?((UrirefContext)_localctx).STRING_WITH_BRACKET.getText():null)); 
 			}
 		}
@@ -1363,19 +1260,12 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class QnameContext extends ParserRuleContext {
 		public String value;
+		public Token PREFIXED_NAME;
 		public TerminalNode PREFIXED_NAME() { return getToken(TurtleOBDAParser.PREFIXED_NAME, 0); }
 		public QnameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_qname; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterQname(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitQname(this);
-		}
 	}
 
 	public final QnameContext qname() throws RecognitionException {
@@ -1385,7 +1275,7 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(198);
-			match(PREFIXED_NAME);
+			((QnameContext)_localctx).PREFIXED_NAME = match(PREFIXED_NAME);
 
 			      String[] tokens = (((QnameContext)_localctx).PREFIXED_NAME!=null?((QnameContext)_localctx).PREFIXED_NAME.getText():null).split(":", 2);
 			      String uri = directives.get(tokens[0]);  // the first token is the prefix
@@ -1413,14 +1303,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_blank; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterBlank(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitBlank(this);
-		}
 	}
 
 	public final BlankContext blank() throws RecognitionException {
@@ -1460,19 +1342,12 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class VariableContext extends ParserRuleContext {
 		public Variable value;
+		public Token STRING_WITH_CURLY_BRACKET;
 		public TerminalNode STRING_WITH_CURLY_BRACKET() { return getToken(TurtleOBDAParser.STRING_WITH_CURLY_BRACKET, 0); }
 		public VariableContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variable; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterVariable(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitVariable(this);
-		}
 	}
 
 	public final VariableContext variable() throws RecognitionException {
@@ -1482,7 +1357,7 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(205);
-			match(STRING_WITH_CURLY_BRACKET);
+			((VariableContext)_localctx).STRING_WITH_CURLY_BRACKET = match(STRING_WITH_CURLY_BRACKET);
 
 			      ((VariableContext)_localctx).value =  dfac.getVariable(removeBrackets((((VariableContext)_localctx).STRING_WITH_CURLY_BRACKET!=null?((VariableContext)_localctx).STRING_WITH_CURLY_BRACKET.getText():null)));
 			      variableSet.add(_localctx.value);
@@ -1502,6 +1377,8 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class FunctionContext extends ParserRuleContext {
 		public Function value;
+		public ResourceContext resource;
+		public TermsContext terms;
 		public ResourceContext resource() {
 			return getRuleContext(ResourceContext.class,0);
 		}
@@ -1514,14 +1391,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_function; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitFunction(this);
-		}
 	}
 
 	public final FunctionContext function() throws RecognitionException {
@@ -1531,11 +1400,11 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(208);
-			resource();
+			((FunctionContext)_localctx).resource = resource();
 			setState(209);
 			match(LPAREN);
 			setState(210);
-			terms();
+			((FunctionContext)_localctx).terms = terms();
 			setState(211);
 			match(RPAREN);
 
@@ -1559,6 +1428,9 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class TypedLiteralContext extends ParserRuleContext {
 		public Function value;
+		public VariableContext variable;
+		public LanguageContext language;
+		public ResourceContext resource;
 		public VariableContext variable() {
 			return getRuleContext(VariableContext.class,0);
 		}
@@ -1574,14 +1446,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typedLiteral; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTypedLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTypedLiteral(this);
-		}
 	}
 
 	public final TypedLiteralContext typedLiteral() throws RecognitionException {
@@ -1594,11 +1458,11 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(214);
-				variable();
+				((TypedLiteralContext)_localctx).variable = variable();
 				setState(215);
 				match(AT);
 				setState(216);
-				language();
+				((TypedLiteralContext)_localctx).language = language();
 
 				      Variable var = ((TypedLiteralContext)_localctx).variable.value;
 				      Term lang = ((TypedLiteralContext)_localctx).language.value;   
@@ -1611,11 +1475,11 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(219);
-				variable();
+				((TypedLiteralContext)_localctx).variable = variable();
 				setState(220);
 				match(REFERENCE);
 				setState(221);
-				resource();
+				((TypedLiteralContext)_localctx).resource = resource();
 
 				      Variable var = ((TypedLiteralContext)_localctx).variable.value;
 				      //String functionName = ((TypedLiteralContext)_localctx).resource.value.toString();
@@ -1651,6 +1515,8 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class LanguageContext extends ParserRuleContext {
 		public Term value;
+		public LanguageTagContext languageTag;
+		public VariableContext variable;
 		public LanguageTagContext languageTag() {
 			return getRuleContext(LanguageTagContext.class,0);
 		}
@@ -1661,14 +1527,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_language; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterLanguage(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitLanguage(this);
-		}
 	}
 
 	public final LanguageContext language() throws RecognitionException {
@@ -1681,7 +1539,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(226);
-				languageTag();
+				((LanguageContext)_localctx).languageTag = languageTag();
 
 				    	((LanguageContext)_localctx).value =  dfac.getConstantLiteral((((LanguageContext)_localctx).languageTag!=null?_input.getText(((LanguageContext)_localctx).languageTag.start,((LanguageContext)_localctx).languageTag.stop):null).toLowerCase(), COL_TYPE.STRING);
 				    
@@ -1691,7 +1549,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(229);
-				variable();
+				((LanguageContext)_localctx).variable = variable();
 
 				    	((LanguageContext)_localctx).value =  ((LanguageContext)_localctx).variable.value;
 				    
@@ -1730,14 +1588,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_terms; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTerms(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTerms(this);
-		}
 	}
 
 	public final TermsContext terms() throws RecognitionException {
@@ -1785,6 +1635,9 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class TermContext extends ParserRuleContext {
 		public Term value;
+		public FunctionContext function;
+		public VariableContext variable;
+		public LiteralContext literal;
 		public FunctionContext function() {
 			return getRuleContext(FunctionContext.class,0);
 		}
@@ -1798,14 +1651,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTerm(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTerm(this);
-		}
 	}
 
 	public final TermContext term() throws RecognitionException {
@@ -1819,7 +1664,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(245);
-				function();
+				((TermContext)_localctx).function = function();
 				 ((TermContext)_localctx).value =  ((TermContext)_localctx).function.value; 
 				}
 				break;
@@ -1827,7 +1672,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(248);
-				variable();
+				((TermContext)_localctx).variable = variable();
 				 ((TermContext)_localctx).value =  ((TermContext)_localctx).variable.value; 
 				}
 				break;
@@ -1846,7 +1691,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(251);
-				literal();
+				((TermContext)_localctx).literal = literal();
 				 ((TermContext)_localctx).value =  ((TermContext)_localctx).literal.value; 
 				}
 				break;
@@ -1867,6 +1712,11 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class LiteralContext extends ParserRuleContext {
 		public Term value;
+		public StringLiteralContext stringLiteral;
+		public LanguageContext language;
+		public DataTypeStringContext dataTypeString;
+		public NumericLiteralContext numericLiteral;
+		public BooleanLiteralContext booleanLiteral;
 		public StringLiteralContext stringLiteral() {
 			return getRuleContext(StringLiteralContext.class,0);
 		}
@@ -1887,14 +1737,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_literal; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitLiteral(this);
-		}
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
@@ -1908,7 +1750,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(256);
-				stringLiteral();
+				((LiteralContext)_localctx).stringLiteral = stringLiteral();
 				setState(259);
 				_la = _input.LA(1);
 				if (_la==AT) {
@@ -1916,7 +1758,7 @@ public class TurtleOBDAParser extends Parser {
 					setState(257);
 					match(AT);
 					setState(258);
-					language();
+					((LiteralContext)_localctx).language = language();
 					}
 				}
 
@@ -1944,7 +1786,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(263);
-				dataTypeString();
+				((LiteralContext)_localctx).dataTypeString = dataTypeString();
 				 ((LiteralContext)_localctx).value =  ((LiteralContext)_localctx).dataTypeString.value; 
 				}
 				break;
@@ -1952,7 +1794,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(266);
-				numericLiteral();
+				((LiteralContext)_localctx).numericLiteral = numericLiteral();
 				 ((LiteralContext)_localctx).value =  ((LiteralContext)_localctx).numericLiteral.value; 
 				}
 				break;
@@ -1960,7 +1802,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(269);
-				booleanLiteral();
+				((LiteralContext)_localctx).booleanLiteral = booleanLiteral();
 				 ((LiteralContext)_localctx).value =  ((LiteralContext)_localctx).booleanLiteral.value; 
 				}
 				break;
@@ -1979,19 +1821,12 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class StringLiteralContext extends ParserRuleContext {
 		public Term value;
+		public Token STRING_WITH_QUOTE_DOUBLE;
 		public TerminalNode STRING_WITH_QUOTE_DOUBLE() { return getToken(TurtleOBDAParser.STRING_WITH_QUOTE_DOUBLE, 0); }
 		public StringLiteralContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_stringLiteral; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterStringLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitStringLiteral(this);
-		}
 	}
 
 	public final StringLiteralContext stringLiteral() throws RecognitionException {
@@ -2001,7 +1836,7 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(274);
-			match(STRING_WITH_QUOTE_DOUBLE);
+			((StringLiteralContext)_localctx).STRING_WITH_QUOTE_DOUBLE = match(STRING_WITH_QUOTE_DOUBLE);
 
 			      String str = (((StringLiteralContext)_localctx).STRING_WITH_QUOTE_DOUBLE!=null?((StringLiteralContext)_localctx).STRING_WITH_QUOTE_DOUBLE.getText():null);
 			      if (str.contains("{")){
@@ -2025,6 +1860,8 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class DataTypeStringContext extends ParserRuleContext {
 		public Term value;
+		public StringLiteralContext stringLiteral;
+		public ResourceContext resource;
 		public StringLiteralContext stringLiteral() {
 			return getRuleContext(StringLiteralContext.class,0);
 		}
@@ -2036,14 +1873,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_dataTypeString; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDataTypeString(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDataTypeString(this);
-		}
 	}
 
 	public final DataTypeStringContext dataTypeString() throws RecognitionException {
@@ -2053,11 +1882,11 @@ public class TurtleOBDAParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(277);
-			stringLiteral();
+			((DataTypeStringContext)_localctx).stringLiteral = stringLiteral();
 			setState(278);
 			match(REFERENCE);
 			setState(279);
-			resource();
+			((DataTypeStringContext)_localctx).resource = resource();
 
 			      if ((((DataTypeStringContext)_localctx).stringLiteral.value) instanceof Function){
 			          Function f = (Function)((DataTypeStringContext)_localctx).stringLiteral.value;
@@ -2091,6 +1920,9 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class NumericLiteralContext extends ParserRuleContext {
 		public Term value;
+		public NumericUnsignedContext numericUnsigned;
+		public NumericPositiveContext numericPositive;
+		public NumericNegativeContext numericNegative;
 		public NumericUnsignedContext numericUnsigned() {
 			return getRuleContext(NumericUnsignedContext.class,0);
 		}
@@ -2104,14 +1936,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_numericLiteral; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericLiteral(this);
-		}
 	}
 
 	public final NumericLiteralContext numericLiteral() throws RecognitionException {
@@ -2126,7 +1950,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(282);
-				numericUnsigned();
+				((NumericLiteralContext)_localctx).numericUnsigned = numericUnsigned();
 				 ((NumericLiteralContext)_localctx).value =  ((NumericLiteralContext)_localctx).numericUnsigned.value; 
 				}
 				break;
@@ -2136,7 +1960,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(285);
-				numericPositive();
+				((NumericLiteralContext)_localctx).numericPositive = numericPositive();
 				 ((NumericLiteralContext)_localctx).value =  ((NumericLiteralContext)_localctx).numericPositive.value; 
 				}
 				break;
@@ -2146,7 +1970,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(288);
-				numericNegative();
+				((NumericLiteralContext)_localctx).numericNegative = numericNegative();
 				 ((NumericLiteralContext)_localctx).value =  ((NumericLiteralContext)_localctx).numericNegative.value; 
 				}
 				break;
@@ -2174,14 +1998,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_nodeID; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNodeID(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNodeID(this);
-		}
 	}
 
 	public final NodeIDContext nodeID() throws RecognitionException {
@@ -2213,14 +2029,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_relativeURI; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterRelativeURI(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitRelativeURI(this);
-		}
 	}
 
 	public final RelativeURIContext relativeURI() throws RecognitionException {
@@ -2250,14 +2058,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_namespace; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNamespace(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNamespace(this);
-		}
 	}
 
 	public final NamespaceContext namespace() throws RecognitionException {
@@ -2287,14 +2087,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_defaultNamespace; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDefaultNamespace(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDefaultNamespace(this);
-		}
 	}
 
 	public final DefaultNamespaceContext defaultNamespace() throws RecognitionException {
@@ -2324,14 +2116,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_name; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterName(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitName(this);
-		}
 	}
 
 	public final NameContext name() throws RecognitionException {
@@ -2361,14 +2145,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_languageTag; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterLanguageTag(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitLanguageTag(this);
-		}
 	}
 
 	public final LanguageTagContext languageTag() throws RecognitionException {
@@ -2394,20 +2170,14 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class BooleanLiteralContext extends ParserRuleContext {
 		public Term value;
+		public Token TRUE;
+		public Token FALSE;
 		public TerminalNode TRUE() { return getToken(TurtleOBDAParser.TRUE, 0); }
 		public TerminalNode FALSE() { return getToken(TurtleOBDAParser.FALSE, 0); }
 		public BooleanLiteralContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_booleanLiteral; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterBooleanLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitBooleanLiteral(this);
-		}
 	}
 
 	public final BooleanLiteralContext booleanLiteral() throws RecognitionException {
@@ -2420,7 +2190,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(306);
-				match(TRUE);
+				((BooleanLiteralContext)_localctx).TRUE = match(TRUE);
 
 				  ValueConstant trueConstant = dfac.getConstantLiteral((((BooleanLiteralContext)_localctx).TRUE!=null?((BooleanLiteralContext)_localctx).TRUE.getText():null), COL_TYPE.LITERAL);
 				  ((BooleanLiteralContext)_localctx).value =  dfac.getTypedTerm(trueConstant, COL_TYPE.BOOLEAN); 
@@ -2430,7 +2200,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(308);
-				match(FALSE);
+				((BooleanLiteralContext)_localctx).FALSE = match(FALSE);
 
 				  ValueConstant falseConstant = dfac.getConstantLiteral((((BooleanLiteralContext)_localctx).FALSE!=null?((BooleanLiteralContext)_localctx).FALSE.getText():null), COL_TYPE.LITERAL);
 				  ((BooleanLiteralContext)_localctx).value =  dfac.getTypedTerm(falseConstant, COL_TYPE.BOOLEAN);
@@ -2454,6 +2224,9 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class NumericUnsignedContext extends ParserRuleContext {
 		public Term value;
+		public Token INTEGER;
+		public Token DOUBLE;
+		public Token DECIMAL;
 		public TerminalNode INTEGER() { return getToken(TurtleOBDAParser.INTEGER, 0); }
 		public TerminalNode DOUBLE() { return getToken(TurtleOBDAParser.DOUBLE, 0); }
 		public TerminalNode DECIMAL() { return getToken(TurtleOBDAParser.DECIMAL, 0); }
@@ -2461,14 +2234,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_numericUnsigned; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericUnsigned(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericUnsigned(this);
-		}
 	}
 
 	public final NumericUnsignedContext numericUnsigned() throws RecognitionException {
@@ -2481,7 +2246,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(312);
-				match(INTEGER);
+				((NumericUnsignedContext)_localctx).INTEGER = match(INTEGER);
 
 				  ValueConstant integerConstant = dfac.getConstantLiteral((((NumericUnsignedContext)_localctx).INTEGER!=null?((NumericUnsignedContext)_localctx).INTEGER.getText():null), COL_TYPE.LITERAL);
 				  ((NumericUnsignedContext)_localctx).value =  dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
@@ -2492,7 +2257,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(314);
-				match(DOUBLE);
+				((NumericUnsignedContext)_localctx).DOUBLE = match(DOUBLE);
 
 				  ValueConstant doubleConstant = dfac.getConstantLiteral((((NumericUnsignedContext)_localctx).DOUBLE!=null?((NumericUnsignedContext)_localctx).DOUBLE.getText():null), COL_TYPE.LITERAL);
 				  ((NumericUnsignedContext)_localctx).value =  dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
@@ -2503,7 +2268,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(316);
-				match(DECIMAL);
+				((NumericUnsignedContext)_localctx).DECIMAL = match(DECIMAL);
 
 				  ValueConstant decimalConstant = dfac.getConstantLiteral((((NumericUnsignedContext)_localctx).DECIMAL!=null?((NumericUnsignedContext)_localctx).DECIMAL.getText():null), COL_TYPE.LITERAL);
 				  ((NumericUnsignedContext)_localctx).value =  dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
@@ -2527,6 +2292,9 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class NumericPositiveContext extends ParserRuleContext {
 		public Term value;
+		public Token INTEGER_POSITIVE;
+		public Token DOUBLE_POSITIVE;
+		public Token DECIMAL_POSITIVE;
 		public TerminalNode INTEGER_POSITIVE() { return getToken(TurtleOBDAParser.INTEGER_POSITIVE, 0); }
 		public TerminalNode DOUBLE_POSITIVE() { return getToken(TurtleOBDAParser.DOUBLE_POSITIVE, 0); }
 		public TerminalNode DECIMAL_POSITIVE() { return getToken(TurtleOBDAParser.DECIMAL_POSITIVE, 0); }
@@ -2534,14 +2302,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_numericPositive; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericPositive(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericPositive(this);
-		}
 	}
 
 	public final NumericPositiveContext numericPositive() throws RecognitionException {
@@ -2554,7 +2314,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(320);
-				match(INTEGER_POSITIVE);
+				((NumericPositiveContext)_localctx).INTEGER_POSITIVE = match(INTEGER_POSITIVE);
 
 				   ValueConstant integerConstant = dfac.getConstantLiteral((((NumericPositiveContext)_localctx).INTEGER_POSITIVE!=null?((NumericPositiveContext)_localctx).INTEGER_POSITIVE.getText():null), COL_TYPE.LITERAL);
 				   ((NumericPositiveContext)_localctx).value =  dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
@@ -2565,7 +2325,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(322);
-				match(DOUBLE_POSITIVE);
+				((NumericPositiveContext)_localctx).DOUBLE_POSITIVE = match(DOUBLE_POSITIVE);
 
 				  ValueConstant doubleConstant = dfac.getConstantLiteral((((NumericPositiveContext)_localctx).DOUBLE_POSITIVE!=null?((NumericPositiveContext)_localctx).DOUBLE_POSITIVE.getText():null), COL_TYPE.LITERAL);
 				  ((NumericPositiveContext)_localctx).value =  dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
@@ -2576,7 +2336,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(324);
-				match(DECIMAL_POSITIVE);
+				((NumericPositiveContext)_localctx).DECIMAL_POSITIVE = match(DECIMAL_POSITIVE);
 
 				  ValueConstant decimalConstant = dfac.getConstantLiteral((((NumericPositiveContext)_localctx).DECIMAL_POSITIVE!=null?((NumericPositiveContext)_localctx).DECIMAL_POSITIVE.getText():null), COL_TYPE.LITERAL);
 				  ((NumericPositiveContext)_localctx).value =  dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
@@ -2600,6 +2360,9 @@ public class TurtleOBDAParser extends Parser {
 
 	public static class NumericNegativeContext extends ParserRuleContext {
 		public Term value;
+		public Token INTEGER_NEGATIVE;
+		public Token DOUBLE_NEGATIVE;
+		public Token DECIMAL_NEGATIVE;
 		public TerminalNode INTEGER_NEGATIVE() { return getToken(TurtleOBDAParser.INTEGER_NEGATIVE, 0); }
 		public TerminalNode DOUBLE_NEGATIVE() { return getToken(TurtleOBDAParser.DOUBLE_NEGATIVE, 0); }
 		public TerminalNode DECIMAL_NEGATIVE() { return getToken(TurtleOBDAParser.DECIMAL_NEGATIVE, 0); }
@@ -2607,14 +2370,6 @@ public class TurtleOBDAParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_numericNegative; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericNegative(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericNegative(this);
-		}
 	}
 
 	public final NumericNegativeContext numericNegative() throws RecognitionException {
@@ -2627,7 +2382,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(328);
-				match(INTEGER_NEGATIVE);
+				((NumericNegativeContext)_localctx).INTEGER_NEGATIVE = match(INTEGER_NEGATIVE);
 
 				  ValueConstant integerConstant = dfac.getConstantLiteral((((NumericNegativeContext)_localctx).INTEGER_NEGATIVE!=null?((NumericNegativeContext)_localctx).INTEGER_NEGATIVE.getText():null), COL_TYPE.LITERAL);
 				  ((NumericNegativeContext)_localctx).value =  dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
@@ -2638,7 +2393,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(330);
-				match(DOUBLE_NEGATIVE);
+				((NumericNegativeContext)_localctx).DOUBLE_NEGATIVE = match(DOUBLE_NEGATIVE);
 
 				   ValueConstant doubleConstant = dfac.getConstantLiteral((((NumericNegativeContext)_localctx).DOUBLE_NEGATIVE!=null?((NumericNegativeContext)_localctx).DOUBLE_NEGATIVE.getText():null), COL_TYPE.LITERAL);
 				   ((NumericNegativeContext)_localctx).value =  dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
@@ -2649,7 +2404,7 @@ public class TurtleOBDAParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(332);
-				match(DECIMAL_NEGATIVE);
+				((NumericNegativeContext)_localctx).DECIMAL_NEGATIVE = match(DECIMAL_NEGATIVE);
 
 				  ValueConstant decimalConstant = dfac.getConstantLiteral((((NumericNegativeContext)_localctx).DECIMAL_NEGATIVE!=null?((NumericNegativeContext)_localctx).DECIMAL_NEGATIVE.getText():null), COL_TYPE.LITERAL);
 				  ((NumericNegativeContext)_localctx).value =  dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
