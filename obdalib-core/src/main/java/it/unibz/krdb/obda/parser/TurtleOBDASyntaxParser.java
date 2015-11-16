@@ -23,13 +23,13 @@ package it.unibz.krdb.obda.parser;
 import it.unibz.krdb.obda.model.Function;
 import it.unibz.krdb.obda.model.impl.OBDAVocabulary;
 import it.unibz.krdb.obda.io.PrefixManager;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.RecognitionException;
+
 
 import java.util.List;
 import java.util.Map;
-
-import org.antlr.runtime.ANTLRStringStream;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.RecognitionException;
 
 public class TurtleOBDASyntaxParser implements TargetQueryParser {
 
@@ -86,13 +86,11 @@ public class TurtleOBDASyntaxParser implements TargetQueryParser {
 			appendDirectives(bf);
 		}		
 		try {
-			ANTLRStringStream inputStream = new ANTLRStringStream(bf.toString());
+            ANTLRInputStream inputStream = new ANTLRInputStream(bf.toString());
 			TurtleOBDALexer lexer = new TurtleOBDALexer(inputStream);
 			CommonTokenStream tokenStream = new CommonTokenStream(lexer);
 			TurtleOBDAParser parser = new TurtleOBDAParser(tokenStream);
-			return parser.parse();
-		} catch (RecognitionException e) {
-			throw new TargetQueryParserException(input, e);
+			return parser.parse().value;
 		} catch (RuntimeException e) {
 			throw new TargetQueryParserException(input, e);
 		}
