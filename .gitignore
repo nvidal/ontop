@@ -19,6 +19,9 @@ bin
 *.iml
 .idea
 
+# Antlr generated files
+*.tokens
+
 # Protege generated files
 catalog-v*.xml
 
