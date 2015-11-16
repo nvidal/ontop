@@ -30,18 +30,6 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.antlr.runtime.BitSet;
-import org.antlr.runtime.IntStream;
-import org.antlr.runtime.MismatchedTokenException;
-import org.antlr.runtime.NoViableAltException;
-import org.antlr.runtime.Parser;
-import org.antlr.runtime.ParserRuleReturnScope;
-import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.RecognizerSharedState;
-import org.antlr.runtime.Token;
-import org.antlr.runtime.TokenStream;
-
-
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -177,34 +165,6 @@ public class TurtleOBDAParser extends Parser {
 	   return error;
 	}
 
-	protected void mismatch(IntStream input, int ttype, BitSet follow) throws RecognitionException {
-	   throw new MismatchedTokenException(ttype, input);
-	}
-
-	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
-	   throw e;
-	}
-
-	@Override
-	public void recover(IntStream input, RecognitionException re) {
-	   throw new RuntimeException(error);
-	}
-
-	@Override
-	public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-	   String hdr = getErrorHeader(e);
-	   String msg = getErrorMessage(e, tokenNames);
-	   emitErrorMessage("Syntax error: " + msg + " Location: " + hdr);
-	}
-
-	@Override
-	public void emitErrorMessage(String msg) {
-	   error = msg;
-	}
-	    
-	public Object recoverFromMismatchedTokenrecoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
-	   throw new RecognitionException(input);
-	}
 
 	private String removeBrackets(String text) {
 	   return text.substring(1, text.length()-1);
@@ -1767,16 +1727,16 @@ public class TurtleOBDAParser extends Parser {
 				       if ((((LiteralContext)_localctx).stringLiteral.value) instanceof Function){
 				          Function f = (Function)((LiteralContext)_localctx).stringLiteral.value;
 				          if (lang != null){
-				             value = dfac.getTypedTerm(f,lang);
+				             ((LiteralContext)_localctx).value =  dfac.getTypedTerm(f,lang);
 				          }else{
-				             value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
+				             ((LiteralContext)_localctx).value =  dfac.getTypedTerm(f, COL_TYPE.LITERAL);
 				          }       
 				       }else{
 				          ValueConstant constant = (ValueConstant)((LiteralContext)_localctx).stringLiteral.value;
 				          if (lang != null) {
-					     value = dfac.getTypedTerm(constant, lang);
+					         ((LiteralContext)_localctx).value =  dfac.getTypedTerm(constant, lang);
 				          } else {
-				      	     value = dfac.getTypedTerm(constant, COL_TYPE.LITERAL);
+				      	     ((LiteralContext)_localctx).value =  dfac.getTypedTerm(constant, COL_TYPE.LITERAL);
 				          }
 				       }
 				    
@@ -1890,7 +1850,7 @@ public class TurtleOBDAParser extends Parser {
 
 			      if ((((DataTypeStringContext)_localctx).stringLiteral.value) instanceof Function){
 			          Function f = (Function)((DataTypeStringContext)_localctx).stringLiteral.value;
-			          value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
+			          ((DataTypeStringContext)_localctx).value =  dfac.getTypedTerm(f, COL_TYPE.LITERAL);
 			      }else{
 			          ValueConstant constant = (ValueConstant)((DataTypeStringContext)_localctx).stringLiteral.value;
 			          String functionName = ((DataTypeStringContext)_localctx).resource.value.toString();

@@ -50,18 +50,6 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.antlr.runtime.BitSet;
-import org.antlr.runtime.IntStream;
-import org.antlr.runtime.MismatchedTokenException;
-import org.antlr.runtime.NoViableAltException;
-import org.antlr.runtime.Parser;
-import org.antlr.runtime.ParserRuleReturnScope;
-import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.RecognizerSharedState;
-import org.antlr.runtime.Token;
-import org.antlr.runtime.TokenStream;
-
 }
 
 @lexer::header {
@@ -78,33 +66,6 @@ public String getError() {
    return error;
 }
 
-@Override
-public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
-   throw e;
-}
-
-@Override
-public void recover(IntStream input, RecognitionException re) {
-   throw new RuntimeException(error);
-}
-    
-@Override
-public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-   String hdr = getErrorHeader(e);
-   String msg = getErrorMessage(e, tokenNames);
-   emitErrorMessage("Syntax error: " + msg + " Location: " + hdr);
-}
-
-@Override
-public void emitErrorMessage(String msg) {
-   error = msg;
-   throw new RuntimeException(error);
-}
-    
-@Override
-public Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
-   throw new RecognitionException(input);
-}
 }
 
 @parser::members {
@@ -127,34 +88,6 @@ public String getError() {
    return error;
 }
 
-protected void mismatch(IntStream input, int ttype, BitSet follow) throws RecognitionException {
-   throw new MismatchedTokenException(ttype, input);
-}
-
-public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
-   throw e;
-}
-
-@Override
-public void recover(IntStream input, RecognitionException re) {
-   throw new RuntimeException(error);
-}
-
-@Override
-public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-   String hdr = getErrorHeader(e);
-   String msg = getErrorMessage(e, tokenNames);
-   emitErrorMessage("Syntax error: " + msg + " Location: " + hdr);
-}
-
-@Override
-public void emitErrorMessage(String msg) {
-   error = msg;
-}
-    
-public Object recoverFromMismatchedTokenrecoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
-   throw new RecognitionException(input);
-}
 
 private String removeBrackets(String text) {
    return text.substring(1, text.length()-1);
@@ -589,16 +522,16 @@ literal returns [Term value]
        if (($stringLiteral.value) instanceof Function){
           Function f = (Function)$stringLiteral.value;
           if (lang != null){
-             value = dfac.getTypedTerm(f,lang);
+             $value = dfac.getTypedTerm(f,lang);
           }else{
-             value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
+             $value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
           }       
        }else{
           ValueConstant constant = (ValueConstant)$stringLiteral.value;
           if (lang != null) {
-	     value = dfac.getTypedTerm(constant, lang);
+	         $value = dfac.getTypedTerm(constant, lang);
           } else {
-      	     value = dfac.getTypedTerm(constant, COL_TYPE.LITERAL);
+      	     $value = dfac.getTypedTerm(constant, COL_TYPE.LITERAL);
           }
        }
     }
@@ -622,7 +555,7 @@ dataTypeString returns [Term value]
   :  stringLiteral REFERENCE resource {
       if (($stringLiteral.value) instanceof Function){
           Function f = (Function)$stringLiteral.value;
-          value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
+          $value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
       }else{
           ValueConstant constant = (ValueConstant)$stringLiteral.value;
           String functionName = $resource.value.toString();
