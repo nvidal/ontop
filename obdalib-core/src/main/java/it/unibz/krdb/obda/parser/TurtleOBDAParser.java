@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g 2015-11-10 14:55:22
+// Generated from TurtleOBDA.g4 by ANTLR 4.5.1
 
 package it.unibz.krdb.obda.parser;
 
@@ -42,122 +42,120 @@ import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 
 
-
-import org.antlr.runtime.*;
-import java.util.Stack;
+import org.antlr.v4.runtime.atn.*;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class TurtleOBDAParser extends Parser {
-	public static final String[] tokenNames = new String[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ALPHA", "ALPHANUM", "AMPERSAND", 
-		"APOSTROPHE", "ASTERISK", "AT", "BACKSLASH", "BASE", "BLANK", "BLANK_PREFIX", 
-		"CARET", "CHAR", "COLON", "COMMA", "DECIMAL", "DECIMAL_NEGATIVE", "DECIMAL_POSITIVE", 
-		"DIGIT", "DOLLAR", "DOUBLE", "DOUBLE_NEGATIVE", "DOUBLE_POSITIVE", "DOUBLE_SLASH", 
-		"ECHAR", "EQUALS", "EXCLAMATION", "FALSE", "GREATER", "HASH", "ID", "ID_CORE", 
-		"ID_START", "INTEGER", "INTEGER_NEGATIVE", "INTEGER_POSITIVE", "LCR_BRACKET", 
-		"LESS", "LPAREN", "LSQ_BRACKET", "LTSIGN", "MINUS", "NAMESPACE", "NAME_CHAR", 
-		"NAME_START_CHAR", "NCNAME", "NCNAME_EXT", "PERCENT", "PERIOD", "PLUS", 
-		"PREFIX", "PREFIXED_NAME", "QUESTION", "QUOTE_DOUBLE", "QUOTE_SINGLE", 
-		"RCR_BRACKET", "REFERENCE", "RPAREN", "RSQ_BRACKET", "RTSIGN", "SCHEMA", 
-		"SEMI", "SLASH", "STRING_URI", "STRING_WITH_BRACKET", "STRING_WITH_CURLY_BRACKET", 
-		"STRING_WITH_QUOTE", "STRING_WITH_QUOTE_DOUBLE", "TILDE", "TRUE", "UNDERSCORE", 
-		"URI_PATH", "VARNAME", "WS", "'a'"
+	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
+
+	protected static final DFA[] _decisionToDFA;
+	protected static final PredictionContextCache _sharedContextCache =
+		new PredictionContextCache();
+	public static final int
+		T__0=1, BASE=2, PREFIX=3, FALSE=4, TRUE=5, REFERENCE=6, LTSIGN=7, RTSIGN=8, 
+		SEMI=9, PERIOD=10, COMMA=11, LSQ_BRACKET=12, RSQ_BRACKET=13, LCR_BRACKET=14, 
+		RCR_BRACKET=15, LPAREN=16, RPAREN=17, QUESTION=18, DOLLAR=19, QUOTE_DOUBLE=20, 
+		QUOTE_SINGLE=21, APOSTROPHE=22, UNDERSCORE=23, MINUS=24, ASTERISK=25, 
+		AMPERSAND=26, AT=27, EXCLAMATION=28, HASH=29, PERCENT=30, PLUS=31, EQUALS=32, 
+		COLON=33, LESS=34, GREATER=35, SLASH=36, DOUBLE_SLASH=37, BACKSLASH=38, 
+		BLANK=39, BLANK_PREFIX=40, TILDE=41, CARET=42, INTEGER=43, DOUBLE=44, 
+		DECIMAL=45, INTEGER_POSITIVE=46, INTEGER_NEGATIVE=47, DOUBLE_POSITIVE=48, 
+		DOUBLE_NEGATIVE=49, DECIMAL_POSITIVE=50, DECIMAL_NEGATIVE=51, VARNAME=52, 
+		NCNAME=53, NCNAME_EXT=54, NAMESPACE=55, PREFIXED_NAME=56, STRING_WITH_QUOTE=57, 
+		STRING_WITH_QUOTE_DOUBLE=58, STRING_WITH_BRACKET=59, STRING_WITH_CURLY_BRACKET=60, 
+		STRING_URI=61, WS=62;
+	public static final int
+		RULE_parse = 0, RULE_directiveStatement = 1, RULE_triplesStatement = 2, 
+		RULE_directive = 3, RULE_base = 4, RULE_prefixID = 5, RULE_triples = 6, 
+		RULE_predicateObjectList = 7, RULE_verb = 8, RULE_objectList = 9, RULE_subject = 10, 
+		RULE_predicate = 11, RULE_object = 12, RULE_resource = 13, RULE_uriref = 14, 
+		RULE_qname = 15, RULE_blank = 16, RULE_variable = 17, RULE_function = 18, 
+		RULE_typedLiteral = 19, RULE_language = 20, RULE_terms = 21, RULE_term = 22, 
+		RULE_literal = 23, RULE_stringLiteral = 24, RULE_dataTypeString = 25, 
+		RULE_numericLiteral = 26, RULE_nodeID = 27, RULE_relativeURI = 28, RULE_namespace = 29, 
+		RULE_defaultNamespace = 30, RULE_name = 31, RULE_languageTag = 32, RULE_booleanLiteral = 33, 
+		RULE_numericUnsigned = 34, RULE_numericPositive = 35, RULE_numericNegative = 36;
+	public static final String[] ruleNames = {
+		"parse", "directiveStatement", "triplesStatement", "directive", "base", 
+		"prefixID", "triples", "predicateObjectList", "verb", "objectList", "subject", 
+		"predicate", "object", "resource", "uriref", "qname", "blank", "variable", 
+		"function", "typedLiteral", "language", "terms", "term", "literal", "stringLiteral", 
+		"dataTypeString", "numericLiteral", "nodeID", "relativeURI", "namespace", 
+		"defaultNamespace", "name", "languageTag", "booleanLiteral", "numericUnsigned", 
+		"numericPositive", "numericNegative"
 	};
-	public static final int EOF=-1;
-	public static final int T__77=77;
-	public static final int ALPHA=4;
-	public static final int ALPHANUM=5;
-	public static final int AMPERSAND=6;
-	public static final int APOSTROPHE=7;
-	public static final int ASTERISK=8;
-	public static final int AT=9;
-	public static final int BACKSLASH=10;
-	public static final int BASE=11;
-	public static final int BLANK=12;
-	public static final int BLANK_PREFIX=13;
-	public static final int CARET=14;
-	public static final int CHAR=15;
-	public static final int COLON=16;
-	public static final int COMMA=17;
-	public static final int DECIMAL=18;
-	public static final int DECIMAL_NEGATIVE=19;
-	public static final int DECIMAL_POSITIVE=20;
-	public static final int DIGIT=21;
-	public static final int DOLLAR=22;
-	public static final int DOUBLE=23;
-	public static final int DOUBLE_NEGATIVE=24;
-	public static final int DOUBLE_POSITIVE=25;
-	public static final int DOUBLE_SLASH=26;
-	public static final int ECHAR=27;
-	public static final int EQUALS=28;
-	public static final int EXCLAMATION=29;
-	public static final int FALSE=30;
-	public static final int GREATER=31;
-	public static final int HASH=32;
-	public static final int ID=33;
-	public static final int ID_CORE=34;
-	public static final int ID_START=35;
-	public static final int INTEGER=36;
-	public static final int INTEGER_NEGATIVE=37;
-	public static final int INTEGER_POSITIVE=38;
-	public static final int LCR_BRACKET=39;
-	public static final int LESS=40;
-	public static final int LPAREN=41;
-	public static final int LSQ_BRACKET=42;
-	public static final int LTSIGN=43;
-	public static final int MINUS=44;
-	public static final int NAMESPACE=45;
-	public static final int NAME_CHAR=46;
-	public static final int NAME_START_CHAR=47;
-	public static final int NCNAME=48;
-	public static final int NCNAME_EXT=49;
-	public static final int PERCENT=50;
-	public static final int PERIOD=51;
-	public static final int PLUS=52;
-	public static final int PREFIX=53;
-	public static final int PREFIXED_NAME=54;
-	public static final int QUESTION=55;
-	public static final int QUOTE_DOUBLE=56;
-	public static final int QUOTE_SINGLE=57;
-	public static final int RCR_BRACKET=58;
-	public static final int REFERENCE=59;
-	public static final int RPAREN=60;
-	public static final int RSQ_BRACKET=61;
-	public static final int RTSIGN=62;
-	public static final int SCHEMA=63;
-	public static final int SEMI=64;
-	public static final int SLASH=65;
-	public static final int STRING_URI=66;
-	public static final int STRING_WITH_BRACKET=67;
-	public static final int STRING_WITH_CURLY_BRACKET=68;
-	public static final int STRING_WITH_QUOTE=69;
-	public static final int STRING_WITH_QUOTE_DOUBLE=70;
-	public static final int TILDE=71;
-	public static final int TRUE=72;
-	public static final int UNDERSCORE=73;
-	public static final int URI_PATH=74;
-	public static final int VARNAME=75;
-	public static final int WS=76;
 
-	// delegates
-	public Parser[] getDelegates() {
-		return new Parser[] {};
+	private static final String[] _LITERAL_NAMES = {
+		null, "'a'", null, null, null, null, "'^^'", "'<\"'", "'\">'", "';'", 
+		"'.'", "','", "'['", "']'", "'{'", "'}'", "'('", "')'", "'?'", "'$'", 
+		"'\"'", "'''", "'`'", "'_'", "'-'", "'*'", "'&'", "'@'", "'!'", "'#'", 
+		"'%'", "'+'", "'='", "':'", "'<'", "'>'", "'/'", "'//'", "'\\'", "'[]'", 
+		"'_:'", "'~'", "'^'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, null, "BASE", "PREFIX", "FALSE", "TRUE", "REFERENCE", "LTSIGN", 
+		"RTSIGN", "SEMI", "PERIOD", "COMMA", "LSQ_BRACKET", "RSQ_BRACKET", "LCR_BRACKET", 
+		"RCR_BRACKET", "LPAREN", "RPAREN", "QUESTION", "DOLLAR", "QUOTE_DOUBLE", 
+		"QUOTE_SINGLE", "APOSTROPHE", "UNDERSCORE", "MINUS", "ASTERISK", "AMPERSAND", 
+		"AT", "EXCLAMATION", "HASH", "PERCENT", "PLUS", "EQUALS", "COLON", "LESS", 
+		"GREATER", "SLASH", "DOUBLE_SLASH", "BACKSLASH", "BLANK", "BLANK_PREFIX", 
+		"TILDE", "CARET", "INTEGER", "DOUBLE", "DECIMAL", "INTEGER_POSITIVE", 
+		"INTEGER_NEGATIVE", "DOUBLE_POSITIVE", "DOUBLE_NEGATIVE", "DECIMAL_POSITIVE", 
+		"DECIMAL_NEGATIVE", "VARNAME", "NCNAME", "NCNAME_EXT", "NAMESPACE", "PREFIXED_NAME", 
+		"STRING_WITH_QUOTE", "STRING_WITH_QUOTE_DOUBLE", "STRING_WITH_BRACKET", 
+		"STRING_WITH_CURLY_BRACKET", "STRING_URI", "WS"
+	};
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
+	/**
+	 * @deprecated Use {@link #VOCABULARY} instead.
+	 */
+	@Deprecated
+	public static final String[] tokenNames;
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
+
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
+			}
+		}
 	}
 
-	// delegators
-
-
-	public TurtleOBDAParser(TokenStream input) {
-		this(input, new RecognizerSharedState());
-	}
-	public TurtleOBDAParser(TokenStream input, RecognizerSharedState state) {
-		super(input, state);
+	@Override
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
 	}
 
-	@Override public String[] getTokenNames() { return TurtleOBDAParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g"; }
+	@Override
+
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
+	}
+
+	@Override
+	public String getGrammarFileName() { return "TurtleOBDA.g4"; }
+
+	@Override
+	public String[] getRuleNames() { return ruleNames; }
+
+	@Override
+	public String getSerializedATN() { return _serializedATN; }
+
+	@Override
+	public ATN getATN() { return _ATN; }
 
 
 	/** Map of directives */
@@ -424,2341 +422,2372 @@ public class TurtleOBDAParser extends Parser {
 		}
 
 
+	public TurtleOBDAParser(TokenStream input) {
+		super(input);
+		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
+	}
+	public static class ParseContext extends ParserRuleContext {
+		public List<Function> value;
+		public TriplesStatementContext t1;
+		public TriplesStatementContext t2;
+		public TerminalNode EOF() { return getToken(TurtleOBDAParser.EOF, 0); }
+		public List<TriplesStatementContext> triplesStatement() {
+			return getRuleContexts(TriplesStatementContext.class);
+		}
+		public TriplesStatementContext triplesStatement(int i) {
+			return getRuleContext(TriplesStatementContext.class,i);
+		}
+		public List<DirectiveStatementContext> directiveStatement() {
+			return getRuleContexts(DirectiveStatementContext.class);
+		}
+		public DirectiveStatementContext directiveStatement(int i) {
+			return getRuleContext(DirectiveStatementContext.class,i);
+		}
+		public ParseContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_parse; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterParse(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitParse(this);
+		}
+	}
 
-
-	// $ANTLR start "parse"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:381:1: parse returns [List<Function> value] : ( directiveStatement )* t1= triplesStatement (t2= triplesStatement )* EOF ;
-	public final List<Function> parse() throws RecognitionException {
-		List<Function> value = null;
-
-
-		List<Function> t1 =null;
-		List<Function> t2 =null;
-
+	public final ParseContext parse() throws RecognitionException {
+		ParseContext _localctx = new ParseContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_parse);
+		int _la;
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:382:3: ( ( directiveStatement )* t1= triplesStatement (t2= triplesStatement )* EOF )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:382:5: ( directiveStatement )* t1= triplesStatement (t2= triplesStatement )* EOF
+			enterOuterAlt(_localctx, 1);
 			{
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:382:5: ( directiveStatement )*
-			loop1:
-			while (true) {
-				int alt1=2;
-				int LA1_0 = input.LA(1);
-				if ( (LA1_0==AT) ) {
-					alt1=1;
+			setState(77);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==AT) {
+				{
+				{
+				setState(74);
+				directiveStatement();
 				}
-
-				switch (alt1) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:382:5: directiveStatement
-					{
-					pushFollow(FOLLOW_directiveStatement_in_parse54);
-					directiveStatement();
-					state._fsp--;
-
-					}
-					break;
-
-				default :
-					break loop1;
 				}
+				setState(79);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
 			}
+			setState(80);
+			((ParseContext)_localctx).t1 = triplesStatement();
 
-			pushFollow(FOLLOW_triplesStatement_in_parse63);
-			t1=triplesStatement();
-			state._fsp--;
-
-
-			      value =  t1;
+			      ((ParseContext)_localctx).value =   ((ParseContext)_localctx).t1.value;
 			    
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:386:7: (t2= triplesStatement )*
-			loop2:
-			while (true) {
-				int alt2=2;
-				int LA2_0 = input.LA(1);
-				if ( (LA2_0==PREFIXED_NAME||(LA2_0 >= STRING_WITH_BRACKET && LA2_0 <= STRING_WITH_CURLY_BRACKET)) ) {
-					alt2=1;
+			setState(87);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PREFIXED_NAME) | (1L << STRING_WITH_BRACKET) | (1L << STRING_WITH_CURLY_BRACKET))) != 0)) {
+				{
+				{
+				setState(82);
+				((ParseContext)_localctx).t2 = triplesStatement();
+
+				      List<Function> additionalTriples = ((ParseContext)_localctx).t2.value;
+				      if (additionalTriples != null) {
+				        // If there are additional triple statements then just add to the existing body
+				        List<Function> existingBody = _localctx.value;
+				        existingBody.addAll(additionalTriples);
+				      }
+				    
 				}
-
-				switch (alt2) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:386:8: t2= triplesStatement
-					{
-					pushFollow(FOLLOW_triplesStatement_in_parse76);
-					t2=triplesStatement();
-					state._fsp--;
-
-
-					      List<Function> additionalTriples = t2;
-					      if (additionalTriples != null) {
-					        // If there are additional triple statements then just add to the existing body
-					        List<Function> existingBody = value;
-					        existingBody.addAll(additionalTriples);
-					      }
-					    
-					}
-					break;
-
-				default :
-					break loop2;
 				}
+				setState(89);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
 			}
-
-			match(input,EOF,FOLLOW_EOF_in_parse83); 
+			setState(90);
+			match(EOF);
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "parse"
 
+	public static class DirectiveStatementContext extends ParserRuleContext {
+		public DirectiveContext directive() {
+			return getRuleContext(DirectiveContext.class,0);
+		}
+		public TerminalNode PERIOD() { return getToken(TurtleOBDAParser.PERIOD, 0); }
+		public DirectiveStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_directiveStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDirectiveStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDirectiveStatement(this);
+		}
+	}
 
-
-	// $ANTLR start "directiveStatement"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:396:1: directiveStatement : directive PERIOD ;
-	public final void directiveStatement() throws RecognitionException {
+	public final DirectiveStatementContext directiveStatement() throws RecognitionException {
+		DirectiveStatementContext _localctx = new DirectiveStatementContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_directiveStatement);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:397:3: ( directive PERIOD )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:397:5: directive PERIOD
+			enterOuterAlt(_localctx, 1);
 			{
-			pushFollow(FOLLOW_directive_in_directiveStatement96);
+			setState(92);
 			directive();
-			state._fsp--;
-
-			match(input,PERIOD,FOLLOW_PERIOD_in_directiveStatement98); 
+			setState(93);
+			match(PERIOD);
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TriplesStatementContext extends ParserRuleContext {
+		public List<Function> value;
+		public TriplesContext triples() {
+			return getRuleContext(TriplesContext.class,0);
+		}
+		public TerminalNode PERIOD() { return getToken(TurtleOBDAParser.PERIOD, 0); }
+		public List<TerminalNode> WS() { return getTokens(TurtleOBDAParser.WS); }
+		public TerminalNode WS(int i) {
+			return getToken(TurtleOBDAParser.WS, i);
+		}
+		public TriplesStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_triplesStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTriplesStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTriplesStatement(this);
 		}
 	}
-	// $ANTLR end "directiveStatement"
 
-
-
-	// $ANTLR start "triplesStatement"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:400:1: triplesStatement returns [List<Function> value] : triples ( WS )* PERIOD ;
-	public final List<Function> triplesStatement() throws RecognitionException {
-		List<Function> value = null;
-
-
-		List<Function> triples1 =null;
-
+	public final TriplesStatementContext triplesStatement() throws RecognitionException {
+		TriplesStatementContext _localctx = new TriplesStatementContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_triplesStatement);
+		int _la;
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:401:3: ( triples ( WS )* PERIOD )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:401:5: triples ( WS )* PERIOD
+			enterOuterAlt(_localctx, 1);
 			{
-			pushFollow(FOLLOW_triples_in_triplesStatement115);
-			triples1=triples();
-			state._fsp--;
-
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:401:13: ( WS )*
-			loop3:
-			while (true) {
-				int alt3=2;
-				int LA3_0 = input.LA(1);
-				if ( (LA3_0==WS) ) {
-					alt3=1;
+			setState(95);
+			triples();
+			setState(99);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==WS) {
+				{
+				{
+				setState(96);
+				match(WS);
 				}
-
-				switch (alt3) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:401:13: WS
-					{
-					match(input,WS,FOLLOW_WS_in_triplesStatement117); 
-					}
-					break;
-
-				default :
-					break loop3;
 				}
+				setState(101);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
 			}
-
-			match(input,PERIOD,FOLLOW_PERIOD_in_triplesStatement120); 
-			 value = triples1; 
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "triplesStatement"
-
-
-
-	// $ANTLR start "directive"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:404:1: directive : ( base | prefixID );
-	public final void directive() throws RecognitionException {
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:405:3: ( base | prefixID )
-			int alt4=2;
-			int LA4_0 = input.LA(1);
-			if ( (LA4_0==AT) ) {
-				int LA4_1 = input.LA(2);
-				if ( (LA4_1==BASE) ) {
-					alt4=1;
-				}
-				else if ( (LA4_1==PREFIX) ) {
-					alt4=2;
-				}
-
-				else {
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 4, 1, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 4, 0, input);
-				throw nvae;
-			}
-
-			switch (alt4) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:405:5: base
-					{
-					pushFollow(FOLLOW_base_in_directive135);
-					base();
-					state._fsp--;
-
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:406:5: prefixID
-					{
-					pushFollow(FOLLOW_prefixID_in_directive141);
-					prefixID();
-					state._fsp--;
-
-					}
-					break;
-
+			setState(102);
+			match(PERIOD);
+			 ((TriplesStatementContext)_localctx).value =  ((TriplesStatementContext)_localctx).triples.value; 
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class DirectiveContext extends ParserRuleContext {
+		public BaseContext base() {
+			return getRuleContext(BaseContext.class,0);
+		}
+		public PrefixIDContext prefixID() {
+			return getRuleContext(PrefixIDContext.class,0);
+		}
+		public DirectiveContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_directive; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDirective(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDirective(this);
 		}
 	}
-	// $ANTLR end "directive"
 
-
-
-	// $ANTLR start "base"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:409:1: base : AT BASE uriref ;
-	public final void base() throws RecognitionException {
+	public final DirectiveContext directive() throws RecognitionException {
+		DirectiveContext _localctx = new DirectiveContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_directive);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:410:3: ( AT BASE uriref )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:410:5: AT BASE uriref
+			setState(107);
+			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(105);
+				base();
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(106);
+				prefixID();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BaseContext extends ParserRuleContext {
+		public TerminalNode AT() { return getToken(TurtleOBDAParser.AT, 0); }
+		public TerminalNode BASE() { return getToken(TurtleOBDAParser.BASE, 0); }
+		public UrirefContext uriref() {
+			return getRuleContext(UrirefContext.class,0);
+		}
+		public BaseContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_base; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterBase(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitBase(this);
+		}
+	}
+
+	public final BaseContext base() throws RecognitionException {
+		BaseContext _localctx = new BaseContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_base);
+		try {
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,AT,FOLLOW_AT_in_base154); 
-			match(input,BASE,FOLLOW_BASE_in_base156); 
-			pushFollow(FOLLOW_uriref_in_base158);
+			setState(109);
+			match(AT);
+			setState(110);
+			match(BASE);
+			setState(111);
 			uriref();
-			state._fsp--;
-
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class PrefixIDContext extends ParserRuleContext {
+		public TerminalNode AT() { return getToken(TurtleOBDAParser.AT, 0); }
+		public TerminalNode PREFIX() { return getToken(TurtleOBDAParser.PREFIX, 0); }
+		public UrirefContext uriref() {
+			return getRuleContext(UrirefContext.class,0);
+		}
+		public NamespaceContext namespace() {
+			return getRuleContext(NamespaceContext.class,0);
+		}
+		public DefaultNamespaceContext defaultNamespace() {
+			return getRuleContext(DefaultNamespaceContext.class,0);
+		}
+		public PrefixIDContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_prefixID; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterPrefixID(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitPrefixID(this);
 		}
 	}
-	// $ANTLR end "base"
 
-
-
-	// $ANTLR start "prefixID"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:413:1: prefixID : AT PREFIX ( namespace | defaultNamespace ) uriref ;
-	public final void prefixID() throws RecognitionException {
-		ParserRuleReturnScope namespace2 =null;
-		ParserRuleReturnScope defaultNamespace3 =null;
-		String uriref4 =null;
-
+	public final PrefixIDContext prefixID() throws RecognitionException {
+		PrefixIDContext _localctx = new PrefixIDContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_prefixID);
 
 		  String prefix = "";
 
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:417:3: ( AT PREFIX ( namespace | defaultNamespace ) uriref )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:417:5: AT PREFIX ( namespace | defaultNamespace ) uriref
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,AT,FOLLOW_AT_in_prefixID176); 
-			match(input,PREFIX,FOLLOW_PREFIX_in_prefixID178); 
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:417:15: ( namespace | defaultNamespace )
-			int alt5=2;
-			int LA5_0 = input.LA(1);
-			if ( (LA5_0==NAMESPACE) ) {
-				alt5=1;
+			setState(113);
+			match(AT);
+			setState(114);
+			match(PREFIX);
+			setState(121);
+			switch (_input.LA(1)) {
+			case NAMESPACE:
+				{
+				setState(115);
+				namespace();
+				 prefix = (((PrefixIDContext)_localctx).namespace!=null?_input.getText(((PrefixIDContext)_localctx).namespace.start,((PrefixIDContext)_localctx).namespace.stop):null); 
+				}
+				break;
+			case COLON:
+				{
+				setState(118);
+				defaultNamespace();
+				 prefix = (((PrefixIDContext)_localctx).defaultNamespace!=null?_input.getText(((PrefixIDContext)_localctx).defaultNamespace.start,((PrefixIDContext)_localctx).defaultNamespace.stop):null); 
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
-			else if ( (LA5_0==COLON) ) {
-				alt5=2;
-			}
+			setState(123);
+			uriref();
 
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 5, 0, input);
-				throw nvae;
-			}
-
-			switch (alt5) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:417:16: namespace
-					{
-					pushFollow(FOLLOW_namespace_in_prefixID181);
-					namespace2=namespace();
-					state._fsp--;
-
-					 prefix = (namespace2!=null?input.toString(namespace2.start,namespace2.stop):null); 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:417:58: defaultNamespace
-					{
-					pushFollow(FOLLOW_defaultNamespace_in_prefixID187);
-					defaultNamespace3=defaultNamespace();
-					state._fsp--;
-
-					 prefix = (defaultNamespace3!=null?input.toString(defaultNamespace3.start,defaultNamespace3.stop):null); 
-					}
-					break;
-
-			}
-
-			pushFollow(FOLLOW_uriref_in_prefixID192);
-			uriref4=uriref();
-			state._fsp--;
-
-
-			      String uriref = uriref4;
+			      String uriref = ((PrefixIDContext)_localctx).uriref.value;
 			      directives.put(prefix.substring(0, prefix.length()-1), uriref); // remove the end colon
 			    
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TriplesContext extends ParserRuleContext {
+		public List<Function> value;
+		public SubjectContext subject() {
+			return getRuleContext(SubjectContext.class,0);
+		}
+		public PredicateObjectListContext predicateObjectList() {
+			return getRuleContext(PredicateObjectListContext.class,0);
+		}
+		public TriplesContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_triples; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTriples(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTriples(this);
 		}
 	}
-	// $ANTLR end "prefixID"
 
-
-
-	// $ANTLR start "triples"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:423:1: triples returns [List<Function> value] : subject predicateObjectList ;
-	public final List<Function> triples() throws RecognitionException {
-		List<Function> value = null;
-
-
-		Term subject5 =null;
-		List<Function> predicateObjectList6 =null;
-
+	public final TriplesContext triples() throws RecognitionException {
+		TriplesContext _localctx = new TriplesContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_triples);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:424:3: ( subject predicateObjectList )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:424:5: subject predicateObjectList
+			enterOuterAlt(_localctx, 1);
 			{
-			pushFollow(FOLLOW_subject_in_triples211);
-			subject5=subject();
-			state._fsp--;
+			setState(126);
+			subject();
+			 currentSubject = ((TriplesContext)_localctx).subject.value; 
+			setState(128);
+			predicateObjectList();
 
-			 currentSubject = subject5; 
-			pushFollow(FOLLOW_predicateObjectList_in_triples215);
-			predicateObjectList6=predicateObjectList();
-			state._fsp--;
-
-
-			      value = predicateObjectList6;
+			      ((TriplesContext)_localctx).value =  ((TriplesContext)_localctx).predicateObjectList.value;
 			    
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "triples"
 
+	public static class PredicateObjectListContext extends ParserRuleContext {
+		public List<Function> value;
+		public VerbContext v1;
+		public ObjectListContext l1;
+		public VerbContext v2;
+		public ObjectListContext l2;
+		public List<VerbContext> verb() {
+			return getRuleContexts(VerbContext.class);
+		}
+		public VerbContext verb(int i) {
+			return getRuleContext(VerbContext.class,i);
+		}
+		public List<ObjectListContext> objectList() {
+			return getRuleContexts(ObjectListContext.class);
+		}
+		public ObjectListContext objectList(int i) {
+			return getRuleContext(ObjectListContext.class,i);
+		}
+		public List<TerminalNode> SEMI() { return getTokens(TurtleOBDAParser.SEMI); }
+		public TerminalNode SEMI(int i) {
+			return getToken(TurtleOBDAParser.SEMI, i);
+		}
+		public PredicateObjectListContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_predicateObjectList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterPredicateObjectList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitPredicateObjectList(this);
+		}
+	}
 
+	public final PredicateObjectListContext predicateObjectList() throws RecognitionException {
+		PredicateObjectListContext _localctx = new PredicateObjectListContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_predicateObjectList);
 
-	// $ANTLR start "predicateObjectList"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:429:1: predicateObjectList returns [List<Function> value] : v1= verb l1= objectList ( SEMI v2= verb l2= objectList )* ;
-	public final List<Function> predicateObjectList() throws RecognitionException {
-		List<Function> value = null;
+		   ((PredicateObjectListContext)_localctx).value =  new LinkedList<Function>();
 
-
-		Term v1 =null;
-		List<Term> l1 =null;
-		Term v2 =null;
-		List<Term> l2 =null;
-
-
-		   value = new LinkedList<Function>();
-
+		int _la;
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:433:3: (v1= verb l1= objectList ( SEMI v2= verb l2= objectList )* )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:433:5: v1= verb l1= objectList ( SEMI v2= verb l2= objectList )*
+			enterOuterAlt(_localctx, 1);
 			{
-			pushFollow(FOLLOW_verb_in_predicateObjectList241);
-			v1=verb();
-			state._fsp--;
+			setState(131);
+			((PredicateObjectListContext)_localctx).v1 = verb();
+			setState(132);
+			((PredicateObjectListContext)_localctx).l1 = objectList();
 
-			pushFollow(FOLLOW_objectList_in_predicateObjectList247);
-			l1=objectList();
-			state._fsp--;
-
-
-			      for (Term object : l1) {
-			        Function atom = makeAtom(currentSubject, v1, object);
-			        value.add(atom);
+			      for (Term object : ((PredicateObjectListContext)_localctx).l1.value) {
+			        Function atom = makeAtom(currentSubject, ((PredicateObjectListContext)_localctx).v1.value, object);
+			        _localctx.value.add(atom);
 			      }
 			    
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:439:5: ( SEMI v2= verb l2= objectList )*
-			loop6:
-			while (true) {
-				int alt6=2;
-				int LA6_0 = input.LA(1);
-				if ( (LA6_0==SEMI) ) {
-					alt6=1;
+			setState(141);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==SEMI) {
+				{
+				{
+				setState(134);
+				match(SEMI);
+				setState(135);
+				((PredicateObjectListContext)_localctx).v2 = verb();
+				setState(136);
+				((PredicateObjectListContext)_localctx).l2 = objectList();
+
+				      for (Term object : ((PredicateObjectListContext)_localctx).l2.value) {
+				        Function atom = makeAtom(currentSubject, ((PredicateObjectListContext)_localctx).v2.value, object);
+				        _localctx.value.add(atom);
+				      }
+				    
 				}
-
-				switch (alt6) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:439:6: SEMI v2= verb l2= objectList
-					{
-					match(input,SEMI,FOLLOW_SEMI_in_predicateObjectList256); 
-					pushFollow(FOLLOW_verb_in_predicateObjectList260);
-					v2=verb();
-					state._fsp--;
-
-					pushFollow(FOLLOW_objectList_in_predicateObjectList264);
-					l2=objectList();
-					state._fsp--;
-
-
-					      for (Term object : l2) {
-					        Function atom = makeAtom(currentSubject, v2, object);
-					        value.add(atom);
-					      }
-					    
-					}
-					break;
-
-				default :
-					break loop6;
 				}
+				setState(143);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
 			}
-
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "predicateObjectList"
-
-
-
-	// $ANTLR start "verb"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:448:1: verb returns [Term value] : ( predicate | 'a' );
-	public final Term verb() throws RecognitionException {
-		Term value = null;
-
-
-		Term predicate7 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:449:3: ( predicate | 'a' )
-			int alt7=2;
-			int LA7_0 = input.LA(1);
-			if ( (LA7_0==PREFIXED_NAME||LA7_0==STRING_WITH_BRACKET) ) {
-				alt7=1;
-			}
-			else if ( (LA7_0==77) ) {
-				alt7=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 7, 0, input);
-				throw nvae;
-			}
-
-			switch (alt7) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:449:5: predicate
-					{
-					pushFollow(FOLLOW_predicate_in_verb288);
-					predicate7=predicate();
-					state._fsp--;
-
-					 value = predicate7; 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:450:5: 'a'
-					{
-					match(input,77,FOLLOW_77_in_verb296); 
-
-					  Term constant = dfac.getConstantLiteral(OBDAVocabulary.RDF_TYPE);
-					  value = dfac.getUriTemplate(constant);
-					  
-					}
-					break;
-
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "verb"
 
+	public static class VerbContext extends ParserRuleContext {
+		public Term value;
+		public PredicateContext predicate() {
+			return getRuleContext(PredicateContext.class,0);
+		}
+		public VerbContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_verb; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterVerb(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitVerb(this);
+		}
+	}
 
-
-	// $ANTLR start "objectList"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:456:1: objectList returns [List<Term> value] : o1= object ( COMMA o2= object )* ;
-	public final List<Term> objectList() throws RecognitionException {
-		List<Term> value = null;
-
-
-		Term o1 =null;
-		Term o2 =null;
-
-
-		  value = new ArrayList<Term>();
-
+	public final VerbContext verb() throws RecognitionException {
+		VerbContext _localctx = new VerbContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_verb);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:460:3: (o1= object ( COMMA o2= object )* )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:460:5: o1= object ( COMMA o2= object )*
+			setState(149);
+			switch (_input.LA(1)) {
+			case PREFIXED_NAME:
+			case STRING_WITH_BRACKET:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(144);
+				predicate();
+				 ((VerbContext)_localctx).value =  ((VerbContext)_localctx).predicate.value; 
+				}
+				break;
+			case T__0:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(147);
+				match(T__0);
+
+				  Term constant = dfac.getConstantLiteral(OBDAVocabulary.RDF_TYPE);
+				  ((VerbContext)_localctx).value =  dfac.getUriTemplate(constant);
+				  
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ObjectListContext extends ParserRuleContext {
+		public List<Term> value;
+		public ObjectContext o1;
+		public ObjectContext o2;
+		public List<ObjectContext> object() {
+			return getRuleContexts(ObjectContext.class);
+		}
+		public ObjectContext object(int i) {
+			return getRuleContext(ObjectContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(TurtleOBDAParser.COMMA); }
+		public TerminalNode COMMA(int i) {
+			return getToken(TurtleOBDAParser.COMMA, i);
+		}
+		public ObjectListContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_objectList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterObjectList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitObjectList(this);
+		}
+	}
+
+	public final ObjectListContext objectList() throws RecognitionException {
+		ObjectListContext _localctx = new ObjectListContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_objectList);
+
+		  ((ObjectListContext)_localctx).value =  new ArrayList<Term>();
+
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
 			{
-			pushFollow(FOLLOW_object_in_objectList322);
-			o1=object();
-			state._fsp--;
-
-			 value.add(o1); 
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:460:42: ( COMMA o2= object )*
-			loop8:
-			while (true) {
-				int alt8=2;
-				int LA8_0 = input.LA(1);
-				if ( (LA8_0==COMMA) ) {
-					alt8=1;
+			setState(151);
+			((ObjectListContext)_localctx).o1 = object();
+			 _localctx.value.add(((ObjectListContext)_localctx).o1.value); 
+			setState(159);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==COMMA) {
+				{
+				{
+				setState(153);
+				match(COMMA);
+				setState(154);
+				((ObjectListContext)_localctx).o2 = object();
+				 _localctx.value.add(((ObjectListContext)_localctx).o2.value); 
 				}
-
-				switch (alt8) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:460:43: COMMA o2= object
-					{
-					match(input,COMMA,FOLLOW_COMMA_in_objectList327); 
-					pushFollow(FOLLOW_object_in_objectList331);
-					o2=object();
-					state._fsp--;
-
-					 value.add(o2); 
-					}
-					break;
-
-				default :
-					break loop8;
 				}
+				setState(161);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
 			}
-
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "objectList"
-
-
-
-	// $ANTLR start "subject"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:463:1: subject returns [Term value] : ( resource | variable );
-	public final Term subject() throws RecognitionException {
-		Term value = null;
-
-
-		Term resource8 =null;
-		Variable variable9 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:464:3: ( resource | variable )
-			int alt9=2;
-			int LA9_0 = input.LA(1);
-			if ( (LA9_0==PREFIXED_NAME||LA9_0==STRING_WITH_BRACKET) ) {
-				alt9=1;
-			}
-			else if ( (LA9_0==STRING_WITH_CURLY_BRACKET) ) {
-				alt9=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 9, 0, input);
-				throw nvae;
-			}
-
-			switch (alt9) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:464:5: resource
-					{
-					pushFollow(FOLLOW_resource_in_subject353);
-					resource8=resource();
-					state._fsp--;
-
-					 value = resource8; 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:465:5: variable
-					{
-					pushFollow(FOLLOW_variable_in_subject361);
-					variable9=variable();
-					state._fsp--;
-
-					 value = variable9; 
-					}
-					break;
-
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "subject"
 
+	public static class SubjectContext extends ParserRuleContext {
+		public Term value;
+		public ResourceContext resource() {
+			return getRuleContext(ResourceContext.class,0);
+		}
+		public VariableContext variable() {
+			return getRuleContext(VariableContext.class,0);
+		}
+		public SubjectContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_subject; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterSubject(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitSubject(this);
+		}
+	}
 
-
-	// $ANTLR start "predicate"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:470:1: predicate returns [Term value] : resource ;
-	public final Term predicate() throws RecognitionException {
-		Term value = null;
-
-
-		Term resource10 =null;
-
+	public final SubjectContext subject() throws RecognitionException {
+		SubjectContext _localctx = new SubjectContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_subject);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:471:3: ( resource )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:471:5: resource
+			setState(168);
+			switch (_input.LA(1)) {
+			case PREFIXED_NAME:
+			case STRING_WITH_BRACKET:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(162);
+				resource();
+				 ((SubjectContext)_localctx).value =  ((SubjectContext)_localctx).resource.value; 
+				}
+				break;
+			case STRING_WITH_CURLY_BRACKET:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(165);
+				variable();
+				 ((SubjectContext)_localctx).value =  ((SubjectContext)_localctx).variable.value; 
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class PredicateContext extends ParserRuleContext {
+		public Term value;
+		public ResourceContext resource() {
+			return getRuleContext(ResourceContext.class,0);
+		}
+		public PredicateContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_predicate; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterPredicate(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitPredicate(this);
+		}
+	}
+
+	public final PredicateContext predicate() throws RecognitionException {
+		PredicateContext _localctx = new PredicateContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_predicate);
+		try {
+			enterOuterAlt(_localctx, 1);
 			{
-			pushFollow(FOLLOW_resource_in_predicate382);
-			resource10=resource();
-			state._fsp--;
+			setState(170);
+			resource();
 
-
-			  	value = resource10; 
-			//      Term nl = resource10;
+			  	((PredicateContext)_localctx).value =  ((PredicateContext)_localctx).resource.value; 
+			//      Term nl = ((PredicateContext)_localctx).resource.value;
 			//      if (nl instanceof URIConstant) {
 			//        URIConstant c = (URIConstant) nl;
-			//        value = c.getValue();
+			//        ((PredicateContext)_localctx).value =  c.getValue();
 			//      } else {
 			//        throw new RuntimeException("Unsupported predicate syntax: " + nl.toString());
 			//      }
 			    
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "predicate"
 
+	public static class ObjectContext extends ParserRuleContext {
+		public Term value;
+		public ResourceContext resource() {
+			return getRuleContext(ResourceContext.class,0);
+		}
+		public LiteralContext literal() {
+			return getRuleContext(LiteralContext.class,0);
+		}
+		public TypedLiteralContext typedLiteral() {
+			return getRuleContext(TypedLiteralContext.class,0);
+		}
+		public VariableContext variable() {
+			return getRuleContext(VariableContext.class,0);
+		}
+		public ObjectContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_object; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterObject(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitObject(this);
+		}
+	}
 
-
-	// $ANTLR start "object"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:483:1: object returns [Term value] : ( resource | literal | typedLiteral | variable );
-	public final Term object() throws RecognitionException {
-		Term value = null;
-
-
-		Term resource11 =null;
-		Term literal12 =null;
-		Function typedLiteral13 =null;
-		Variable variable14 =null;
-
+	public final ObjectContext object() throws RecognitionException {
+		ObjectContext _localctx = new ObjectContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_object);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:484:3: ( resource | literal | typedLiteral | variable )
-			int alt10=4;
-			switch ( input.LA(1) ) {
-			case PREFIXED_NAME:
+			setState(185);
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(173);
+				resource();
+				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).resource.value; 
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(176);
+				literal();
+				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).literal.value; 
+				}
+				break;
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(179);
+				typedLiteral();
+				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).typedLiteral.value; 
+				}
+				break;
+			case 4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(182);
+				variable();
+				 ((ObjectContext)_localctx).value =  ((ObjectContext)_localctx).variable.value; 
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ResourceContext extends ParserRuleContext {
+		public Term value;
+		public UrirefContext uriref() {
+			return getRuleContext(UrirefContext.class,0);
+		}
+		public QnameContext qname() {
+			return getRuleContext(QnameContext.class,0);
+		}
+		public ResourceContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_resource; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterResource(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitResource(this);
+		}
+	}
+
+	public final ResourceContext resource() throws RecognitionException {
+		ResourceContext _localctx = new ResourceContext(_ctx, getState());
+		enterRule(_localctx, 26, RULE_resource);
+		try {
+			setState(193);
+			switch (_input.LA(1)) {
 			case STRING_WITH_BRACKET:
+				enterOuterAlt(_localctx, 1);
 				{
-				alt10=1;
+				setState(187);
+				uriref();
+				 ((ResourceContext)_localctx).value =  construct(((ResourceContext)_localctx).uriref.value); 
 				}
 				break;
-			case DECIMAL:
-			case DECIMAL_NEGATIVE:
-			case DECIMAL_POSITIVE:
-			case DOUBLE:
-			case DOUBLE_NEGATIVE:
-			case DOUBLE_POSITIVE:
-			case FALSE:
-			case INTEGER:
-			case INTEGER_NEGATIVE:
-			case INTEGER_POSITIVE:
-			case STRING_WITH_QUOTE_DOUBLE:
-			case TRUE:
+			case PREFIXED_NAME:
+				enterOuterAlt(_localctx, 2);
 				{
-				alt10=2;
-				}
-				break;
-			case STRING_WITH_CURLY_BRACKET:
-				{
-				int LA10_3 = input.LA(2);
-				if ( (LA10_3==AT||LA10_3==REFERENCE) ) {
-					alt10=3;
-				}
-				else if ( (LA10_3==COMMA||LA10_3==PERIOD||LA10_3==SEMI||LA10_3==WS) ) {
-					alt10=4;
-				}
-
-				else {
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 10, 3, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-
+				setState(190);
+				qname();
+				 ((ResourceContext)_localctx).value =  construct(((ResourceContext)_localctx).qname.value); 
 				}
 				break;
 			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 10, 0, input);
-				throw nvae;
-			}
-			switch (alt10) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:484:5: resource
-					{
-					pushFollow(FOLLOW_resource_in_object401);
-					resource11=resource();
-					state._fsp--;
-
-					 value = resource11; 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:485:5: literal
-					{
-					pushFollow(FOLLOW_literal_in_object409);
-					literal12=literal();
-					state._fsp--;
-
-					 value = literal12; 
-					}
-					break;
-				case 3 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:486:5: typedLiteral
-					{
-					pushFollow(FOLLOW_typedLiteral_in_object418);
-					typedLiteral13=typedLiteral();
-					state._fsp--;
-
-					 value = typedLiteral13; 
-					}
-					break;
-				case 4 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:487:5: variable
-					{
-					pushFollow(FOLLOW_variable_in_object426);
-					variable14=variable();
-					state._fsp--;
-
-					 value = variable14; 
-					}
-					break;
-
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "object"
 
-
-
-	// $ANTLR start "resource"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:491:1: resource returns [Term value] : ( uriref | qname );
-	public final Term resource() throws RecognitionException {
-		Term value = null;
-
-
-		String uriref15 =null;
-		String qname16 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:492:4: ( uriref | qname )
-			int alt11=2;
-			int LA11_0 = input.LA(1);
-			if ( (LA11_0==STRING_WITH_BRACKET) ) {
-				alt11=1;
-			}
-			else if ( (LA11_0==PREFIXED_NAME) ) {
-				alt11=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 11, 0, input);
-				throw nvae;
-			}
-
-			switch (alt11) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:492:6: uriref
-					{
-					pushFollow(FOLLOW_uriref_in_resource447);
-					uriref15=uriref();
-					state._fsp--;
-
-					 value = construct(uriref15); 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:493:6: qname
-					{
-					pushFollow(FOLLOW_qname_in_resource456);
-					qname16=qname();
-					state._fsp--;
-
-					 value = construct(qname16); 
-					}
-					break;
-
-			}
+	public static class UrirefContext extends ParserRuleContext {
+		public String value;
+		public TerminalNode STRING_WITH_BRACKET() { return getToken(TurtleOBDAParser.STRING_WITH_BRACKET, 0); }
+		public UrirefContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+		@Override public int getRuleIndex() { return RULE_uriref; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterUriref(this);
 		}
-		finally {
-			// do for sure before leaving
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitUriref(this);
 		}
-		return value;
 	}
-	// $ANTLR end "resource"
 
-
-
-	// $ANTLR start "uriref"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:498:1: uriref returns [String value] : STRING_WITH_BRACKET ;
-	public final String uriref() throws RecognitionException {
-		String value = null;
-
-
-		Token STRING_WITH_BRACKET17=null;
-
+	public final UrirefContext uriref() throws RecognitionException {
+		UrirefContext _localctx = new UrirefContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_uriref);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:499:3: ( STRING_WITH_BRACKET )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:499:5: STRING_WITH_BRACKET
+			enterOuterAlt(_localctx, 1);
 			{
-			STRING_WITH_BRACKET17=(Token)match(input,STRING_WITH_BRACKET,FOLLOW_STRING_WITH_BRACKET_in_uriref481); 
-			 value = removeBrackets((STRING_WITH_BRACKET17!=null?STRING_WITH_BRACKET17.getText():null)); 
+			setState(195);
+			match(STRING_WITH_BRACKET);
+			 ((UrirefContext)_localctx).value =  removeBrackets((((UrirefContext)_localctx).STRING_WITH_BRACKET!=null?((UrirefContext)_localctx).STRING_WITH_BRACKET.getText():null)); 
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "uriref"
 
+	public static class QnameContext extends ParserRuleContext {
+		public String value;
+		public TerminalNode PREFIXED_NAME() { return getToken(TurtleOBDAParser.PREFIXED_NAME, 0); }
+		public QnameContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_qname; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterQname(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitQname(this);
+		}
+	}
 
-
-	// $ANTLR start "qname"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:502:1: qname returns [String value] : PREFIXED_NAME ;
-	public final String qname() throws RecognitionException {
-		String value = null;
-
-
-		Token PREFIXED_NAME18=null;
-
+	public final QnameContext qname() throws RecognitionException {
+		QnameContext _localctx = new QnameContext(_ctx, getState());
+		enterRule(_localctx, 30, RULE_qname);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:503:3: ( PREFIXED_NAME )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:503:5: PREFIXED_NAME
+			enterOuterAlt(_localctx, 1);
 			{
-			PREFIXED_NAME18=(Token)match(input,PREFIXED_NAME,FOLLOW_PREFIXED_NAME_in_qname500); 
+			setState(198);
+			match(PREFIXED_NAME);
 
-			      String[] tokens = (PREFIXED_NAME18!=null?PREFIXED_NAME18.getText():null).split(":", 2);
+			      String[] tokens = (((QnameContext)_localctx).PREFIXED_NAME!=null?((QnameContext)_localctx).PREFIXED_NAME.getText():null).split(":", 2);
 			      String uri = directives.get(tokens[0]);  // the first token is the prefix
-			      value = uri + tokens[1];  // the second token is the local name
+			      ((QnameContext)_localctx).value =  uri + tokens[1];  // the second token is the local name
 			    
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "qname"
 
-
-
-	// $ANTLR start "blank"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:510:1: blank : ( nodeID | BLANK );
-	public final void blank() throws RecognitionException {
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:511:3: ( nodeID | BLANK )
-			int alt12=2;
-			int LA12_0 = input.LA(1);
-			if ( (LA12_0==BLANK_PREFIX) ) {
-				alt12=1;
-			}
-			else if ( (LA12_0==BLANK) ) {
-				alt12=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 12, 0, input);
-				throw nvae;
-			}
-
-			switch (alt12) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:511:5: nodeID
-					{
-					pushFollow(FOLLOW_nodeID_in_blank515);
-					nodeID();
-					state._fsp--;
-
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:512:5: BLANK
-					{
-					match(input,BLANK,FOLLOW_BLANK_in_blank521); 
-					}
-					break;
-
-			}
+	public static class BlankContext extends ParserRuleContext {
+		public NodeIDContext nodeID() {
+			return getRuleContext(NodeIDContext.class,0);
 		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+		public TerminalNode BLANK() { return getToken(TurtleOBDAParser.BLANK, 0); }
+		public BlankContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
-		finally {
-			// do for sure before leaving
+		@Override public int getRuleIndex() { return RULE_blank; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterBlank(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitBlank(this);
 		}
 	}
-	// $ANTLR end "blank"
 
-
-
-	// $ANTLR start "variable"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:515:1: variable returns [Variable value] : STRING_WITH_CURLY_BRACKET ;
-	public final Variable variable() throws RecognitionException {
-		Variable value = null;
-
-
-		Token STRING_WITH_CURLY_BRACKET19=null;
-
+	public final BlankContext blank() throws RecognitionException {
+		BlankContext _localctx = new BlankContext(_ctx, getState());
+		enterRule(_localctx, 32, RULE_blank);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:516:3: ( STRING_WITH_CURLY_BRACKET )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:516:5: STRING_WITH_CURLY_BRACKET
-			{
-			STRING_WITH_CURLY_BRACKET19=(Token)match(input,STRING_WITH_CURLY_BRACKET,FOLLOW_STRING_WITH_CURLY_BRACKET_in_variable538); 
-
-			      value = dfac.getVariable(removeBrackets((STRING_WITH_CURLY_BRACKET19!=null?STRING_WITH_CURLY_BRACKET19.getText():null)));
-			      variableSet.add(value);
-			    
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "variable"
-
-
-
-	// $ANTLR start "function"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:522:1: function returns [Function value] : resource LPAREN terms RPAREN ;
-	public final Function function() throws RecognitionException {
-		Function value = null;
-
-
-		Term resource20 =null;
-		Vector<Term> terms21 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:523:3: ( resource LPAREN terms RPAREN )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:523:5: resource LPAREN terms RPAREN
-			{
-			pushFollow(FOLLOW_resource_in_function559);
-			resource20=resource();
-			state._fsp--;
-
-			match(input,LPAREN,FOLLOW_LPAREN_in_function561); 
-			pushFollow(FOLLOW_terms_in_function563);
-			terms21=terms();
-			state._fsp--;
-
-			match(input,RPAREN,FOLLOW_RPAREN_in_function565); 
-
-			      String functionName = resource20.toString();
-			      int arity = terms21.size();
-			      Predicate functionSymbol = dfac.getPredicate(functionName, arity);
-			      value = dfac.getFunction(functionSymbol, terms21);
-			    
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "function"
-
-
-
-	// $ANTLR start "typedLiteral"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:531:1: typedLiteral returns [Function value] : ( variable AT language | variable REFERENCE resource );
-	public final Function typedLiteral() throws RecognitionException {
-		Function value = null;
-
-
-		Variable variable22 =null;
-		Term language23 =null;
-		Variable variable24 =null;
-		Term resource25 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:532:3: ( variable AT language | variable REFERENCE resource )
-			int alt13=2;
-			int LA13_0 = input.LA(1);
-			if ( (LA13_0==STRING_WITH_CURLY_BRACKET) ) {
-				int LA13_1 = input.LA(2);
-				if ( (LA13_1==AT) ) {
-					alt13=1;
-				}
-				else if ( (LA13_1==REFERENCE) ) {
-					alt13=2;
-				}
-
-				else {
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 13, 1, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 13, 0, input);
-				throw nvae;
-			}
-
-			switch (alt13) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:532:5: variable AT language
-					{
-					pushFollow(FOLLOW_variable_in_typedLiteral584);
-					variable22=variable();
-					state._fsp--;
-
-					match(input,AT,FOLLOW_AT_in_typedLiteral586); 
-					pushFollow(FOLLOW_language_in_typedLiteral588);
-					language23=language();
-					state._fsp--;
-
-
-					      Variable var = variable22;
-					      Term lang = language23;   
-					      value = dfac.getTypedTerm(var, lang);
-
-					    
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:538:5: variable REFERENCE resource
-					{
-					pushFollow(FOLLOW_variable_in_typedLiteral596);
-					variable24=variable();
-					state._fsp--;
-
-					match(input,REFERENCE,FOLLOW_REFERENCE_in_typedLiteral598); 
-					pushFollow(FOLLOW_resource_in_typedLiteral600);
-					resource25=resource();
-					state._fsp--;
-
-
-					      Variable var = variable24;
-					      //String functionName = resource25.toString();
-					      // resource25 must be a URIConstant
-					    String functionName = null;
-					    if (resource25 instanceof Function){
-					       functionName = ((ValueConstant) ((Function)resource25).getTerm(0)).getValue();
-					    } else {
-					        throw new IllegalArgumentException("resource25 should be an URI");
-					    }
-					    Predicate.COL_TYPE type = dtfac.getDatatype(functionName);
-					    if (type == null)  
-					 	  throw new RuntimeException("ERROR. A mapping involves an unsupported datatype. \nOffending datatype:" + functionName);
-					    
-					      value = dfac.getTypedTerm(var, type);
-
-						
-					     
-					}
-					break;
-
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "typedLiteral"
-
-
-
-	// $ANTLR start "language"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:558:1: language returns [Term value] : ( languageTag | variable );
-	public final Term language() throws RecognitionException {
-		Term value = null;
-
-
-		ParserRuleReturnScope languageTag26 =null;
-		Variable variable27 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:559:3: ( languageTag | variable )
-			int alt14=2;
-			int LA14_0 = input.LA(1);
-			if ( (LA14_0==VARNAME) ) {
-				alt14=1;
-			}
-			else if ( (LA14_0==STRING_WITH_CURLY_BRACKET) ) {
-				alt14=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 14, 0, input);
-				throw nvae;
-			}
-
-			switch (alt14) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:559:5: languageTag
-					{
-					pushFollow(FOLLOW_languageTag_in_language619);
-					languageTag26=languageTag();
-					state._fsp--;
-
-
-					    	value = dfac.getConstantLiteral((languageTag26!=null?input.toString(languageTag26.start,languageTag26.stop):null).toLowerCase(), COL_TYPE.STRING);
-					    
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:562:5: variable
-					{
-					pushFollow(FOLLOW_variable_in_language627);
-					variable27=variable();
-					state._fsp--;
-
-
-					    	value = variable27;
-					    
-					}
-					break;
-
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "language"
-
-
-
-	// $ANTLR start "terms"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:567:1: terms returns [Vector<Term> value] : t1= term ( COMMA t2= term )* ;
-	public final Vector<Term> terms() throws RecognitionException {
-		Vector<Term> value = null;
-
-
-		Term t1 =null;
-		Term t2 =null;
-
-
-		  value = new Vector<Term>();
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:571:3: (t1= term ( COMMA t2= term )* )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:571:5: t1= term ( COMMA t2= term )*
-			{
-			pushFollow(FOLLOW_term_in_terms653);
-			t1=term();
-			state._fsp--;
-
-			 value.add(t1); 
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:571:40: ( COMMA t2= term )*
-			loop15:
-			while (true) {
-				int alt15=2;
-				int LA15_0 = input.LA(1);
-				if ( (LA15_0==COMMA) ) {
-					alt15=1;
-				}
-
-				switch (alt15) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:571:41: COMMA t2= term
-					{
-					match(input,COMMA,FOLLOW_COMMA_in_terms658); 
-					pushFollow(FOLLOW_term_in_terms662);
-					t2=term();
-					state._fsp--;
-
-					 value.add(t2); 
-					}
-					break;
-
-				default :
-					break loop15;
-				}
-			}
-
-			}
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return value;
-	}
-	// $ANTLR end "terms"
-
-
-
-	// $ANTLR start "term"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:574:1: term returns [Term value] : ( function | variable | literal );
-	public final Term term() throws RecognitionException {
-		Term value = null;
-
-
-		Function function28 =null;
-		Variable variable29 =null;
-		Term literal30 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:575:3: ( function | variable | literal )
-			int alt16=3;
-			switch ( input.LA(1) ) {
-			case PREFIXED_NAME:
-			case STRING_WITH_BRACKET:
+			setState(203);
+			switch (_input.LA(1)) {
+			case BLANK_PREFIX:
+				enterOuterAlt(_localctx, 1);
 				{
-				alt16=1;
+				setState(201);
+				nodeID();
+				}
+				break;
+			case BLANK:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(202);
+				match(BLANK);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class VariableContext extends ParserRuleContext {
+		public Variable value;
+		public TerminalNode STRING_WITH_CURLY_BRACKET() { return getToken(TurtleOBDAParser.STRING_WITH_CURLY_BRACKET, 0); }
+		public VariableContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_variable; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterVariable(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitVariable(this);
+		}
+	}
+
+	public final VariableContext variable() throws RecognitionException {
+		VariableContext _localctx = new VariableContext(_ctx, getState());
+		enterRule(_localctx, 34, RULE_variable);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(205);
+			match(STRING_WITH_CURLY_BRACKET);
+
+			      ((VariableContext)_localctx).value =  dfac.getVariable(removeBrackets((((VariableContext)_localctx).STRING_WITH_CURLY_BRACKET!=null?((VariableContext)_localctx).STRING_WITH_CURLY_BRACKET.getText():null)));
+			      variableSet.add(_localctx.value);
+			    
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FunctionContext extends ParserRuleContext {
+		public Function value;
+		public ResourceContext resource() {
+			return getRuleContext(ResourceContext.class,0);
+		}
+		public TerminalNode LPAREN() { return getToken(TurtleOBDAParser.LPAREN, 0); }
+		public TermsContext terms() {
+			return getRuleContext(TermsContext.class,0);
+		}
+		public TerminalNode RPAREN() { return getToken(TurtleOBDAParser.RPAREN, 0); }
+		public FunctionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_function; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitFunction(this);
+		}
+	}
+
+	public final FunctionContext function() throws RecognitionException {
+		FunctionContext _localctx = new FunctionContext(_ctx, getState());
+		enterRule(_localctx, 36, RULE_function);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(208);
+			resource();
+			setState(209);
+			match(LPAREN);
+			setState(210);
+			terms();
+			setState(211);
+			match(RPAREN);
+
+			      String functionName = ((FunctionContext)_localctx).resource.value.toString();
+			      int arity = ((FunctionContext)_localctx).terms.value.size();
+			      Predicate functionSymbol = dfac.getPredicate(functionName, arity);
+			      ((FunctionContext)_localctx).value =  dfac.getFunction(functionSymbol, ((FunctionContext)_localctx).terms.value);
+			    
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TypedLiteralContext extends ParserRuleContext {
+		public Function value;
+		public VariableContext variable() {
+			return getRuleContext(VariableContext.class,0);
+		}
+		public TerminalNode AT() { return getToken(TurtleOBDAParser.AT, 0); }
+		public LanguageContext language() {
+			return getRuleContext(LanguageContext.class,0);
+		}
+		public TerminalNode REFERENCE() { return getToken(TurtleOBDAParser.REFERENCE, 0); }
+		public ResourceContext resource() {
+			return getRuleContext(ResourceContext.class,0);
+		}
+		public TypedLiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_typedLiteral; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTypedLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTypedLiteral(this);
+		}
+	}
+
+	public final TypedLiteralContext typedLiteral() throws RecognitionException {
+		TypedLiteralContext _localctx = new TypedLiteralContext(_ctx, getState());
+		enterRule(_localctx, 38, RULE_typedLiteral);
+		try {
+			setState(224);
+			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(214);
+				variable();
+				setState(215);
+				match(AT);
+				setState(216);
+				language();
+
+				      Variable var = ((TypedLiteralContext)_localctx).variable.value;
+				      Term lang = ((TypedLiteralContext)_localctx).language.value;   
+				      ((TypedLiteralContext)_localctx).value =  dfac.getTypedTerm(var, lang);
+
+				    
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(219);
+				variable();
+				setState(220);
+				match(REFERENCE);
+				setState(221);
+				resource();
+
+				      Variable var = ((TypedLiteralContext)_localctx).variable.value;
+				      //String functionName = ((TypedLiteralContext)_localctx).resource.value.toString();
+				      // ((TypedLiteralContext)_localctx).resource.value must be a URIConstant
+				    String functionName = null;
+				    if (((TypedLiteralContext)_localctx).resource.value instanceof Function){
+				       functionName = ((ValueConstant) ((Function)((TypedLiteralContext)_localctx).resource.value).getTerm(0)).getValue();
+				    } else {
+				        throw new IllegalArgumentException("((TypedLiteralContext)_localctx).resource.value should be an URI");
+				    }
+				    Predicate.COL_TYPE type = dtfac.getDatatype(functionName);
+				    if (type == null)  
+				 	  throw new RuntimeException("ERROR. A mapping involves an unsupported datatype. \nOffending datatype:" + functionName);
+				    
+				      ((TypedLiteralContext)_localctx).value =  dfac.getTypedTerm(var, type);
+
+					
+				     
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class LanguageContext extends ParserRuleContext {
+		public Term value;
+		public LanguageTagContext languageTag() {
+			return getRuleContext(LanguageTagContext.class,0);
+		}
+		public VariableContext variable() {
+			return getRuleContext(VariableContext.class,0);
+		}
+		public LanguageContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_language; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterLanguage(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitLanguage(this);
+		}
+	}
+
+	public final LanguageContext language() throws RecognitionException {
+		LanguageContext _localctx = new LanguageContext(_ctx, getState());
+		enterRule(_localctx, 40, RULE_language);
+		try {
+			setState(232);
+			switch (_input.LA(1)) {
+			case VARNAME:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(226);
+				languageTag();
+
+				    	((LanguageContext)_localctx).value =  dfac.getConstantLiteral((((LanguageContext)_localctx).languageTag!=null?_input.getText(((LanguageContext)_localctx).languageTag.start,((LanguageContext)_localctx).languageTag.stop):null).toLowerCase(), COL_TYPE.STRING);
+				    
 				}
 				break;
 			case STRING_WITH_CURLY_BRACKET:
+				enterOuterAlt(_localctx, 2);
 				{
-				alt16=2;
-				}
-				break;
-			case DECIMAL:
-			case DECIMAL_NEGATIVE:
-			case DECIMAL_POSITIVE:
-			case DOUBLE:
-			case DOUBLE_NEGATIVE:
-			case DOUBLE_POSITIVE:
-			case FALSE:
-			case INTEGER:
-			case INTEGER_NEGATIVE:
-			case INTEGER_POSITIVE:
-			case STRING_WITH_QUOTE_DOUBLE:
-			case TRUE:
-				{
-				alt16=3;
+				setState(229);
+				variable();
+
+				    	((LanguageContext)_localctx).value =  ((LanguageContext)_localctx).variable.value;
+				    
 				}
 				break;
 			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 16, 0, input);
-				throw nvae;
-			}
-			switch (alt16) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:575:5: function
-					{
-					pushFollow(FOLLOW_function_in_term683);
-					function28=function();
-					state._fsp--;
-
-					 value = function28; 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:576:5: variable
-					{
-					pushFollow(FOLLOW_variable_in_term691);
-					variable29=variable();
-					state._fsp--;
-
-					 value = variable29; 
-					}
-					break;
-				case 3 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:577:5: literal
-					{
-					pushFollow(FOLLOW_literal_in_term699);
-					literal30=literal();
-					state._fsp--;
-
-					 value = literal30; 
-					}
-					break;
-
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "term"
 
-
-
-	// $ANTLR start "literal"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:586:1: literal returns [Term value] : ( stringLiteral ( AT language )? | dataTypeString | numericLiteral | booleanLiteral );
-	public final Term literal() throws RecognitionException {
-		Term value = null;
-
-
-		Term language31 =null;
-		Term stringLiteral32 =null;
-		Term dataTypeString33 =null;
-		Term numericLiteral34 =null;
-		Term booleanLiteral35 =null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:587:3: ( stringLiteral ( AT language )? | dataTypeString | numericLiteral | booleanLiteral )
-			int alt18=4;
-			switch ( input.LA(1) ) {
-			case STRING_WITH_QUOTE_DOUBLE:
-				{
-				int LA18_1 = input.LA(2);
-				if ( (LA18_1==AT||LA18_1==COMMA||LA18_1==PERIOD||LA18_1==RPAREN||LA18_1==SEMI||LA18_1==WS) ) {
-					alt18=1;
-				}
-				else if ( (LA18_1==REFERENCE) ) {
-					alt18=2;
-				}
-
-				else {
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 18, 1, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-
-				}
-				break;
-			case DECIMAL:
-			case DECIMAL_NEGATIVE:
-			case DECIMAL_POSITIVE:
-			case DOUBLE:
-			case DOUBLE_NEGATIVE:
-			case DOUBLE_POSITIVE:
-			case INTEGER:
-			case INTEGER_NEGATIVE:
-			case INTEGER_POSITIVE:
-				{
-				alt18=3;
-				}
-				break;
-			case FALSE:
-			case TRUE:
-				{
-				alt18=4;
-				}
-				break;
-			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 18, 0, input);
-				throw nvae;
-			}
-			switch (alt18) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:587:5: stringLiteral ( AT language )?
-					{
-					pushFollow(FOLLOW_stringLiteral_in_literal719);
-					stringLiteral32=stringLiteral();
-					state._fsp--;
-
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:587:19: ( AT language )?
-					int alt17=2;
-					int LA17_0 = input.LA(1);
-					if ( (LA17_0==AT) ) {
-						alt17=1;
-					}
-					switch (alt17) {
-						case 1 :
-							// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:587:20: AT language
-							{
-							match(input,AT,FOLLOW_AT_in_literal722); 
-							pushFollow(FOLLOW_language_in_literal724);
-							language31=language();
-							state._fsp--;
-
-							}
-							break;
-
-					}
-
-
-					       Term lang = language31;
-					       if ((stringLiteral32) instanceof Function){
-					          Function f = (Function)stringLiteral32;
-					          if (lang != null){
-					             value = dfac.getTypedTerm(f,lang);
-					          }else{
-					             value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
-					          }       
-					       }else{
-					          ValueConstant constant = (ValueConstant)stringLiteral32;
-					          if (lang != null) {
-						     value = dfac.getTypedTerm(constant, lang);
-					          } else {
-					      	     value = dfac.getTypedTerm(constant, COL_TYPE.LITERAL);
-					          }
-					       }
-					    
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:605:5: dataTypeString
-					{
-					pushFollow(FOLLOW_dataTypeString_in_literal734);
-					dataTypeString33=dataTypeString();
-					state._fsp--;
-
-					 value = dataTypeString33; 
-					}
-					break;
-				case 3 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:606:5: numericLiteral
-					{
-					pushFollow(FOLLOW_numericLiteral_in_literal742);
-					numericLiteral34=numericLiteral();
-					state._fsp--;
-
-					 value = numericLiteral34; 
-					}
-					break;
-				case 4 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:607:5: booleanLiteral
-					{
-					pushFollow(FOLLOW_booleanLiteral_in_literal750);
-					booleanLiteral35=booleanLiteral();
-					state._fsp--;
-
-					 value = booleanLiteral35; 
-					}
-					break;
-
-			}
+	public static class TermsContext extends ParserRuleContext {
+		public Vector<Term> value;
+		public TermContext t1;
+		public TermContext t2;
+		public List<TermContext> term() {
+			return getRuleContexts(TermContext.class);
 		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+		public TermContext term(int i) {
+			return getRuleContext(TermContext.class,i);
 		}
-		finally {
-			// do for sure before leaving
+		public List<TerminalNode> COMMA() { return getTokens(TurtleOBDAParser.COMMA); }
+		public TerminalNode COMMA(int i) {
+			return getToken(TurtleOBDAParser.COMMA, i);
 		}
-		return value;
+		public TermsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_terms; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTerms(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTerms(this);
+		}
 	}
-	// $ANTLR end "literal"
 
+	public final TermsContext terms() throws RecognitionException {
+		TermsContext _localctx = new TermsContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_terms);
 
+		  ((TermsContext)_localctx).value =  new Vector<Term>();
 
-	// $ANTLR start "stringLiteral"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:610:1: stringLiteral returns [Term value] : STRING_WITH_QUOTE_DOUBLE ;
-	public final Term stringLiteral() throws RecognitionException {
-		Term value = null;
-
-
-		Token STRING_WITH_QUOTE_DOUBLE36=null;
-
+		int _la;
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:611:3: ( STRING_WITH_QUOTE_DOUBLE )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:611:5: STRING_WITH_QUOTE_DOUBLE
+			enterOuterAlt(_localctx, 1);
 			{
-			STRING_WITH_QUOTE_DOUBLE36=(Token)match(input,STRING_WITH_QUOTE_DOUBLE,FOLLOW_STRING_WITH_QUOTE_DOUBLE_in_stringLiteral769); 
+			setState(234);
+			((TermsContext)_localctx).t1 = term();
+			 _localctx.value.add(((TermsContext)_localctx).t1.value); 
+			setState(242);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==COMMA) {
+				{
+				{
+				setState(236);
+				match(COMMA);
+				setState(237);
+				((TermsContext)_localctx).t2 = term();
+				 _localctx.value.add(((TermsContext)_localctx).t2.value); 
+				}
+				}
+				setState(244);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
 
-			      String str = (STRING_WITH_QUOTE_DOUBLE36!=null?STRING_WITH_QUOTE_DOUBLE36.getText():null);
+	public static class TermContext extends ParserRuleContext {
+		public Term value;
+		public FunctionContext function() {
+			return getRuleContext(FunctionContext.class,0);
+		}
+		public VariableContext variable() {
+			return getRuleContext(VariableContext.class,0);
+		}
+		public LiteralContext literal() {
+			return getRuleContext(LiteralContext.class,0);
+		}
+		public TermContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_term; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitTerm(this);
+		}
+	}
+
+	public final TermContext term() throws RecognitionException {
+		TermContext _localctx = new TermContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_term);
+		try {
+			setState(254);
+			switch (_input.LA(1)) {
+			case PREFIXED_NAME:
+			case STRING_WITH_BRACKET:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(245);
+				function();
+				 ((TermContext)_localctx).value =  ((TermContext)_localctx).function.value; 
+				}
+				break;
+			case STRING_WITH_CURLY_BRACKET:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(248);
+				variable();
+				 ((TermContext)_localctx).value =  ((TermContext)_localctx).variable.value; 
+				}
+				break;
+			case FALSE:
+			case TRUE:
+			case INTEGER:
+			case DOUBLE:
+			case DECIMAL:
+			case INTEGER_POSITIVE:
+			case INTEGER_NEGATIVE:
+			case DOUBLE_POSITIVE:
+			case DOUBLE_NEGATIVE:
+			case DECIMAL_POSITIVE:
+			case DECIMAL_NEGATIVE:
+			case STRING_WITH_QUOTE_DOUBLE:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(251);
+				literal();
+				 ((TermContext)_localctx).value =  ((TermContext)_localctx).literal.value; 
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class LiteralContext extends ParserRuleContext {
+		public Term value;
+		public StringLiteralContext stringLiteral() {
+			return getRuleContext(StringLiteralContext.class,0);
+		}
+		public TerminalNode AT() { return getToken(TurtleOBDAParser.AT, 0); }
+		public LanguageContext language() {
+			return getRuleContext(LanguageContext.class,0);
+		}
+		public DataTypeStringContext dataTypeString() {
+			return getRuleContext(DataTypeStringContext.class,0);
+		}
+		public NumericLiteralContext numericLiteral() {
+			return getRuleContext(NumericLiteralContext.class,0);
+		}
+		public BooleanLiteralContext booleanLiteral() {
+			return getRuleContext(BooleanLiteralContext.class,0);
+		}
+		public LiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_literal; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitLiteral(this);
+		}
+	}
+
+	public final LiteralContext literal() throws RecognitionException {
+		LiteralContext _localctx = new LiteralContext(_ctx, getState());
+		enterRule(_localctx, 46, RULE_literal);
+		int _la;
+		try {
+			setState(272);
+			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(256);
+				stringLiteral();
+				setState(259);
+				_la = _input.LA(1);
+				if (_la==AT) {
+					{
+					setState(257);
+					match(AT);
+					setState(258);
+					language();
+					}
+				}
+
+
+				       Term lang = ((LiteralContext)_localctx).language.value;
+				       if ((((LiteralContext)_localctx).stringLiteral.value) instanceof Function){
+				          Function f = (Function)((LiteralContext)_localctx).stringLiteral.value;
+				          if (lang != null){
+				             value = dfac.getTypedTerm(f,lang);
+				          }else{
+				             value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
+				          }       
+				       }else{
+				          ValueConstant constant = (ValueConstant)((LiteralContext)_localctx).stringLiteral.value;
+				          if (lang != null) {
+					     value = dfac.getTypedTerm(constant, lang);
+				          } else {
+				      	     value = dfac.getTypedTerm(constant, COL_TYPE.LITERAL);
+				          }
+				       }
+				    
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(263);
+				dataTypeString();
+				 ((LiteralContext)_localctx).value =  ((LiteralContext)_localctx).dataTypeString.value; 
+				}
+				break;
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(266);
+				numericLiteral();
+				 ((LiteralContext)_localctx).value =  ((LiteralContext)_localctx).numericLiteral.value; 
+				}
+				break;
+			case 4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(269);
+				booleanLiteral();
+				 ((LiteralContext)_localctx).value =  ((LiteralContext)_localctx).booleanLiteral.value; 
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class StringLiteralContext extends ParserRuleContext {
+		public Term value;
+		public TerminalNode STRING_WITH_QUOTE_DOUBLE() { return getToken(TurtleOBDAParser.STRING_WITH_QUOTE_DOUBLE, 0); }
+		public StringLiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_stringLiteral; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterStringLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitStringLiteral(this);
+		}
+	}
+
+	public final StringLiteralContext stringLiteral() throws RecognitionException {
+		StringLiteralContext _localctx = new StringLiteralContext(_ctx, getState());
+		enterRule(_localctx, 48, RULE_stringLiteral);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(274);
+			match(STRING_WITH_QUOTE_DOUBLE);
+
+			      String str = (((StringLiteralContext)_localctx).STRING_WITH_QUOTE_DOUBLE!=null?((StringLiteralContext)_localctx).STRING_WITH_QUOTE_DOUBLE.getText():null);
 			      if (str.contains("{")){
-			      	value = getNestedConcat(str);
+			      	((StringLiteralContext)_localctx).value =  getNestedConcat(str);
 			      }else{
-			      	value = dfac.getConstantLiteral(str.substring(1, str.length()-1), COL_TYPE.LITERAL); // without the double quotes
+			      	((StringLiteralContext)_localctx).value =  dfac.getConstantLiteral(str.substring(1, str.length()-1), COL_TYPE.LITERAL); // without the double quotes
 			      }
 			    
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "stringLiteral"
 
+	public static class DataTypeStringContext extends ParserRuleContext {
+		public Term value;
+		public StringLiteralContext stringLiteral() {
+			return getRuleContext(StringLiteralContext.class,0);
+		}
+		public TerminalNode REFERENCE() { return getToken(TurtleOBDAParser.REFERENCE, 0); }
+		public ResourceContext resource() {
+			return getRuleContext(ResourceContext.class,0);
+		}
+		public DataTypeStringContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_dataTypeString; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDataTypeString(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDataTypeString(this);
+		}
+	}
 
-
-	// $ANTLR start "dataTypeString"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:621:1: dataTypeString returns [Term value] : stringLiteral REFERENCE resource ;
-	public final Term dataTypeString() throws RecognitionException {
-		Term value = null;
-
-
-		Term stringLiteral37 =null;
-		Term resource38 =null;
-
+	public final DataTypeStringContext dataTypeString() throws RecognitionException {
+		DataTypeStringContext _localctx = new DataTypeStringContext(_ctx, getState());
+		enterRule(_localctx, 50, RULE_dataTypeString);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:622:3: ( stringLiteral REFERENCE resource )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:622:6: stringLiteral REFERENCE resource
+			enterOuterAlt(_localctx, 1);
 			{
-			pushFollow(FOLLOW_stringLiteral_in_dataTypeString789);
-			stringLiteral37=stringLiteral();
-			state._fsp--;
+			setState(277);
+			stringLiteral();
+			setState(278);
+			match(REFERENCE);
+			setState(279);
+			resource();
 
-			match(input,REFERENCE,FOLLOW_REFERENCE_in_dataTypeString791); 
-			pushFollow(FOLLOW_resource_in_dataTypeString793);
-			resource38=resource();
-			state._fsp--;
-
-
-			      if ((stringLiteral37) instanceof Function){
-			          Function f = (Function)stringLiteral37;
+			      if ((((DataTypeStringContext)_localctx).stringLiteral.value) instanceof Function){
+			          Function f = (Function)((DataTypeStringContext)_localctx).stringLiteral.value;
 			          value = dfac.getTypedTerm(f, COL_TYPE.LITERAL);
 			      }else{
-			          ValueConstant constant = (ValueConstant)stringLiteral37;
-			          String functionName = resource38.toString();
+			          ValueConstant constant = (ValueConstant)((DataTypeStringContext)_localctx).stringLiteral.value;
+			          String functionName = ((DataTypeStringContext)_localctx).resource.value.toString();
 			          Predicate functionSymbol = null;
-			          if (resource38 instanceof Function){
-				    functionName = ( (ValueConstant) ((Function)resource38).getTerm(0) ).getValue();
+			          if (((DataTypeStringContext)_localctx).resource.value instanceof Function){
+				    functionName = ( (ValueConstant) ((Function)((DataTypeStringContext)_localctx).resource.value).getTerm(0) ).getValue();
 			          }
 			          Predicate.COL_TYPE type = dtfac.getDatatype(functionName);
 			          if (type == null) {
 			            throw new RuntimeException("Unsupported datatype: " + functionName);
 			          }
-			          value = dfac.getTypedTerm(constant, type);
+			          ((DataTypeStringContext)_localctx).value =  dfac.getTypedTerm(constant, type);
 			      }
 			  
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "dataTypeString"
 
+	public static class NumericLiteralContext extends ParserRuleContext {
+		public Term value;
+		public NumericUnsignedContext numericUnsigned() {
+			return getRuleContext(NumericUnsignedContext.class,0);
+		}
+		public NumericPositiveContext numericPositive() {
+			return getRuleContext(NumericPositiveContext.class,0);
+		}
+		public NumericNegativeContext numericNegative() {
+			return getRuleContext(NumericNegativeContext.class,0);
+		}
+		public NumericLiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_numericLiteral; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericLiteral(this);
+		}
+	}
 
-
-	// $ANTLR start "numericLiteral"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:641:1: numericLiteral returns [Term value] : ( numericUnsigned | numericPositive | numericNegative );
-	public final Term numericLiteral() throws RecognitionException {
-		Term value = null;
-
-
-		Term numericUnsigned39 =null;
-		Term numericPositive40 =null;
-		Term numericNegative41 =null;
-
+	public final NumericLiteralContext numericLiteral() throws RecognitionException {
+		NumericLiteralContext _localctx = new NumericLiteralContext(_ctx, getState());
+		enterRule(_localctx, 52, RULE_numericLiteral);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:642:3: ( numericUnsigned | numericPositive | numericNegative )
-			int alt19=3;
-			switch ( input.LA(1) ) {
-			case DECIMAL:
-			case DOUBLE:
+			setState(291);
+			switch (_input.LA(1)) {
 			case INTEGER:
+			case DOUBLE:
+			case DECIMAL:
+				enterOuterAlt(_localctx, 1);
 				{
-				alt19=1;
+				setState(282);
+				numericUnsigned();
+				 ((NumericLiteralContext)_localctx).value =  ((NumericLiteralContext)_localctx).numericUnsigned.value; 
 				}
 				break;
-			case DECIMAL_POSITIVE:
-			case DOUBLE_POSITIVE:
 			case INTEGER_POSITIVE:
+			case DOUBLE_POSITIVE:
+			case DECIMAL_POSITIVE:
+				enterOuterAlt(_localctx, 2);
 				{
-				alt19=2;
+				setState(285);
+				numericPositive();
+				 ((NumericLiteralContext)_localctx).value =  ((NumericLiteralContext)_localctx).numericPositive.value; 
 				}
 				break;
-			case DECIMAL_NEGATIVE:
-			case DOUBLE_NEGATIVE:
 			case INTEGER_NEGATIVE:
+			case DOUBLE_NEGATIVE:
+			case DECIMAL_NEGATIVE:
+				enterOuterAlt(_localctx, 3);
 				{
-				alt19=3;
+				setState(288);
+				numericNegative();
+				 ((NumericLiteralContext)_localctx).value =  ((NumericLiteralContext)_localctx).numericNegative.value; 
 				}
 				break;
 			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 19, 0, input);
-				throw nvae;
-			}
-			switch (alt19) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:642:5: numericUnsigned
-					{
-					pushFollow(FOLLOW_numericUnsigned_in_numericLiteral809);
-					numericUnsigned39=numericUnsigned();
-					state._fsp--;
-
-					 value = numericUnsigned39; 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:643:5: numericPositive
-					{
-					pushFollow(FOLLOW_numericPositive_in_numericLiteral817);
-					numericPositive40=numericPositive();
-					state._fsp--;
-
-					 value = numericPositive40; 
-					}
-					break;
-				case 3 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:644:5: numericNegative
-					{
-					pushFollow(FOLLOW_numericNegative_in_numericLiteral825);
-					numericNegative41=numericNegative();
-					state._fsp--;
-
-					 value = numericNegative41; 
-					}
-					break;
-
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "numericLiteral"
 
+	public static class NodeIDContext extends ParserRuleContext {
+		public TerminalNode BLANK_PREFIX() { return getToken(TurtleOBDAParser.BLANK_PREFIX, 0); }
+		public NameContext name() {
+			return getRuleContext(NameContext.class,0);
+		}
+		public NodeIDContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_nodeID; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNodeID(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNodeID(this);
+		}
+	}
 
-
-	// $ANTLR start "nodeID"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:647:1: nodeID : BLANK_PREFIX name ;
-	public final void nodeID() throws RecognitionException {
+	public final NodeIDContext nodeID() throws RecognitionException {
+		NodeIDContext _localctx = new NodeIDContext(_ctx, getState());
+		enterRule(_localctx, 54, RULE_nodeID);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:648:3: ( BLANK_PREFIX name )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:648:5: BLANK_PREFIX name
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,BLANK_PREFIX,FOLLOW_BLANK_PREFIX_in_nodeID840); 
-			pushFollow(FOLLOW_name_in_nodeID842);
+			setState(293);
+			match(BLANK_PREFIX);
+			setState(294);
 			name();
-			state._fsp--;
-
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class RelativeURIContext extends ParserRuleContext {
+		public TerminalNode STRING_URI() { return getToken(TurtleOBDAParser.STRING_URI, 0); }
+		public RelativeURIContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_relativeURI; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterRelativeURI(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitRelativeURI(this);
 		}
 	}
-	// $ANTLR end "nodeID"
 
-
-
-	// $ANTLR start "relativeURI"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:651:1: relativeURI : STRING_URI ;
-	public final void relativeURI() throws RecognitionException {
+	public final RelativeURIContext relativeURI() throws RecognitionException {
+		RelativeURIContext _localctx = new RelativeURIContext(_ctx, getState());
+		enterRule(_localctx, 56, RULE_relativeURI);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:652:3: ( STRING_URI )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:652:5: STRING_URI
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,STRING_URI,FOLLOW_STRING_URI_in_relativeURI856); 
+			setState(296);
+			match(STRING_URI);
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class NamespaceContext extends ParserRuleContext {
+		public TerminalNode NAMESPACE() { return getToken(TurtleOBDAParser.NAMESPACE, 0); }
+		public NamespaceContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_namespace; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNamespace(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNamespace(this);
 		}
 	}
-	// $ANTLR end "relativeURI"
 
-
-	public static class namespace_return extends ParserRuleReturnScope {
-	};
-
-
-	// $ANTLR start "namespace"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:655:1: namespace : NAMESPACE ;
-	public final TurtleOBDAParser.namespace_return namespace() throws RecognitionException {
-		TurtleOBDAParser.namespace_return retval = new TurtleOBDAParser.namespace_return();
-		retval.start = input.LT(1);
-
+	public final NamespaceContext namespace() throws RecognitionException {
+		NamespaceContext _localctx = new NamespaceContext(_ctx, getState());
+		enterRule(_localctx, 58, RULE_namespace);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:656:3: ( NAMESPACE )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:656:5: NAMESPACE
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,NAMESPACE,FOLLOW_NAMESPACE_in_namespace869); 
+			setState(298);
+			match(NAMESPACE);
 			}
-
-			retval.stop = input.LT(-1);
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return retval;
+		return _localctx;
 	}
-	// $ANTLR end "namespace"
 
+	public static class DefaultNamespaceContext extends ParserRuleContext {
+		public TerminalNode COLON() { return getToken(TurtleOBDAParser.COLON, 0); }
+		public DefaultNamespaceContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_defaultNamespace; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterDefaultNamespace(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitDefaultNamespace(this);
+		}
+	}
 
-	public static class defaultNamespace_return extends ParserRuleReturnScope {
-	};
-
-
-	// $ANTLR start "defaultNamespace"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:659:1: defaultNamespace : COLON ;
-	public final TurtleOBDAParser.defaultNamespace_return defaultNamespace() throws RecognitionException {
-		TurtleOBDAParser.defaultNamespace_return retval = new TurtleOBDAParser.defaultNamespace_return();
-		retval.start = input.LT(1);
-
+	public final DefaultNamespaceContext defaultNamespace() throws RecognitionException {
+		DefaultNamespaceContext _localctx = new DefaultNamespaceContext(_ctx, getState());
+		enterRule(_localctx, 60, RULE_defaultNamespace);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:660:3: ( COLON )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:660:5: COLON
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,COLON,FOLLOW_COLON_in_defaultNamespace884); 
+			setState(300);
+			match(COLON);
 			}
-
-			retval.stop = input.LT(-1);
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return retval;
+		return _localctx;
 	}
-	// $ANTLR end "defaultNamespace"
 
+	public static class NameContext extends ParserRuleContext {
+		public TerminalNode VARNAME() { return getToken(TurtleOBDAParser.VARNAME, 0); }
+		public NameContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_name; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterName(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitName(this);
+		}
+	}
 
-
-	// $ANTLR start "name"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:663:1: name : VARNAME ;
-	public final void name() throws RecognitionException {
+	public final NameContext name() throws RecognitionException {
+		NameContext _localctx = new NameContext(_ctx, getState());
+		enterRule(_localctx, 62, RULE_name);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:664:3: ( VARNAME )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:664:5: VARNAME
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,VARNAME,FOLLOW_VARNAME_in_name897); 
+			setState(302);
+			match(VARNAME);
 			}
-
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class LanguageTagContext extends ParserRuleContext {
+		public TerminalNode VARNAME() { return getToken(TurtleOBDAParser.VARNAME, 0); }
+		public LanguageTagContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_languageTag; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterLanguageTag(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitLanguageTag(this);
 		}
 	}
-	// $ANTLR end "name"
 
-
-	public static class languageTag_return extends ParserRuleReturnScope {
-	};
-
-
-	// $ANTLR start "languageTag"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:667:1: languageTag : VARNAME ;
-	public final TurtleOBDAParser.languageTag_return languageTag() throws RecognitionException {
-		TurtleOBDAParser.languageTag_return retval = new TurtleOBDAParser.languageTag_return();
-		retval.start = input.LT(1);
-
+	public final LanguageTagContext languageTag() throws RecognitionException {
+		LanguageTagContext _localctx = new LanguageTagContext(_ctx, getState());
+		enterRule(_localctx, 64, RULE_languageTag);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:668:3: ( VARNAME )
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:668:5: VARNAME
+			enterOuterAlt(_localctx, 1);
 			{
-			match(input,VARNAME,FOLLOW_VARNAME_in_languageTag910); 
-			}
-
-			retval.stop = input.LT(-1);
-
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return retval;
-	}
-	// $ANTLR end "languageTag"
-
-
-
-	// $ANTLR start "booleanLiteral"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:671:1: booleanLiteral returns [Term value] : ( TRUE | FALSE );
-	public final Term booleanLiteral() throws RecognitionException {
-		Term value = null;
-
-
-		Token TRUE42=null;
-		Token FALSE43=null;
-
-		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:672:3: ( TRUE | FALSE )
-			int alt20=2;
-			int LA20_0 = input.LA(1);
-			if ( (LA20_0==TRUE) ) {
-				alt20=1;
-			}
-			else if ( (LA20_0==FALSE) ) {
-				alt20=2;
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 20, 0, input);
-				throw nvae;
-			}
-
-			switch (alt20) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:672:5: TRUE
-					{
-					TRUE42=(Token)match(input,TRUE,FOLLOW_TRUE_in_booleanLiteral927); 
-
-					  ValueConstant trueConstant = dfac.getConstantLiteral((TRUE42!=null?TRUE42.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(trueConstant, COL_TYPE.BOOLEAN); 
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:675:5: FALSE
-					{
-					FALSE43=(Token)match(input,FALSE,FOLLOW_FALSE_in_booleanLiteral936); 
-
-					  ValueConstant falseConstant = dfac.getConstantLiteral((FALSE43!=null?FALSE43.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(falseConstant, COL_TYPE.BOOLEAN);
-					  
-					}
-					break;
-
+			setState(304);
+			match(VARNAME);
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "booleanLiteral"
 
+	public static class BooleanLiteralContext extends ParserRuleContext {
+		public Term value;
+		public TerminalNode TRUE() { return getToken(TurtleOBDAParser.TRUE, 0); }
+		public TerminalNode FALSE() { return getToken(TurtleOBDAParser.FALSE, 0); }
+		public BooleanLiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_booleanLiteral; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterBooleanLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitBooleanLiteral(this);
+		}
+	}
 
-
-	// $ANTLR start "numericUnsigned"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:681:1: numericUnsigned returns [Term value] : ( INTEGER | DOUBLE | DECIMAL );
-	public final Term numericUnsigned() throws RecognitionException {
-		Term value = null;
-
-
-		Token INTEGER44=null;
-		Token DOUBLE45=null;
-		Token DECIMAL46=null;
-
+	public final BooleanLiteralContext booleanLiteral() throws RecognitionException {
+		BooleanLiteralContext _localctx = new BooleanLiteralContext(_ctx, getState());
+		enterRule(_localctx, 66, RULE_booleanLiteral);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:682:3: ( INTEGER | DOUBLE | DECIMAL )
-			int alt21=3;
-			switch ( input.LA(1) ) {
-			case INTEGER:
+			setState(310);
+			switch (_input.LA(1)) {
+			case TRUE:
+				enterOuterAlt(_localctx, 1);
 				{
-				alt21=1;
+				setState(306);
+				match(TRUE);
+
+				  ValueConstant trueConstant = dfac.getConstantLiteral((((BooleanLiteralContext)_localctx).TRUE!=null?((BooleanLiteralContext)_localctx).TRUE.getText():null), COL_TYPE.LITERAL);
+				  ((BooleanLiteralContext)_localctx).value =  dfac.getTypedTerm(trueConstant, COL_TYPE.BOOLEAN); 
+				}
+				break;
+			case FALSE:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(308);
+				match(FALSE);
+
+				  ValueConstant falseConstant = dfac.getConstantLiteral((((BooleanLiteralContext)_localctx).FALSE!=null?((BooleanLiteralContext)_localctx).FALSE.getText():null), COL_TYPE.LITERAL);
+				  ((BooleanLiteralContext)_localctx).value =  dfac.getTypedTerm(falseConstant, COL_TYPE.BOOLEAN);
+				  
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class NumericUnsignedContext extends ParserRuleContext {
+		public Term value;
+		public TerminalNode INTEGER() { return getToken(TurtleOBDAParser.INTEGER, 0); }
+		public TerminalNode DOUBLE() { return getToken(TurtleOBDAParser.DOUBLE, 0); }
+		public TerminalNode DECIMAL() { return getToken(TurtleOBDAParser.DECIMAL, 0); }
+		public NumericUnsignedContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_numericUnsigned; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericUnsigned(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericUnsigned(this);
+		}
+	}
+
+	public final NumericUnsignedContext numericUnsigned() throws RecognitionException {
+		NumericUnsignedContext _localctx = new NumericUnsignedContext(_ctx, getState());
+		enterRule(_localctx, 68, RULE_numericUnsigned);
+		try {
+			setState(318);
+			switch (_input.LA(1)) {
+			case INTEGER:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(312);
+				match(INTEGER);
+
+				  ValueConstant integerConstant = dfac.getConstantLiteral((((NumericUnsignedContext)_localctx).INTEGER!=null?((NumericUnsignedContext)_localctx).INTEGER.getText():null), COL_TYPE.LITERAL);
+				  ((NumericUnsignedContext)_localctx).value =  dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
+				  
 				}
 				break;
 			case DOUBLE:
+				enterOuterAlt(_localctx, 2);
 				{
-				alt21=2;
+				setState(314);
+				match(DOUBLE);
+
+				  ValueConstant doubleConstant = dfac.getConstantLiteral((((NumericUnsignedContext)_localctx).DOUBLE!=null?((NumericUnsignedContext)_localctx).DOUBLE.getText():null), COL_TYPE.LITERAL);
+				  ((NumericUnsignedContext)_localctx).value =  dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
+				  
 				}
 				break;
 			case DECIMAL:
+				enterOuterAlt(_localctx, 3);
 				{
-				alt21=3;
+				setState(316);
+				match(DECIMAL);
+
+				  ValueConstant decimalConstant = dfac.getConstantLiteral((((NumericUnsignedContext)_localctx).DECIMAL!=null?((NumericUnsignedContext)_localctx).DECIMAL.getText():null), COL_TYPE.LITERAL);
+				  ((NumericUnsignedContext)_localctx).value =  dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
+				   
 				}
 				break;
 			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 21, 0, input);
-				throw nvae;
-			}
-			switch (alt21) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:682:5: INTEGER
-					{
-					INTEGER44=(Token)match(input,INTEGER,FOLLOW_INTEGER_in_numericUnsigned955); 
-
-					  ValueConstant integerConstant = dfac.getConstantLiteral((INTEGER44!=null?INTEGER44.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
-					  
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:686:5: DOUBLE
-					{
-					DOUBLE45=(Token)match(input,DOUBLE,FOLLOW_DOUBLE_in_numericUnsigned963); 
-
-					  ValueConstant doubleConstant = dfac.getConstantLiteral((DOUBLE45!=null?DOUBLE45.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
-					  
-					}
-					break;
-				case 3 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:690:5: DECIMAL
-					{
-					DECIMAL46=(Token)match(input,DECIMAL,FOLLOW_DECIMAL_in_numericUnsigned972); 
-
-					  ValueConstant decimalConstant = dfac.getConstantLiteral((DECIMAL46!=null?DECIMAL46.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
-					   
-					}
-					break;
-
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "numericUnsigned"
 
+	public static class NumericPositiveContext extends ParserRuleContext {
+		public Term value;
+		public TerminalNode INTEGER_POSITIVE() { return getToken(TurtleOBDAParser.INTEGER_POSITIVE, 0); }
+		public TerminalNode DOUBLE_POSITIVE() { return getToken(TurtleOBDAParser.DOUBLE_POSITIVE, 0); }
+		public TerminalNode DECIMAL_POSITIVE() { return getToken(TurtleOBDAParser.DECIMAL_POSITIVE, 0); }
+		public NumericPositiveContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_numericPositive; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericPositive(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericPositive(this);
+		}
+	}
 
-
-	// $ANTLR start "numericPositive"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:696:1: numericPositive returns [Term value] : ( INTEGER_POSITIVE | DOUBLE_POSITIVE | DECIMAL_POSITIVE );
-	public final Term numericPositive() throws RecognitionException {
-		Term value = null;
-
-
-		Token INTEGER_POSITIVE47=null;
-		Token DOUBLE_POSITIVE48=null;
-		Token DECIMAL_POSITIVE49=null;
-
+	public final NumericPositiveContext numericPositive() throws RecognitionException {
+		NumericPositiveContext _localctx = new NumericPositiveContext(_ctx, getState());
+		enterRule(_localctx, 70, RULE_numericPositive);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:697:3: ( INTEGER_POSITIVE | DOUBLE_POSITIVE | DECIMAL_POSITIVE )
-			int alt22=3;
-			switch ( input.LA(1) ) {
+			setState(326);
+			switch (_input.LA(1)) {
 			case INTEGER_POSITIVE:
+				enterOuterAlt(_localctx, 1);
 				{
-				alt22=1;
+				setState(320);
+				match(INTEGER_POSITIVE);
+
+				   ValueConstant integerConstant = dfac.getConstantLiteral((((NumericPositiveContext)_localctx).INTEGER_POSITIVE!=null?((NumericPositiveContext)_localctx).INTEGER_POSITIVE.getText():null), COL_TYPE.LITERAL);
+				   ((NumericPositiveContext)_localctx).value =  dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
+				  
 				}
 				break;
 			case DOUBLE_POSITIVE:
+				enterOuterAlt(_localctx, 2);
 				{
-				alt22=2;
+				setState(322);
+				match(DOUBLE_POSITIVE);
+
+				  ValueConstant doubleConstant = dfac.getConstantLiteral((((NumericPositiveContext)_localctx).DOUBLE_POSITIVE!=null?((NumericPositiveContext)_localctx).DOUBLE_POSITIVE.getText():null), COL_TYPE.LITERAL);
+				  ((NumericPositiveContext)_localctx).value =  dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
+				  
 				}
 				break;
 			case DECIMAL_POSITIVE:
+				enterOuterAlt(_localctx, 3);
 				{
-				alt22=3;
+				setState(324);
+				match(DECIMAL_POSITIVE);
+
+				  ValueConstant decimalConstant = dfac.getConstantLiteral((((NumericPositiveContext)_localctx).DECIMAL_POSITIVE!=null?((NumericPositiveContext)_localctx).DECIMAL_POSITIVE.getText():null), COL_TYPE.LITERAL);
+				  ((NumericPositiveContext)_localctx).value =  dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
+				   
 				}
 				break;
 			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 22, 0, input);
-				throw nvae;
-			}
-			switch (alt22) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:697:5: INTEGER_POSITIVE
-					{
-					INTEGER_POSITIVE47=(Token)match(input,INTEGER_POSITIVE,FOLLOW_INTEGER_POSITIVE_in_numericPositive991); 
-
-					   ValueConstant integerConstant = dfac.getConstantLiteral((INTEGER_POSITIVE47!=null?INTEGER_POSITIVE47.getText():null), COL_TYPE.LITERAL);
-					   value = dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
-					  
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:701:5: DOUBLE_POSITIVE
-					{
-					DOUBLE_POSITIVE48=(Token)match(input,DOUBLE_POSITIVE,FOLLOW_DOUBLE_POSITIVE_in_numericPositive999); 
-
-					  ValueConstant doubleConstant = dfac.getConstantLiteral((DOUBLE_POSITIVE48!=null?DOUBLE_POSITIVE48.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
-					  
-					}
-					break;
-				case 3 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:705:5: DECIMAL_POSITIVE
-					{
-					DECIMAL_POSITIVE49=(Token)match(input,DECIMAL_POSITIVE,FOLLOW_DECIMAL_POSITIVE_in_numericPositive1008); 
-
-					  ValueConstant decimalConstant = dfac.getConstantLiteral((DECIMAL_POSITIVE49!=null?DECIMAL_POSITIVE49.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
-					   
-					}
-					break;
-
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "numericPositive"
 
+	public static class NumericNegativeContext extends ParserRuleContext {
+		public Term value;
+		public TerminalNode INTEGER_NEGATIVE() { return getToken(TurtleOBDAParser.INTEGER_NEGATIVE, 0); }
+		public TerminalNode DOUBLE_NEGATIVE() { return getToken(TurtleOBDAParser.DOUBLE_NEGATIVE, 0); }
+		public TerminalNode DECIMAL_NEGATIVE() { return getToken(TurtleOBDAParser.DECIMAL_NEGATIVE, 0); }
+		public NumericNegativeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_numericNegative; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).enterNumericNegative(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TurtleOBDAListener ) ((TurtleOBDAListener)listener).exitNumericNegative(this);
+		}
+	}
 
-
-	// $ANTLR start "numericNegative"
-	// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:711:1: numericNegative returns [Term value] : ( INTEGER_NEGATIVE | DOUBLE_NEGATIVE | DECIMAL_NEGATIVE );
-	public final Term numericNegative() throws RecognitionException {
-		Term value = null;
-
-
-		Token INTEGER_NEGATIVE50=null;
-		Token DOUBLE_NEGATIVE51=null;
-		Token DECIMAL_NEGATIVE52=null;
-
+	public final NumericNegativeContext numericNegative() throws RecognitionException {
+		NumericNegativeContext _localctx = new NumericNegativeContext(_ctx, getState());
+		enterRule(_localctx, 72, RULE_numericNegative);
 		try {
-			// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:712:3: ( INTEGER_NEGATIVE | DOUBLE_NEGATIVE | DECIMAL_NEGATIVE )
-			int alt23=3;
-			switch ( input.LA(1) ) {
+			setState(334);
+			switch (_input.LA(1)) {
 			case INTEGER_NEGATIVE:
+				enterOuterAlt(_localctx, 1);
 				{
-				alt23=1;
+				setState(328);
+				match(INTEGER_NEGATIVE);
+
+				  ValueConstant integerConstant = dfac.getConstantLiteral((((NumericNegativeContext)_localctx).INTEGER_NEGATIVE!=null?((NumericNegativeContext)_localctx).INTEGER_NEGATIVE.getText():null), COL_TYPE.LITERAL);
+				  ((NumericNegativeContext)_localctx).value =  dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
+				  
 				}
 				break;
 			case DOUBLE_NEGATIVE:
+				enterOuterAlt(_localctx, 2);
 				{
-				alt23=2;
+				setState(330);
+				match(DOUBLE_NEGATIVE);
+
+				   ValueConstant doubleConstant = dfac.getConstantLiteral((((NumericNegativeContext)_localctx).DOUBLE_NEGATIVE!=null?((NumericNegativeContext)_localctx).DOUBLE_NEGATIVE.getText():null), COL_TYPE.LITERAL);
+				   ((NumericNegativeContext)_localctx).value =  dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
+				  
 				}
 				break;
 			case DECIMAL_NEGATIVE:
+				enterOuterAlt(_localctx, 3);
 				{
-				alt23=3;
+				setState(332);
+				match(DECIMAL_NEGATIVE);
+
+				  ValueConstant decimalConstant = dfac.getConstantLiteral((((NumericNegativeContext)_localctx).DECIMAL_NEGATIVE!=null?((NumericNegativeContext)_localctx).DECIMAL_NEGATIVE.getText():null), COL_TYPE.LITERAL);
+				  ((NumericNegativeContext)_localctx).value =  dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
+				  
 				}
 				break;
 			default:
-				NoViableAltException nvae =
-					new NoViableAltException("", 23, 0, input);
-				throw nvae;
-			}
-			switch (alt23) {
-				case 1 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:712:5: INTEGER_NEGATIVE
-					{
-					INTEGER_NEGATIVE50=(Token)match(input,INTEGER_NEGATIVE,FOLLOW_INTEGER_NEGATIVE_in_numericNegative1027); 
-
-					  ValueConstant integerConstant = dfac.getConstantLiteral((INTEGER_NEGATIVE50!=null?INTEGER_NEGATIVE50.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(integerConstant, COL_TYPE.INTEGER);
-					  
-					}
-					break;
-				case 2 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:716:5: DOUBLE_NEGATIVE
-					{
-					DOUBLE_NEGATIVE51=(Token)match(input,DOUBLE_NEGATIVE,FOLLOW_DOUBLE_NEGATIVE_in_numericNegative1035); 
-
-					   ValueConstant doubleConstant = dfac.getConstantLiteral((DOUBLE_NEGATIVE51!=null?DOUBLE_NEGATIVE51.getText():null), COL_TYPE.LITERAL);
-					   value = dfac.getTypedTerm(doubleConstant, COL_TYPE.DOUBLE);
-					  
-					}
-					break;
-				case 3 :
-					// obdalib-core/src/main/java/it/unibz/krdb/obda/parser/TurtleOBDA.g:720:5: DECIMAL_NEGATIVE
-					{
-					DECIMAL_NEGATIVE52=(Token)match(input,DECIMAL_NEGATIVE,FOLLOW_DECIMAL_NEGATIVE_in_numericNegative1044); 
-
-					  ValueConstant decimalConstant = dfac.getConstantLiteral((DECIMAL_NEGATIVE52!=null?DECIMAL_NEGATIVE52.getText():null), COL_TYPE.LITERAL);
-					  value = dfac.getTypedTerm(decimalConstant, COL_TYPE.DECIMAL);
-					  
-					}
-					break;
-
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
 		}
 		finally {
-			// do for sure before leaving
+			exitRule();
 		}
-		return value;
+		return _localctx;
 	}
-	// $ANTLR end "numericNegative"
 
-	// Delegated rules
-
-
-
-	public static final BitSet FOLLOW_directiveStatement_in_parse54 = new BitSet(new long[]{0x0040000000000200L,0x0000000000000018L});
-	public static final BitSet FOLLOW_triplesStatement_in_parse63 = new BitSet(new long[]{0x0040000000000000L,0x0000000000000018L});
-	public static final BitSet FOLLOW_triplesStatement_in_parse76 = new BitSet(new long[]{0x0040000000000000L,0x0000000000000018L});
-	public static final BitSet FOLLOW_EOF_in_parse83 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_directive_in_directiveStatement96 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_PERIOD_in_directiveStatement98 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_triples_in_triplesStatement115 = new BitSet(new long[]{0x0008000000000000L,0x0000000000001000L});
-	public static final BitSet FOLLOW_WS_in_triplesStatement117 = new BitSet(new long[]{0x0008000000000000L,0x0000000000001000L});
-	public static final BitSet FOLLOW_PERIOD_in_triplesStatement120 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_base_in_directive135 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_prefixID_in_directive141 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_in_base154 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_BASE_in_base156 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-	public static final BitSet FOLLOW_uriref_in_base158 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_in_prefixID176 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_PREFIX_in_prefixID178 = new BitSet(new long[]{0x0000200000010000L});
-	public static final BitSet FOLLOW_namespace_in_prefixID181 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-	public static final BitSet FOLLOW_defaultNamespace_in_prefixID187 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-	public static final BitSet FOLLOW_uriref_in_prefixID192 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_subject_in_triples211 = new BitSet(new long[]{0x0040000000000000L,0x0000000000002008L});
-	public static final BitSet FOLLOW_predicateObjectList_in_triples215 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_verb_in_predicateObjectList241 = new BitSet(new long[]{0x00400070439C0000L,0x0000000000000158L});
-	public static final BitSet FOLLOW_objectList_in_predicateObjectList247 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
-	public static final BitSet FOLLOW_SEMI_in_predicateObjectList256 = new BitSet(new long[]{0x0040000000000000L,0x0000000000002008L});
-	public static final BitSet FOLLOW_verb_in_predicateObjectList260 = new BitSet(new long[]{0x00400070439C0000L,0x0000000000000158L});
-	public static final BitSet FOLLOW_objectList_in_predicateObjectList264 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
-	public static final BitSet FOLLOW_predicate_in_verb288 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_77_in_verb296 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_object_in_objectList322 = new BitSet(new long[]{0x0000000000020002L});
-	public static final BitSet FOLLOW_COMMA_in_objectList327 = new BitSet(new long[]{0x00400070439C0000L,0x0000000000000158L});
-	public static final BitSet FOLLOW_object_in_objectList331 = new BitSet(new long[]{0x0000000000020002L});
-	public static final BitSet FOLLOW_resource_in_subject353 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_in_subject361 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_resource_in_predicate382 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_resource_in_object401 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_literal_in_object409 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_typedLiteral_in_object418 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_in_object426 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_uriref_in_resource447 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_qname_in_resource456 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_WITH_BRACKET_in_uriref481 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PREFIXED_NAME_in_qname500 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_nodeID_in_blank515 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BLANK_in_blank521 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_WITH_CURLY_BRACKET_in_variable538 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_resource_in_function559 = new BitSet(new long[]{0x0000020000000000L});
-	public static final BitSet FOLLOW_LPAREN_in_function561 = new BitSet(new long[]{0x00400070439C0000L,0x0000000000000158L});
-	public static final BitSet FOLLOW_terms_in_function563 = new BitSet(new long[]{0x1000000000000000L});
-	public static final BitSet FOLLOW_RPAREN_in_function565 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_in_typedLiteral584 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_AT_in_typedLiteral586 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000810L});
-	public static final BitSet FOLLOW_language_in_typedLiteral588 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_in_typedLiteral596 = new BitSet(new long[]{0x0800000000000000L});
-	public static final BitSet FOLLOW_REFERENCE_in_typedLiteral598 = new BitSet(new long[]{0x0040000000000000L,0x0000000000000008L});
-	public static final BitSet FOLLOW_resource_in_typedLiteral600 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_languageTag_in_language619 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_in_language627 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_term_in_terms653 = new BitSet(new long[]{0x0000000000020002L});
-	public static final BitSet FOLLOW_COMMA_in_terms658 = new BitSet(new long[]{0x00400070439C0000L,0x0000000000000158L});
-	public static final BitSet FOLLOW_term_in_terms662 = new BitSet(new long[]{0x0000000000020002L});
-	public static final BitSet FOLLOW_function_in_term683 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variable_in_term691 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_literal_in_term699 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_stringLiteral_in_literal719 = new BitSet(new long[]{0x0000000000000202L});
-	public static final BitSet FOLLOW_AT_in_literal722 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000810L});
-	public static final BitSet FOLLOW_language_in_literal724 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_dataTypeString_in_literal734 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numericLiteral_in_literal742 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_booleanLiteral_in_literal750 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_WITH_QUOTE_DOUBLE_in_stringLiteral769 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_stringLiteral_in_dataTypeString789 = new BitSet(new long[]{0x0800000000000000L});
-	public static final BitSet FOLLOW_REFERENCE_in_dataTypeString791 = new BitSet(new long[]{0x0040000000000000L,0x0000000000000008L});
-	public static final BitSet FOLLOW_resource_in_dataTypeString793 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numericUnsigned_in_numericLiteral809 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numericPositive_in_numericLiteral817 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_numericNegative_in_numericLiteral825 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BLANK_PREFIX_in_nodeID840 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-	public static final BitSet FOLLOW_name_in_nodeID842 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_URI_in_relativeURI856 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NAMESPACE_in_namespace869 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_COLON_in_defaultNamespace884 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VARNAME_in_name897 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VARNAME_in_languageTag910 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TRUE_in_booleanLiteral927 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FALSE_in_booleanLiteral936 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTEGER_in_numericUnsigned955 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOUBLE_in_numericUnsigned963 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DECIMAL_in_numericUnsigned972 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTEGER_POSITIVE_in_numericPositive991 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOUBLE_POSITIVE_in_numericPositive999 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DECIMAL_POSITIVE_in_numericPositive1008 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTEGER_NEGATIVE_in_numericNegative1027 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOUBLE_NEGATIVE_in_numericNegative1035 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DECIMAL_NEGATIVE_in_numericNegative1044 = new BitSet(new long[]{0x0000000000000002L});
+	public static final String _serializedATN =
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3@\u0153\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
+		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
+		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\3\2\7\2N\n\2\f\2\16\2Q\13\2\3\2\3"+
+		"\2\3\2\3\2\3\2\7\2X\n\2\f\2\16\2[\13\2\3\2\3\2\3\3\3\3\3\3\3\4\3\4\7\4"+
+		"d\n\4\f\4\16\4g\13\4\3\4\3\4\3\4\3\5\3\5\5\5n\n\5\3\6\3\6\3\6\3\6\3\7"+
+		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7|\n\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b"+
+		"\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\7\t\u008e\n\t\f\t\16\t\u0091\13\t\3\n"+
+		"\3\n\3\n\3\n\3\n\5\n\u0098\n\n\3\13\3\13\3\13\3\13\3\13\3\13\7\13\u00a0"+
+		"\n\13\f\13\16\13\u00a3\13\13\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u00ab\n\f\3\r"+
+		"\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\5"+
+		"\16\u00bc\n\16\3\17\3\17\3\17\3\17\3\17\3\17\5\17\u00c4\n\17\3\20\3\20"+
+		"\3\20\3\21\3\21\3\21\3\22\3\22\5\22\u00ce\n\22\3\23\3\23\3\23\3\24\3\24"+
+		"\3\24\3\24\3\24\3\24\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25"+
+		"\5\25\u00e3\n\25\3\26\3\26\3\26\3\26\3\26\3\26\5\26\u00eb\n\26\3\27\3"+
+		"\27\3\27\3\27\3\27\3\27\7\27\u00f3\n\27\f\27\16\27\u00f6\13\27\3\30\3"+
+		"\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\5\30\u0101\n\30\3\31\3\31\3\31"+
+		"\5\31\u0106\n\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31"+
+		"\5\31\u0113\n\31\3\32\3\32\3\32\3\33\3\33\3\33\3\33\3\33\3\34\3\34\3\34"+
+		"\3\34\3\34\3\34\3\34\3\34\3\34\5\34\u0126\n\34\3\35\3\35\3\35\3\36\3\36"+
+		"\3\37\3\37\3 \3 \3!\3!\3\"\3\"\3#\3#\3#\3#\5#\u0139\n#\3$\3$\3$\3$\3$"+
+		"\3$\5$\u0141\n$\3%\3%\3%\3%\3%\3%\5%\u0149\n%\3&\3&\3&\3&\3&\3&\5&\u0151"+
+		"\n&\3&\2\2\'\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64"+
+		"\668:<>@BDFHJ\2\2\u014d\2O\3\2\2\2\4^\3\2\2\2\6a\3\2\2\2\bm\3\2\2\2\n"+
+		"o\3\2\2\2\fs\3\2\2\2\16\u0080\3\2\2\2\20\u0085\3\2\2\2\22\u0097\3\2\2"+
+		"\2\24\u0099\3\2\2\2\26\u00aa\3\2\2\2\30\u00ac\3\2\2\2\32\u00bb\3\2\2\2"+
+		"\34\u00c3\3\2\2\2\36\u00c5\3\2\2\2 \u00c8\3\2\2\2\"\u00cd\3\2\2\2$\u00cf"+
+		"\3\2\2\2&\u00d2\3\2\2\2(\u00e2\3\2\2\2*\u00ea\3\2\2\2,\u00ec\3\2\2\2."+
+		"\u0100\3\2\2\2\60\u0112\3\2\2\2\62\u0114\3\2\2\2\64\u0117\3\2\2\2\66\u0125"+
+		"\3\2\2\28\u0127\3\2\2\2:\u012a\3\2\2\2<\u012c\3\2\2\2>\u012e\3\2\2\2@"+
+		"\u0130\3\2\2\2B\u0132\3\2\2\2D\u0138\3\2\2\2F\u0140\3\2\2\2H\u0148\3\2"+
+		"\2\2J\u0150\3\2\2\2LN\5\4\3\2ML\3\2\2\2NQ\3\2\2\2OM\3\2\2\2OP\3\2\2\2"+
+		"PR\3\2\2\2QO\3\2\2\2RS\5\6\4\2SY\b\2\1\2TU\5\6\4\2UV\b\2\1\2VX\3\2\2\2"+
+		"WT\3\2\2\2X[\3\2\2\2YW\3\2\2\2YZ\3\2\2\2Z\\\3\2\2\2[Y\3\2\2\2\\]\7\2\2"+
+		"\3]\3\3\2\2\2^_\5\b\5\2_`\7\f\2\2`\5\3\2\2\2ae\5\16\b\2bd\7@\2\2cb\3\2"+
+		"\2\2dg\3\2\2\2ec\3\2\2\2ef\3\2\2\2fh\3\2\2\2ge\3\2\2\2hi\7\f\2\2ij\b\4"+
+		"\1\2j\7\3\2\2\2kn\5\n\6\2ln\5\f\7\2mk\3\2\2\2ml\3\2\2\2n\t\3\2\2\2op\7"+
+		"\35\2\2pq\7\4\2\2qr\5\36\20\2r\13\3\2\2\2st\7\35\2\2t{\7\5\2\2uv\5<\37"+
+		"\2vw\b\7\1\2w|\3\2\2\2xy\5> \2yz\b\7\1\2z|\3\2\2\2{u\3\2\2\2{x\3\2\2\2"+
+		"|}\3\2\2\2}~\5\36\20\2~\177\b\7\1\2\177\r\3\2\2\2\u0080\u0081\5\26\f\2"+
+		"\u0081\u0082\b\b\1\2\u0082\u0083\5\20\t\2\u0083\u0084\b\b\1\2\u0084\17"+
+		"\3\2\2\2\u0085\u0086\5\22\n\2\u0086\u0087\5\24\13\2\u0087\u008f\b\t\1"+
+		"\2\u0088\u0089\7\13\2\2\u0089\u008a\5\22\n\2\u008a\u008b\5\24\13\2\u008b"+
+		"\u008c\b\t\1\2\u008c\u008e\3\2\2\2\u008d\u0088\3\2\2\2\u008e\u0091\3\2"+
+		"\2\2\u008f\u008d\3\2\2\2\u008f\u0090\3\2\2\2\u0090\21\3\2\2\2\u0091\u008f"+
+		"\3\2\2\2\u0092\u0093\5\30\r\2\u0093\u0094\b\n\1\2\u0094\u0098\3\2\2\2"+
+		"\u0095\u0096\7\3\2\2\u0096\u0098\b\n\1\2\u0097\u0092\3\2\2\2\u0097\u0095"+
+		"\3\2\2\2\u0098\23\3\2\2\2\u0099\u009a\5\32\16\2\u009a\u00a1\b\13\1\2\u009b"+
+		"\u009c\7\r\2\2\u009c\u009d\5\32\16\2\u009d\u009e\b\13\1\2\u009e\u00a0"+
+		"\3\2\2\2\u009f\u009b\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1"+
+		"\u00a2\3\2\2\2\u00a2\25\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a4\u00a5\5\34\17"+
+		"\2\u00a5\u00a6\b\f\1\2\u00a6\u00ab\3\2\2\2\u00a7\u00a8\5$\23\2\u00a8\u00a9"+
+		"\b\f\1\2\u00a9\u00ab\3\2\2\2\u00aa\u00a4\3\2\2\2\u00aa\u00a7\3\2\2\2\u00ab"+
+		"\27\3\2\2\2\u00ac\u00ad\5\34\17\2\u00ad\u00ae\b\r\1\2\u00ae\31\3\2\2\2"+
+		"\u00af\u00b0\5\34\17\2\u00b0\u00b1\b\16\1\2\u00b1\u00bc\3\2\2\2\u00b2"+
+		"\u00b3\5\60\31\2\u00b3\u00b4\b\16\1\2\u00b4\u00bc\3\2\2\2\u00b5\u00b6"+
+		"\5(\25\2\u00b6\u00b7\b\16\1\2\u00b7\u00bc\3\2\2\2\u00b8\u00b9\5$\23\2"+
+		"\u00b9\u00ba\b\16\1\2\u00ba\u00bc\3\2\2\2\u00bb\u00af\3\2\2\2\u00bb\u00b2"+
+		"\3\2\2\2\u00bb\u00b5\3\2\2\2\u00bb\u00b8\3\2\2\2\u00bc\33\3\2\2\2\u00bd"+
+		"\u00be\5\36\20\2\u00be\u00bf\b\17\1\2\u00bf\u00c4\3\2\2\2\u00c0\u00c1"+
+		"\5 \21\2\u00c1\u00c2\b\17\1\2\u00c2\u00c4\3\2\2\2\u00c3\u00bd\3\2\2\2"+
+		"\u00c3\u00c0\3\2\2\2\u00c4\35\3\2\2\2\u00c5\u00c6\7=\2\2\u00c6\u00c7\b"+
+		"\20\1\2\u00c7\37\3\2\2\2\u00c8\u00c9\7:\2\2\u00c9\u00ca\b\21\1\2\u00ca"+
+		"!\3\2\2\2\u00cb\u00ce\58\35\2\u00cc\u00ce\7)\2\2\u00cd\u00cb\3\2\2\2\u00cd"+
+		"\u00cc\3\2\2\2\u00ce#\3\2\2\2\u00cf\u00d0\7>\2\2\u00d0\u00d1\b\23\1\2"+
+		"\u00d1%\3\2\2\2\u00d2\u00d3\5\34\17\2\u00d3\u00d4\7\22\2\2\u00d4\u00d5"+
+		"\5,\27\2\u00d5\u00d6\7\23\2\2\u00d6\u00d7\b\24\1\2\u00d7\'\3\2\2\2\u00d8"+
+		"\u00d9\5$\23\2\u00d9\u00da\7\35\2\2\u00da\u00db\5*\26\2\u00db\u00dc\b"+
+		"\25\1\2\u00dc\u00e3\3\2\2\2\u00dd\u00de\5$\23\2\u00de\u00df\7\b\2\2\u00df"+
+		"\u00e0\5\34\17\2\u00e0\u00e1\b\25\1\2\u00e1\u00e3\3\2\2\2\u00e2\u00d8"+
+		"\3\2\2\2\u00e2\u00dd\3\2\2\2\u00e3)\3\2\2\2\u00e4\u00e5\5B\"\2\u00e5\u00e6"+
+		"\b\26\1\2\u00e6\u00eb\3\2\2\2\u00e7\u00e8\5$\23\2\u00e8\u00e9\b\26\1\2"+
+		"\u00e9\u00eb\3\2\2\2\u00ea\u00e4\3\2\2\2\u00ea\u00e7\3\2\2\2\u00eb+\3"+
+		"\2\2\2\u00ec\u00ed\5.\30\2\u00ed\u00f4\b\27\1\2\u00ee\u00ef\7\r\2\2\u00ef"+
+		"\u00f0\5.\30\2\u00f0\u00f1\b\27\1\2\u00f1\u00f3\3\2\2\2\u00f2\u00ee\3"+
+		"\2\2\2\u00f3\u00f6\3\2\2\2\u00f4\u00f2\3\2\2\2\u00f4\u00f5\3\2\2\2\u00f5"+
+		"-\3\2\2\2\u00f6\u00f4\3\2\2\2\u00f7\u00f8\5&\24\2\u00f8\u00f9\b\30\1\2"+
+		"\u00f9\u0101\3\2\2\2\u00fa\u00fb\5$\23\2\u00fb\u00fc\b\30\1\2\u00fc\u0101"+
+		"\3\2\2\2\u00fd\u00fe\5\60\31\2\u00fe\u00ff\b\30\1\2\u00ff\u0101\3\2\2"+
+		"\2\u0100\u00f7\3\2\2\2\u0100\u00fa\3\2\2\2\u0100\u00fd\3\2\2\2\u0101/"+
+		"\3\2\2\2\u0102\u0105\5\62\32\2\u0103\u0104\7\35\2\2\u0104\u0106\5*\26"+
+		"\2\u0105\u0103\3\2\2\2\u0105\u0106\3\2\2\2\u0106\u0107\3\2\2\2\u0107\u0108"+
+		"\b\31\1\2\u0108\u0113\3\2\2\2\u0109\u010a\5\64\33\2\u010a\u010b\b\31\1"+
+		"\2\u010b\u0113\3\2\2\2\u010c\u010d\5\66\34\2\u010d\u010e\b\31\1\2\u010e"+
+		"\u0113\3\2\2\2\u010f\u0110\5D#\2\u0110\u0111\b\31\1\2\u0111\u0113\3\2"+
+		"\2\2\u0112\u0102\3\2\2\2\u0112\u0109\3\2\2\2\u0112\u010c\3\2\2\2\u0112"+
+		"\u010f\3\2\2\2\u0113\61\3\2\2\2\u0114\u0115\7<\2\2\u0115\u0116\b\32\1"+
+		"\2\u0116\63\3\2\2\2\u0117\u0118\5\62\32\2\u0118\u0119\7\b\2\2\u0119\u011a"+
+		"\5\34\17\2\u011a\u011b\b\33\1\2\u011b\65\3\2\2\2\u011c\u011d\5F$\2\u011d"+
+		"\u011e\b\34\1\2\u011e\u0126\3\2\2\2\u011f\u0120\5H%\2\u0120\u0121\b\34"+
+		"\1\2\u0121\u0126\3\2\2\2\u0122\u0123\5J&\2\u0123\u0124\b\34\1\2\u0124"+
+		"\u0126\3\2\2\2\u0125\u011c\3\2\2\2\u0125\u011f\3\2\2\2\u0125\u0122\3\2"+
+		"\2\2\u0126\67\3\2\2\2\u0127\u0128\7*\2\2\u0128\u0129\5@!\2\u01299\3\2"+
+		"\2\2\u012a\u012b\7?\2\2\u012b;\3\2\2\2\u012c\u012d\79\2\2\u012d=\3\2\2"+
+		"\2\u012e\u012f\7#\2\2\u012f?\3\2\2\2\u0130\u0131\7\66\2\2\u0131A\3\2\2"+
+		"\2\u0132\u0133\7\66\2\2\u0133C\3\2\2\2\u0134\u0135\7\7\2\2\u0135\u0139"+
+		"\b#\1\2\u0136\u0137\7\6\2\2\u0137\u0139\b#\1\2\u0138\u0134\3\2\2\2\u0138"+
+		"\u0136\3\2\2\2\u0139E\3\2\2\2\u013a\u013b\7-\2\2\u013b\u0141\b$\1\2\u013c"+
+		"\u013d\7.\2\2\u013d\u0141\b$\1\2\u013e\u013f\7/\2\2\u013f\u0141\b$\1\2"+
+		"\u0140\u013a\3\2\2\2\u0140\u013c\3\2\2\2\u0140\u013e\3\2\2\2\u0141G\3"+
+		"\2\2\2\u0142\u0143\7\60\2\2\u0143\u0149\b%\1\2\u0144\u0145\7\62\2\2\u0145"+
+		"\u0149\b%\1\2\u0146\u0147\7\64\2\2\u0147\u0149\b%\1\2\u0148\u0142\3\2"+
+		"\2\2\u0148\u0144\3\2\2\2\u0148\u0146\3\2\2\2\u0149I\3\2\2\2\u014a\u014b"+
+		"\7\61\2\2\u014b\u0151\b&\1\2\u014c\u014d\7\63\2\2\u014d\u0151\b&\1\2\u014e"+
+		"\u014f\7\65\2\2\u014f\u0151\b&\1\2\u0150\u014a\3\2\2\2\u0150\u014c\3\2"+
+		"\2\2\u0150\u014e\3\2\2\2\u0151K\3\2\2\2\31OYem{\u008f\u0097\u00a1\u00aa"+
+		"\u00bb\u00c3\u00cd\u00e2\u00ea\u00f4\u0100\u0105\u0112\u0125\u0138\u0140"+
+		"\u0148\u0150";
+	public static final ATN _ATN =
+		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
+	static {
+		_decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];
+		for (int i = 0; i < _ATN.getNumberOfDecisions(); i++) {
+			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
+		}
+	}
 }
