@@ -1,5 +1,6 @@
 package org.semanticweb.ontop.cli;
 
+import com.github.rvesse.airline.Cli;
 import com.github.rvesse.airline.help.cli.bash.BashCompletionGenerator;
 import com.github.rvesse.airline.model.GlobalMetadata;
 
@@ -9,7 +10,11 @@ public class OntopBashCompletionGenerator {
 
 
     public static void main(String[] args) throws IOException {
-        GlobalMetadata<OntopCommand> metadata = Ontop.getOntopCommandCLI().getMetadata();
+
+
+        GlobalMetadata<OntopCommand> metadata = new Cli<OntopCommand>(Ontop.class).getMetadata();
+
+        //GlobalMetadata<OntopCommand> metadata = Ontop.getOntopCommandCLI().getMetadata();
 
         BashCompletionGenerator<OntopCommand> generator = new BashCompletionGenerator<>();
 

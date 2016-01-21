@@ -14,7 +14,7 @@ Setup
 
 Consider put the directory of ontop to your `PATH`.
 
-### jdbc configuratoin
+### JDBC configuration
 
 For jdbc drivers, you will need to manually download them and put them into the `jdbc` directory.
 
@@ -27,7 +27,7 @@ Homebrew:
 
 	$ brew install bash-completion
 
-Then add the following lines to your ~/.bash_profile:
+Then add the following lines to your `~/.bash_profile`:
 
     if [ -f $(brew --prefix)/etc/bash_completion ]; then
         . $(brew --prefix)/etc/bash_completion

@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Command(name = "materialize",
-        description = "Materialize the RDF graph exposed by the mapping and the OWL ontology")
+        description = "Materialize the virtual RDF graph exposed by the mapping and the OWL ontology")
 public class OntopMaterialize extends OntopReasoningCommandBase {
 
     private static final int TRIPLE_LIMIT_PER_FILE = 500000;
