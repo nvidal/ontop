@@ -46,9 +46,15 @@
         <dependency>
             <groupId>com.github.rvesse</groupId>
             <artifactId>airline-help-bash</artifactId>
-            <scope>compile</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.rvesse</groupId>
+            <artifactId>airline-help-html</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.rvesse</groupId>
+            <artifactId>airline-help-markdown</artifactId>
+        </dependency>
         <!--
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>

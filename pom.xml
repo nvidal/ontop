@@ -353,7 +353,16 @@
                 <artifactId>airline-help-bash</artifactId>
                 <version>${airline.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.github.rvesse</groupId>
+                <artifactId>airline-help-html</artifactId>
+                <version>${airline.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.rvesse</groupId>
+                <artifactId>airline-help-markdown</artifactId>
+                <version>${airline.version}</version>
+            </dependency>
 			<!-- OWL API -->
 			<dependency>
 				<groupId>net.sourceforge.owlapi</groupId>
