@@ -173,8 +173,11 @@ public class R2RMLManager {
 				List<Term> terms = new ArrayList<Term>();
 				Term joinSubject1 = r2rmlParser.getSubjectAtom(tm);
 				
-				Resource parent = (Resource) robm.getParentMap(Resource.class);
+				Resource parent = (Resource) robm.getParentMap();
 				TriplesMap parentTriple = null;
+
+//                TriplesMap parentTriple = robm.getParentMap();
+
 				Iterator<TriplesMap> it = tripleMaps.iterator();
 				while(it.hasNext()){
 					TriplesMap current = it.next();
