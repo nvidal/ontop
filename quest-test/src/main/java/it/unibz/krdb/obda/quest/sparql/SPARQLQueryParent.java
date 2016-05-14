@@ -34,6 +34,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -42,6 +43,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.openrdf.model.BNode;
+import org.openrdf.model.IRI;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -68,6 +70,7 @@ import org.openrdf.query.impl.MutableTupleQueryResult;
 import org.openrdf.query.impl.TupleQueryResultBuilder;
 import org.openrdf.query.resultio.BooleanQueryResultFormat;
 import org.openrdf.query.resultio.BooleanQueryResultParserRegistry;
+import org.openrdf.query.resultio.QueryResultFormat;
 import org.openrdf.query.resultio.QueryResultIO;
 import org.openrdf.query.resultio.TupleQueryResultFormat;
 import org.openrdf.query.resultio.TupleQueryResultParser;
@@ -503,8 +506,8 @@ public abstract class SPARQLQueryParent extends TestCase {
 					Literal leftLit = (Literal)value1;
 					Literal rightLit = (Literal)value2;
 
-					URI dt1 = leftLit.getDatatype();
-					URI dt2 = rightLit.getDatatype();
+					IRI dt1 = leftLit.getDatatype();
+					IRI dt2 = rightLit.getDatatype();
 
 					if (dt1 != null && dt2 != null && dt1.equals(dt2)
 							&& XMLDatatypeUtil.isValidValue(leftLit.getLabel(), dt1)
@@ -635,7 +638,7 @@ public abstract class SPARQLQueryParent extends TestCase {
 		RepositoryConnection con = dataRep.getConnection();
 		con.begin();
 		try {
-			RDFFormat rdfFormat = Rio.getParserFormatForFileName(graphURI.toString(), RDFFormat.TURTLE);
+			RDFFormat rdfFormat = Rio.getParserFormatForFileName(graphURI.toString()).get();
 			RDFParser rdfParser = Rio.createParser(rdfFormat, dataRep.getValueFactory());
 			ParserConfig config = rdfParser.getParserConfig();
 			// To emulate DatatypeHandling.IGNORE 
@@ -683,12 +686,12 @@ public abstract class SPARQLQueryParent extends TestCase {
 	private TupleQueryResult readExpectedTupleQueryResult()
 		throws Exception
 	{
-		TupleQueryResultFormat tqrFormat = QueryResultIO.getParserFormatForFileName(resultFileURL);
+		Optional<QueryResultFormat> tqrFormat = QueryResultIO.getParserFormatForFileName(resultFileURL);
 
-		if (tqrFormat != null) {
+		if (tqrFormat.isPresent()) {
 			InputStream in = new URL(resultFileURL).openStream();
 			try {
-				TupleQueryResultParser parser = QueryResultIO.createParser(tqrFormat);
+				TupleQueryResultParser parser = QueryResultIO.createTupleParser(tqrFormat.get());
 				parser.setValueFactory(dataRep.getValueFactory());
 
 				TupleQueryResultBuilder qrBuilder = new TupleQueryResultBuilder();
@@ -710,13 +713,13 @@ public abstract class SPARQLQueryParent extends TestCase {
 	private boolean readExpectedBooleanQueryResult()
 		throws Exception
 	{
-		BooleanQueryResultFormat bqrFormat = BooleanQueryResultParserRegistry.getInstance().getFileFormatForFileName(
+		Optional<QueryResultFormat> bqrFormat = BooleanQueryResultParserRegistry.getInstance().getFileFormatForFileName(
 				resultFileURL);
 
-		if (bqrFormat != null) {
+		if (bqrFormat.isPresent()) {
 			InputStream in = new URL(resultFileURL).openStream();
 			try {
-				return QueryResultIO.parse(in, bqrFormat);
+				return QueryResultIO.parseBoolean(in, bqrFormat.get());
 			}
 			finally {
 				in.close();
@@ -731,7 +734,7 @@ public abstract class SPARQLQueryParent extends TestCase {
 	private Set<Statement> readExpectedGraphQueryResult()
 		throws Exception
 	{
-		RDFFormat rdfFormat = Rio.getParserFormatForFileName(resultFileURL);
+		RDFFormat rdfFormat = Rio.getParserFormatForFileName(resultFileURL).get();
 
 		if (rdfFormat != null) {
 			RDFParser parser = Rio.createParser(rdfFormat, dataRep.getValueFactory());
@@ -844,11 +847,11 @@ public abstract class SPARQLQueryParent extends TestCase {
 		while (testCases.hasNext()) {
 			BindingSet bindingSet = testCases.next();
 
-			URI testURI = (URI)bindingSet.getValue("testURI");
+			IRI testURI = (IRI)bindingSet.getValue("testURI");
 			String testName = bindingSet.getValue("testName").toString();
 			String resultFile = bindingSet.getValue("resultFile").toString();
 			String queryFile = bindingSet.getValue("queryFile").toString();
-			URI defaultGraphURI = (URI)bindingSet.getValue("defaultGraph");
+			IRI defaultGraphURI = (IRI)bindingSet.getValue("defaultGraph");
 			Value action = bindingSet.getValue("action");
 			Value ordered = bindingSet.getValue("ordered");
 
@@ -869,7 +872,7 @@ public abstract class SPARQLQueryParent extends TestCase {
 
 				while (namedGraphs.hasNext()) {
 					BindingSet graphBindings = namedGraphs.next();
-					URI namedGraphURI = (URI)graphBindings.getValue("graph");
+					IRI namedGraphURI = (IRI)graphBindings.getValue("graph");
 					logger.debug(" adding named graph : {}", namedGraphURI);
 					dataset.addNamedGraph(namedGraphURI);
 				}

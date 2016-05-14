@@ -27,6 +27,7 @@ import it.unibz.krdb.obda.ontology.Assertion;
 import it.unibz.krdb.obda.ontology.ClassAssertion;
 import it.unibz.krdb.obda.ontology.DataPropertyAssertion;
 import it.unibz.krdb.obda.ontology.ObjectPropertyAssertion;
+import org.openrdf.model.IRI;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -36,7 +37,7 @@ public class SesameStatement implements Statement {
     private static final long serialVersionUID = 3398547980791013746L;
     
 	private Resource subject = null;
-	private URI predicate = null;
+	private IRI predicate = null;
 	private Value object = null;
 	private Resource context = null;
 
@@ -51,7 +52,7 @@ public class SesameStatement implements Statement {
 			
 			// convert string into respective type
 			subject = SesameHelper.getResource(subj);
-			predicate = SesameHelper.createURI(pred); // URI
+			predicate = SesameHelper.createIRI(pred); // URI
 			object = SesameHelper.getResource(obj);
 		} 
 		else if (assertion instanceof DataPropertyAssertion) {
@@ -63,7 +64,7 @@ public class SesameStatement implements Statement {
 			
 			// convert string into respective type
 			subject = SesameHelper.getResource(subj);
-			predicate = SesameHelper.createURI(pred); // URI
+			predicate = SesameHelper.createIRI(pred); // URI
             object = SesameHelper.getLiteral(obj);
 		} 
 		else if (assertion instanceof ClassAssertion) { 
@@ -74,8 +75,8 @@ public class SesameStatement implements Statement {
 			
 			// convert string into respective type
 			subject = SesameHelper.getResource(subj);
-			predicate = SesameHelper.createURI(OBDAVocabulary.RDF_TYPE); // URI
-			object = SesameHelper.createURI(obj);
+			predicate = SesameHelper.createIRI(OBDAVocabulary.RDF_TYPE); // URI
+			object = SesameHelper.createIRI(obj);
 		}
 	}
 	
@@ -86,7 +87,7 @@ public class SesameStatement implements Statement {
 	}
 
 	@Override
-    public URI getPredicate() {
+    public IRI getPredicate() {
 		return predicate;
 	}
 

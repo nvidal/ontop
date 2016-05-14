@@ -28,6 +28,7 @@ import it.unibz.krdb.obda.owlrefplatform.core.QuestConstants;
 import it.unibz.krdb.obda.owlrefplatform.core.QuestDBConnection;
 import it.unibz.krdb.obda.owlrefplatform.core.QuestDBStatement;
 import it.unibz.krdb.obda.sesame.SesameRDFIterator;
+import org.openrdf.IsolationLevel;
 import org.openrdf.OpenRDFUtil;
 import org.openrdf.model.*;
 import org.openrdf.model.impl.NamespaceImpl;
@@ -152,8 +153,13 @@ public class RepositoryConnection implements org.openrdf.repository.RepositoryCo
 
 	}
 
+    @Override
+    public void remove(Resource subject, IRI predicate, Value object, Resource... contexts) throws RepositoryException {
 
-	@Override
+    }
+
+
+    @Override
     public void add(File file, String baseURI, RDFFormat dataFormat, Resource... contexts)
 			throws IOException, RDFParseException, RepositoryException {
 		//Adds RDF data from the specified file to a specific contexts in the repository. 
@@ -172,7 +178,12 @@ public class RepositoryConnection implements org.openrdf.repository.RepositoryCo
 		}
 	}
 
-	 @Override
+    @Override
+    public void add(Resource subject, IRI predicate, Value object, Resource... contexts) throws RepositoryException {
+
+    }
+
+    @Override
      public void add(URL url, String baseURI, RDFFormat dataFormat,
                      Resource... contexts) throws IOException,
              RDFParseException, RepositoryException {
@@ -479,7 +490,7 @@ throw new RuntimeException(e);
 	}
 
 	@Override
-    public void exportStatements(Resource subj, org.openrdf.model.URI  pred, Value obj,
+    public void exportStatements(Resource subj, org.openrdf.model.IRI  pred, Value obj,
                                  boolean includeInferred, RDFHandler handler, Resource... contexts)
 			throws RepositoryException, RDFHandlerException {
 		//Exports all statements with a specific subject, predicate 
@@ -609,7 +620,19 @@ throw new RuntimeException(e);
 		}
 	}
 
-	@Override
+    @Override
+    public RepositoryResult<Statement> getStatements(Resource subj, IRI pred, Value obj, boolean includeInferred, Resource... contexts) throws RepositoryException {
+        // FIXME (to be implemented, GUOHUI 14-05-2016)
+        throw new UnsupportedOperationException("not implemented");
+    }
+
+    @Override
+    public boolean hasStatement(Resource subj, IRI pred, Value obj, boolean includeInferred, Resource... contexts) throws RepositoryException {
+        // FIXME (to be implemented, GUOHUI 14-05-2016)
+        throw new UnsupportedOperationException("not implemented");
+    }
+
+    @Override
     public ValueFactory getValueFactory() {
 		//Gets a ValueFactory for this RepositoryConnection. 
 		return new ValueFactoryImpl();
@@ -624,7 +647,8 @@ throw new RuntimeException(e);
                 .getObject(), includeInferred, contexts);
 	}
 
-	@Override
+
+    @Override
     public boolean hasStatement(Resource subj, org.openrdf.model.URI pred, Value obj,
                                 boolean includeInferred, Resource... contexts) throws RepositoryException {
 		//Checks whether the repository contains statements with a specific subject, 
@@ -786,7 +810,7 @@ throw new RuntimeException(e);
              for (Statement st : statements) {
                  remove(st, contexts);
              }
-         } catch (RepositoryException | RuntimeException e) {
+         } catch (RuntimeException e) {
              if (autoCommit) {
                  rollback();
              }
@@ -928,8 +952,14 @@ throw new RuntimeException(e);
 		isActive = true;
 	}
 
+    @Override
+    public void begin(IsolationLevel level) throws RepositoryException {
+        // FIXME
+        throw new UnsupportedOperationException("not implemented");
+    }
 
-	/**
+
+    /**
 	 * A boolean flag signaling when a transaction is active.
 	 */
 	@Override
@@ -939,9 +969,18 @@ throw new RuntimeException(e);
 		return this.isActive;
 	}
 
+    @Override
+    public void setIsolationLevel(IsolationLevel level) throws IllegalStateException {
+        // FIXME (to be implemented, GUOHUI 14-05-2016)
+        throw new UnsupportedOperationException("not implemented");
+    }
 
+    @Override
+    public IsolationLevel getIsolationLevel() {
+        // FIXME (to be implemented, GUOHUI 14-05-2016)
+        throw new UnsupportedOperationException("not implemented");
 
-	
+    }
 
 
 }

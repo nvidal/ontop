@@ -211,7 +211,7 @@ public class QuestDBClassicStore extends QuestDBAbstractStore {
 	}
 
 	private Ontology getOntology(URI graphURI, Resource context) throws Exception {
-		RDFFormat rdfFormat = Rio.getParserFormatForFileName(graphURI.toString(), RDFFormat.TURTLE);
+		RDFFormat rdfFormat = Rio.getParserFormatForFileName(graphURI.toString()).get();
 		RDFParser rdfParser = Rio.createParser(rdfFormat, ValueFactoryImpl.getInstance());
 		ParserConfig config = rdfParser.getParserConfig();
 

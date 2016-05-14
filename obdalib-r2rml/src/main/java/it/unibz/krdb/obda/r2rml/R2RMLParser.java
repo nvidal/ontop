@@ -658,13 +658,16 @@ public class R2RMLParser {
 		// process OBJECTMAP
 		Model m = myModel.filter(predobjNode, R2RMLVocabulary.objectMap, null);
 		if (!m.isEmpty()) {
-			Resource object = m.objectResource();
+			Optional<Resource> object = m.objectResource();
 
-			// look for parentTriplesMap declaration
-			m = myModel.filter(object, R2RMLVocabulary.parentTriplesMap, null);
-			if (!m.isEmpty()) {
-				return m.objectResource();
+			if(object.isPresent()){
+				// look for parentTriplesMap declaration
+				m = myModel.filter(object.get(), R2RMLVocabulary.parentTriplesMap, null);
+				if (!m.isEmpty()) {
+					return m.objectResource().get();
+				}	
 			}
+			
 		}
 		return null;
 	}
@@ -683,17 +686,17 @@ public class R2RMLParser {
 		// process OBJECTMAP
 		Model m = myModel.filter(predobjNode, R2RMLVocabulary.objectMap, null);
 		if (!m.isEmpty()) {
-			Resource object = m.objectResource();
+			Resource object = m.objectResource().get();
 
 			// look for joincondition declaration
 			m = myModel.filter(object, R2RMLVocabulary.joinCondition, null);
 			if (!m.isEmpty()) {
-				Resource objectt = m.objectResource();
+				Resource objectt = m.objectResource().get();
 
 				// look for child declaration
 				m = myModel.filter(objectt, R2RMLVocabulary.child, null);
 				if (!m.isEmpty()) {
-					return trimTo1(m.objectString());
+					return trimTo1(m.objectString().get());
 				}
 			}
 		}
@@ -713,17 +716,17 @@ public class R2RMLParser {
 		// process OBJECTMAP
 		Model m = myModel.filter(predobjNode, R2RMLVocabulary.objectMap, null);
 		if (!m.isEmpty()) {
-			Resource object = m.objectResource();
+			Resource object = m.objectResource().get();
 
 			// look for joincondition declaration
 			m = myModel.filter(object, R2RMLVocabulary.joinCondition, null);
 			if (!m.isEmpty()) {
-				Resource objectt = m.objectResource();
+				Resource objectt = m.objectResource().get();
 
 				// look for parent declaration
 				m = myModel.filter(objectt, R2RMLVocabulary.parent, null);
 				if (!m.isEmpty()) {
-					return trimTo1(m.objectString());
+					return trimTo1(m.objectString().get());
 				}
 			}
 		}

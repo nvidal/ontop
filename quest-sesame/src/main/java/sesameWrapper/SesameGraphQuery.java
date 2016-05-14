@@ -20,6 +20,8 @@ package sesameWrapper;
  * #L%
  */
 
+import info.aduna.iteration.CloseableIteration;
+import info.aduna.iteration.CloseableIteratorIteration;
 import it.unibz.krdb.obda.model.GraphResultSet;
 import it.unibz.krdb.obda.model.OBDAException;
 import it.unibz.krdb.obda.ontology.Assertion;
@@ -38,6 +40,7 @@ import org.openrdf.query.GraphQueryResult;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.impl.GraphQueryResultImpl;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.rio.RDFHandler;
 import org.openrdf.rio.RDFHandlerException;
 
@@ -84,10 +87,13 @@ public class SesameGraphQuery extends SesameAbstractQuery implements GraphQuery 
 					}
 				}
 			}
-			
-			return new GraphQueryResultImpl(namespaces, results.iterator());
-			
-		} catch (OBDAException e) {
+
+            CloseableIteration<Statement, QueryEvaluationException> iter
+                    = new CloseableIteratorIteration(results.iterator());
+
+            return new GraphQueryResultImpl(namespaces, iter);
+
+        } catch (OBDAException e) {
 			throw new QueryEvaluationException(e);
 		}
 		finally{

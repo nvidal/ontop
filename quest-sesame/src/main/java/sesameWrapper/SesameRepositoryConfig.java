@@ -30,12 +30,14 @@ import java.io.File;
 
 import org.openrdf.model.Graph;
 import org.openrdf.model.Literal;
+import org.openrdf.model.Model;
 import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.impl.ValueFactoryImpl;
 import org.openrdf.model.util.GraphUtil;
 import org.openrdf.model.util.GraphUtilException;
+import org.openrdf.repository.config.AbstractRepositoryImplConfig;
 import org.openrdf.repository.config.RepositoryConfigException;
 import org.openrdf.repository.config.RepositoryImplConfigBase;
 
@@ -43,25 +45,25 @@ import static org.openrdf.repository.config.RepositoryConfigSchema.REPOSITORYTYP
 
 
 
-public class SesameRepositoryConfig extends RepositoryImplConfigBase {
+public class SesameRepositoryConfig extends AbstractRepositoryImplConfig {
 
 	public static final String NAMESPACE = "http://inf.unibz.it/krdb/obda/quest#";
 
     /** <tt>http://inf.unibz.it/krdb/obda/quest#quest_type</tt> */
-    public final static URI QUEST_TYPE;
+    public final static IRI QUEST_TYPE;
 
     /** <tt>http://inf.unibz.it/krdb/obda/quest#name</tt> */
-    public final static URI NAME;
+    public final static IRI NAME;
 
     /** <tt>http://inf.unibz.it/krdb/obda/quest#owlFile/tt> */
-    public final static URI OWLFILE;
+    public final static IRI OWLFILE;
 
     /** <tt>http://inf.unibz.it/krdb/obda/quest#obdaFile</tt> */
-    public final static URI OBDAFILE;
+    public final static IRI OBDAFILE;
     
-    public final static URI EXISTENTIAL;
+    public final static IRI EXISTENTIAL;
     
-    public final static URI REWRITING;
+    public final static IRI REWRITING;
 
     public final static String VIRTUAL_QUEST_TYPE = "ontop-virtual";
     public final static String REMOTE_QUEST_TYPE = "ontop-remote";
@@ -69,12 +71,12 @@ public class SesameRepositoryConfig extends RepositoryImplConfigBase {
     
     static {
         ValueFactory factory = ValueFactoryImpl.getInstance();
-        QUEST_TYPE = factory.createURI(NAMESPACE, "quest_type");
-        NAME = factory.createURI(NAMESPACE, "repo_name");
-        OWLFILE = factory.createURI(NAMESPACE, "owlfile");
-        OBDAFILE = factory.createURI(NAMESPACE, "obdafile");
-        EXISTENTIAL = factory.createURI(NAMESPACE, "existential");
-        REWRITING = factory.createURI(NAMESPACE, "rewriting");
+        QUEST_TYPE = factory.createIRI(NAMESPACE, "quest_type");
+        NAME = factory.createIRI(NAMESPACE, "repo_name");
+        OWLFILE = factory.createIRI(NAMESPACE, "owlfile");
+        OBDAFILE = factory.createIRI(NAMESPACE, "obdafile");
+        EXISTENTIAL = factory.createIRI(NAMESPACE, "existential");
+        REWRITING = factory.createIRI(NAMESPACE, "rewriting");
     }
     
 	private String quest_type;
@@ -264,7 +266,7 @@ public class SesameRepositoryConfig extends RepositoryImplConfigBase {
             }
         }
         /**
-         * Problem during the repository instantiation.
+         * Problem dIRIng the repository instantiation.
          *   --> Exception is re-thrown as a RepositoryConfigException.
          */
         catch(Exception e)
@@ -276,7 +278,7 @@ public class SesameRepositoryConfig extends RepositoryImplConfigBase {
 
 
     @Override
-    public Resource export(Graph graph) {
+    public Resource export(Model graph) {
     	Resource implNode = super.export(graph);
     	
         ValueFactory vf = graph.getValueFactory();
@@ -304,7 +306,7 @@ public class SesameRepositoryConfig extends RepositoryImplConfigBase {
     }
 
     @Override
-    public void parse(Graph graph, Resource implNode)
+    public void parse(Model graph, Resource implNode)
             throws RepositoryConfigException
     {
     	super.parse(graph, implNode);

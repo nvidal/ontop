@@ -254,7 +254,7 @@ public class RDB2RDFTest {
 	protected Repository createRepository() throws Exception {
 		logger.info("RDB2RDFTest " + name + " " + mappingFile);
 
-		Model mappings = mappingFile == null ? null : Rio.parse(stream(mappingFile), BASE_IRI, Rio.getParserFormatForFileName(mappingFile));
+		Model mappings = mappingFile == null ? null : Rio.parse(stream(mappingFile), BASE_IRI, Rio.getParserFormatForFileName(mappingFile).get());
 		SesameVirtualRepo repo = new SesameVirtualRepo(name, EMPTY_ONT, mappings, null, QUEST_PREFS);
 		repo.initialize();
 		return repo;
@@ -324,7 +324,7 @@ public class RDB2RDFTest {
 
 			Set<Statement> expected = ImmutableSet.of();
 			if (outputExpected) {
-				expected = stripNamedGraphs(Rio.parse(stream(outputFile), BASE_IRI, Rio.getParserFormatForFileName(outputFile)));
+				expected = stripNamedGraphs(Rio.parse(stream(outputFile), BASE_IRI, Rio.getParserFormatForFileName(outputFile).get()));
 			}
 
 			if (!ModelUtil.equals(expected, actual)) {

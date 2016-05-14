@@ -185,7 +185,7 @@ public class SesameRDFIterator extends RDFHandlerBase implements Iterator<Assert
 				} 
 				else if (currObject instanceof Literal) {
 					Literal l = (Literal) currObject;				
-					String lang = l.getLanguage();
+					String lang = l.getLanguage().get();
 					ValueConstant c2;
 					if (lang == null) {
 						URI datatype = l.getDatatype();

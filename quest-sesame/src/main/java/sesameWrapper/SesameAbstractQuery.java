@@ -25,6 +25,15 @@ import org.openrdf.query.impl.MapBindingSet;
 import it.unibz.krdb.obda.owlrefplatform.core.QuestDBConnection;
 
 public abstract class SesameAbstractQuery implements Query {
+    @Override
+    public void setMaxExecutionTime(int maxExecTime) {
+        setMaxQueryTime(maxExecTime);
+    }
+
+    @Override
+    public int getMaxExecutionTime() {
+        return getMaxQueryTime();
+    }
 
     protected final String queryString;
     protected final QuestDBConnection conn;

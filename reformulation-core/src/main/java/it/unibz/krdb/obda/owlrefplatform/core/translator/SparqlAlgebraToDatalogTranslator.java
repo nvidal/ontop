@@ -31,6 +31,7 @@ import it.unibz.krdb.obda.model.impl.TermUtils;
 import it.unibz.krdb.obda.owlrefplatform.core.abox.SemanticIndexURIMap;
 import it.unibz.krdb.obda.owlrefplatform.core.basicoperations.UriTemplateMatcher;
 import it.unibz.krdb.obda.parser.EncodeForURI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -497,7 +498,7 @@ public class SparqlAlgebraToDatalogTranslator {
 		} 
 		else if (s instanceof Literal) {
 			Literal object = (Literal) s;
-			URI type = object.getDatatype();
+			IRI type = object.getDatatype();
 			String value = object.getLabel();
 	
 			// Validating that the value is correct (lexically) with respect to the
@@ -529,9 +530,9 @@ public class SparqlAlgebraToDatalogTranslator {
 			// constant is defined using a functional symbol.
 			if (objectType == COL_TYPE.LITERAL) {
 				// if the object has type LITERAL, check any language tag!
-				String lang = object.getLanguage();
-				if (lang != null && !lang.equals("")) {
-					result = ofac.getTypedTerm(constant, lang.toLowerCase());
+				Optional<String> lang = object.getLanguage();
+				if (lang.isPresent() && !lang.get().equals("")) {
+					result = ofac.getTypedTerm(constant, lang.get().toLowerCase());
 				} 
 				else {
 					result =  ofac.getTypedTerm(constant, objectType);

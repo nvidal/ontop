@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -45,7 +46,7 @@ import junit.framework.TestSuite;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.Value;
 import org.openrdf.model.datatypes.XMLDatatypeUtil;
 import org.openrdf.model.util.ModelUtil;
@@ -66,6 +67,7 @@ import org.openrdf.query.impl.MutableTupleQueryResult;
 import org.openrdf.query.impl.TupleQueryResultBuilder;
 import org.openrdf.query.resultio.BooleanQueryResultFormat;
 import org.openrdf.query.resultio.BooleanQueryResultParserRegistry;
+import org.openrdf.query.resultio.QueryResultFormat;
 import org.openrdf.query.resultio.QueryResultIO;
 import org.openrdf.query.resultio.TupleQueryResultFormat;
 import org.openrdf.query.resultio.TupleQueryResultParser;
@@ -420,8 +422,8 @@ public abstract class CompletenessParent extends TestCase {
 					Literal leftLit = (Literal)value1;
 					Literal rightLit = (Literal)value2;
 
-					URI dt1 = leftLit.getDatatype();
-					URI dt2 = rightLit.getDatatype();
+					IRI dt1 = leftLit.getDatatype();
+					IRI dt2 = rightLit.getDatatype();
 
 					if (dt1 != null && dt2 != null && dt1.equals(dt2)
 							&& XMLDatatypeUtil.isValidValue(leftLit.getLabel(), dt1)
@@ -513,11 +515,11 @@ public abstract class CompletenessParent extends TestCase {
 	}
 	
 	private TupleQueryResult readExpectedTupleQueryResult() throws Exception {
-		TupleQueryResultFormat tqrFormat = QueryResultIO.getParserFormatForFileName(resultFile);
-		if (tqrFormat != null) {
+		Optional<QueryResultFormat> tqrFormat = QueryResultIO.getParserFormatForFileName(resultFile);
+		if (tqrFormat.isPresent()) {
 			InputStream in = new URL(resultFile).openStream();
 			try {
-				TupleQueryResultParser parser = QueryResultIO.createParser(tqrFormat);
+				TupleQueryResultParser parser = QueryResultIO.createTupleParser(tqrFormat.get());
 				parser.setValueFactory(repository.getValueFactory());
 
 				TupleQueryResultBuilder qrBuilder = new TupleQueryResultBuilder();
@@ -535,9 +537,9 @@ public abstract class CompletenessParent extends TestCase {
 	}
 	
 	private Set<Statement> readExpectedGraphQueryResult() throws Exception {
-		RDFFormat rdfFormat = Rio.getParserFormatForFileName(resultFile);
-		if (rdfFormat != null) {
-			RDFParser parser = Rio.createParser(rdfFormat, repository.getValueFactory());
+		Optional<RDFFormat> rdfFormat = Rio.getParserFormatForFileName(resultFile);
+		if (rdfFormat.isPresent()) {
+			RDFParser parser = Rio.createParser(rdfFormat.get(), repository.getValueFactory());
 			ParserConfig config = parser.getParserConfig();
 			// To emulate DatatypeHandling.IGNORE 
 			config.addNonFatalError(BasicParserSettings.FAIL_ON_UNKNOWN_DATATYPES);
@@ -564,13 +566,13 @@ public abstract class CompletenessParent extends TestCase {
 	}
 
 	private boolean readExpectedBooleanQueryResult() throws Exception {
-		BooleanQueryResultFormat bqrFormat = BooleanQueryResultParserRegistry
+		Optional<QueryResultFormat> bqrFormat = BooleanQueryResultParserRegistry
 				.getInstance().getFileFormatForFileName(resultFile);
 
 		if (bqrFormat != null) {
 			InputStream in = new URL(resultFile).openStream();
 			try {
-				return QueryResultIO.parse(in, bqrFormat);
+				return QueryResultIO.parseBoolean(in, bqrFormat.get());
 			} finally {
 				in.close();
 			}
@@ -652,7 +654,7 @@ public abstract class CompletenessParent extends TestCase {
 	{
 		// Try to extract suite name from manifest file
 		TupleQuery manifestNameQuery = con.prepareTupleQuery(QueryLanguage.SERQL, "SELECT ManifestName FROM {ManifestURL} rdfs:label {ManifestName}");
-		manifestNameQuery.setBinding("ManifestURL", manifestRep.getValueFactory().createURI(manifestFileURL));
+		manifestNameQuery.setBinding("ManifestURL", manifestRep.getValueFactory().createIRI(manifestFileURL));
 		TupleQueryResult manifestNames = manifestNameQuery.evaluate();
 		try {
 			if (manifestNames.hasNext()) {

@@ -56,8 +56,8 @@ public class SesameHelper {
         return value;
     }
 
-	public static URI createURI(String uri) {
-		return fact.createURI(uri);
+	public static IRI createIRI(String uri) {
+		return fact.createIRI(uri);
 	}
 
 

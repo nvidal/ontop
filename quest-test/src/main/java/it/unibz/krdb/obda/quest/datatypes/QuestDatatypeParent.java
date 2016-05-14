@@ -237,7 +237,7 @@ public abstract class QuestDatatypeParent extends TestCase {
 	}
 	
 	private Set<Statement> readGraphResultSetInfo() throws Exception {
-		RDFFormat rdfFormat = Rio.getParserFormatForFileName(resultFileURL);
+		RDFFormat rdfFormat = Rio.getParserFormatForFileName(resultFileURL).get();
 		if (rdfFormat != null) {
 			RDFParser parser = Rio.createParser(rdfFormat);
 
