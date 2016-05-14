@@ -5,11 +5,12 @@ import it.unibz.krdb.obda.model.*;
 import it.unibz.krdb.obda.model.Predicate.COL_TYPE;
 import it.unibz.krdb.obda.model.impl.OBDADataFactoryImpl;
 import org.openrdf.model.*;
+import org.openrdf.model.impl.SimpleValueFactory;
 import org.openrdf.model.impl.ValueFactoryImpl;
 
 public class SesameHelper {
 
-	private static final ValueFactory fact = new ValueFactoryImpl();
+	private static final ValueFactory fact = SimpleValueFactory.getInstance();
 	private static final DatatypeFactory dtfac = OBDADataFactoryImpl.getInstance().getDatatypeFactory();
 	
 	public static Resource getResource(ObjectConstant obj) {
@@ -24,23 +25,26 @@ public class SesameHelper {
 	
 	public static Literal getLiteral(ValueConstant literal)
 	{
-		if ((literal.getType() == COL_TYPE.LITERAL) ||  (literal.getType() == COL_TYPE.LITERAL_LANG)) {
+		if (literal.getType() == COL_TYPE.LITERAL) {
+			Literal value = fact.createLiteral(literal.getValue());
+			return value;
+		} else if (literal.getType() == COL_TYPE.LITERAL_LANG) {
 			Literal value = fact.createLiteral(literal.getValue(), literal.getLanguage());
 			return value;
 		}
 		else if (literal.getType() == COL_TYPE.OBJECT) {
 			Literal value = fact.createLiteral(literal.getValue(), dtfac.getDatatypeURI(COL_TYPE.STRING));
 			return value;
-		}	
+		}
 		else {
 			URI datatype = dtfac.getDatatypeURI(literal.getType());
 			if (datatype == null)
 				throw new RuntimeException("Found unknown TYPE for constant: " + literal + " with COL_TYPE="+ literal.getType());
-			
+
 			Literal value = fact.createLiteral(literal.getValue(), datatype);
 			return value;
 		}
-	}
+    }
 
     public static Value getValue(Constant c) {
 
