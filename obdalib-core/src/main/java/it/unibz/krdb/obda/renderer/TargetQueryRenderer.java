@@ -22,19 +22,7 @@ package it.unibz.krdb.obda.renderer;
 
 import it.unibz.krdb.obda.io.PrefixManager;
 import it.unibz.krdb.obda.io.SimplePrefixManager;
-import it.unibz.krdb.obda.model.CQIE;
-import it.unibz.krdb.obda.model.Constant;
-import it.unibz.krdb.obda.model.DatatypePredicate;
-import it.unibz.krdb.obda.model.DatatypeFactory;
-import it.unibz.krdb.obda.model.Function;
-import it.unibz.krdb.obda.model.Predicate;
-import it.unibz.krdb.obda.model.StringOperationPredicate;
-import it.unibz.krdb.obda.model.Term;
-import it.unibz.krdb.obda.model.URIConstant;
-import it.unibz.krdb.obda.model.URITemplatePredicate;
-import it.unibz.krdb.obda.model.ValueConstant;
-import it.unibz.krdb.obda.model.Variable;
-import it.unibz.krdb.obda.model.impl.FunctionalTermImpl;
+import it.unibz.krdb.obda.model.*;
 import it.unibz.krdb.obda.model.impl.OBDADataFactoryImpl;
 import it.unibz.krdb.obda.model.impl.OBDAVocabulary;
 
@@ -157,11 +145,11 @@ public class TargetQueryRenderer {
 	 */
 	private static String getDisplayName(Term term, PrefixManager prefixManager) {
 		StringBuilder sb = new StringBuilder();
-		if (term instanceof FunctionalTermImpl) {
-			FunctionalTermImpl function = (FunctionalTermImpl) term;
+		if (term instanceof Function) {
+			Function function = (Function) term;
 			Predicate functionSymbol = function.getFunctionSymbol();
 			String fname = getAbbreviatedName(functionSymbol.toString(), prefixManager, false);
-			if (functionSymbol instanceof DatatypePredicate) {
+			if (function.isDataTypeFunction()) {
 				// if the function symbol is a data type predicate
 				if (dtfac.isLiteral(functionSymbol)) {
 					// if it is rdfs:Literal
@@ -192,39 +180,50 @@ public class TargetQueryRenderer {
 					sb.append(fname);
 				}
 			} else if (functionSymbol instanceof URITemplatePredicate) {
-				String template = ((ValueConstant) function.getTerms().get(0)).getValue();
-				
-				// Utilize the String.format() method so we replaced placeholders '{}' with '%s'
-				String templateFormat = template.replace("{}", "%s");
-				List<String> varNames = new ArrayList<String>();
-				for (Term innerTerm : function.getTerms()) {
-					if (innerTerm instanceof Variable) {
-						varNames.add(getDisplayName(innerTerm, prefixManager));
+				Term firstTerm = function.getTerms().get(0);
+
+				if(firstTerm instanceof Variable)
+				{
+					sb.append("<{");
+					sb.append(((Variable) firstTerm).getName());
+					sb.append("}>");
+				}
+
+				else {
+					String template = ((ValueConstant) firstTerm).getValue();
+
+					// Utilize the String.format() method so we replaced placeholders '{}' with '%s'
+					String templateFormat = template.replace("{}", "%s");
+					List<String> varNames = new ArrayList<String>();
+					for (Term innerTerm : function.getTerms()) {
+						if (innerTerm instanceof Variable) {
+							varNames.add(getDisplayName(innerTerm, prefixManager));
+						}
+					}
+					String originalUri = String.format(templateFormat, varNames.toArray());
+					if (originalUri.equals(OBDAVocabulary.RDF_TYPE)) {
+						sb.append("a");
+					} else {
+						String shortenUri = getAbbreviatedName(originalUri, prefixManager, false); // shorten the URI if possible
+						if (!shortenUri.equals(originalUri)) {
+							sb.append(shortenUri);
+						} else {
+							// If the URI can't be shorten then use the full URI within brackets
+							sb.append("<");
+							sb.append(originalUri);
+							sb.append(">");
+						}
 					}
 				}
-				String originalUri = String.format(templateFormat, varNames.toArray());
-				if(originalUri.equals(OBDAVocabulary.RDF_TYPE))
-				{
-					sb.append("a");
-				}
-				else{
-				String shortenUri = getAbbreviatedName(originalUri, prefixManager, false); // shorten the URI if possible
-				if (!shortenUri.equals(originalUri)) {
-					sb.append(shortenUri);
-				} else {
-					// If the URI can't be shorten then use the full URI within brackets
-					sb.append("<");
-					sb.append(originalUri);
-					sb.append(">");
-				}		
-				}
-			} else if (functionSymbol instanceof StringOperationPredicate) { //Concat
+			} 
+			else if (functionSymbol == ExpressionOperation.CONCAT) { //Concat
 				List<Term> terms = function.getTerms();
 				sb.append("\"");
 				getNestedConcats(sb, terms.get(0),terms.get(1));
 				sb.append("\"");
 				//sb.append("^^rdfs:Literal");
-			} else { // for any ordinary function symbol
+			} 
+			else { // for any ordinary function symbol
 				sb.append(fname);
 				sb.append("(");
 				boolean separator = false;

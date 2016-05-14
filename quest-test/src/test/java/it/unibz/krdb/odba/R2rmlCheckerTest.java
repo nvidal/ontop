@@ -27,7 +27,7 @@ import it.unibz.krdb.obda.ontology.DataPropertyExpression;
 import it.unibz.krdb.obda.ontology.OClass;
 import it.unibz.krdb.obda.ontology.ObjectPropertyExpression;
 import it.unibz.krdb.obda.ontology.Ontology;
-import it.unibz.krdb.obda.owlapi3.OWLAPI3TranslatorUtility;
+import it.unibz.krdb.obda.owlapi3.OWLAPITranslatorUtility;
 import it.unibz.krdb.obda.owlrefplatform.core.QuestConstants;
 import it.unibz.krdb.obda.owlrefplatform.core.QuestPreferences;
 import it.unibz.krdb.obda.owlrefplatform.owlapi3.*;
@@ -39,13 +39,13 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLException;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -62,7 +62,7 @@ public class R2rmlCheckerTest {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 	private OBDAModel obdaModel;
-	private OWLOntology ontology;
+	private OWLOntology owlOntology;
 	private Ontology onto;
 
 	final String owlfile = "src/test/resources/r2rml/npd-v2-ql_a.owl";
@@ -82,10 +82,10 @@ public class R2rmlCheckerTest {
 		// Loading the OWL file
 		
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		ontology = manager
+		owlOntology = manager
 				.loadOntologyFromOntologyDocument((new File(owlfile)));
 
-		onto = OWLAPI3TranslatorUtility.translate(ontology);
+		onto = OWLAPITranslatorUtility.translate(owlOntology);
 
 		QuestPreferences p = new QuestPreferences();
 		p.setCurrentValueOf(QuestPreferences.ABOX_MODE, QuestConstants.VIRTUAL);
@@ -131,12 +131,12 @@ public class R2rmlCheckerTest {
 	
 	@Test 
 	public void testMappings() throws Exception {
-		for (CQIE q : reasonerOBDA.getQuestInstance().getUnfolder().getRules()) {
-			if (!reasonerR2rml.getQuestInstance().getUnfolder().getRules().contains(q)) 
+		for (CQIE q : reasonerOBDA.getQuestInstance().getUnfolderRules()) {
+			if (!reasonerR2rml.getQuestInstance().getUnfolderRules().contains(q)) 
 				System.out.println("NOT IN R2RML: " + q);
 		}
-		for (CQIE q : reasonerR2rml.getQuestInstance().getUnfolder().getRules()) {
-			if (!reasonerOBDA.getQuestInstance().getUnfolder().getRules().contains(q))
+		for (CQIE q : reasonerR2rml.getQuestInstance().getUnfolderRules()) {
+			if (!reasonerOBDA.getQuestInstance().getUnfolderRules().contains(q))
 				System.out.println("NOT IN OBDA: " + q);
 		}
 	}
@@ -191,21 +191,27 @@ public class R2rmlCheckerTest {
 	 * 
 	 * @throws Exception
 	 */
-//	@Test
+	@Test
 	public void testOBDAEmpties() throws Exception {
 
 
 		// Now we are ready for querying
 		conn = reasonerOBDA.getConnection();
-
+		Ontology ontology =  OWLAPITranslatorUtility.translate(owlOntology);
 		QuestOWLEmptyEntitiesChecker empties = new QuestOWLEmptyEntitiesChecker(
 				ontology, conn);
-		emptyConceptsObda = empties.getEmptyConcepts();
+		Iterator<Predicate> iteratorC = empties.iEmptyConcepts();
+		while (iteratorC.hasNext()){
+			emptyConceptsObda.add(iteratorC.next());
+		}
 		log.info(empties.toString());
 		log.info("Empty concept/s: " + emptyConceptsObda);
 		assertEquals(162, emptyConceptsObda.size());
 
-		emptyRolesObda = empties.getEmptyRoles();
+		Iterator<Predicate> iteratorR = empties.iEmptyRoles();
+		while (iteratorR.hasNext()){
+			emptyRolesObda.add(iteratorR.next());
+		}
 		log.info("Empty role/s: " + emptyRolesObda);
 		assertEquals(46, emptyRolesObda.size());
 
@@ -216,20 +222,26 @@ public class R2rmlCheckerTest {
 	 * 
 	 * @throws Exception
 	 */
-//	@Test
+	@Test
 	public void testR2rmlEmpties() throws Exception {
 
 		// Now we are ready for querying
 		conn = reasonerR2rml.getConnection();
-
+		Ontology ontology =  OWLAPITranslatorUtility.translate(owlOntology);
 		QuestOWLEmptyEntitiesChecker empties = new QuestOWLEmptyEntitiesChecker(
 				ontology, conn);
-		emptyConceptsR2rml = empties.getEmptyConcepts();
+		Iterator<Predicate> iteratorC = empties.iEmptyConcepts();
+		while (iteratorC.hasNext()){
+			emptyConceptsR2rml.add(iteratorC.next());
+		}
 		log.info(empties.toString());
 		log.info("Empty concept/s: " + emptyConceptsR2rml);
 		assertEquals(162, emptyConceptsR2rml.size());
 
-		emptyRolesR2rml = empties.getEmptyRoles();
+		Iterator<Predicate> iteratorR = empties.iEmptyRoles();
+		while (iteratorR.hasNext()){
+			emptyRolesR2rml.add(iteratorR.next());
+		}
 		log.info("Empty role/s: " + emptyRolesR2rml);
 		assertEquals(46, emptyRolesR2rml.size());
 	}
@@ -343,28 +355,19 @@ public class R2rmlCheckerTest {
 	 * 
 	 * @param p
 	 *            quest preferences for QuestOWL, dataSource for the model
+	 * @throws Exception 
 	 */
-	private void loadR2rml(QuestPreferences p, OBDADataSource dataSource) {
+	private void loadR2rml(QuestPreferences p, OBDADataSource dataSource) throws Exception {
 		log.info("Loading r2rml file");
 		// Creating a new instance of the reasoner
 		QuestOWLFactory factory = new QuestOWLFactory();
 
-		factory.setPreferenceHolder(p);
-
 		R2RMLReader reader = null;
-		try {
-			reader = new R2RMLReader(r2rmlfile);
-
-
+		reader = new R2RMLReader(r2rmlfile);
 		obdaModel = reader.readModel(dataSource);
 
-		factory.setOBDAController(obdaModel);
-
-		reasonerR2rml = (QuestOWL) factory.createReasoner(ontology,
-				new SimpleConfiguration());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		QuestOWLConfiguration config = QuestOWLConfiguration.builder().obdaModel(obdaModel).preferences(p).build();
+        reasonerR2rml = factory.createReasoner(owlOntology, config);
 
 	}
 
@@ -385,11 +388,10 @@ public class R2rmlCheckerTest {
 		ioManager.load(obdafile);
 		// Creating a new instance of the reasoner
 		QuestOWLFactory factory = new QuestOWLFactory();
-		factory.setOBDAController(obdaModel);
-		factory.setPreferenceHolder(p);
-
-		reasonerOBDA = (QuestOWL) factory.createReasoner(ontology,
-				new SimpleConfiguration());
+		
+		QuestOWLConfiguration config = QuestOWLConfiguration.builder().obdaModel(obdaModel).preferences(p).build();
+		reasonerOBDA = factory.createReasoner(owlOntology, config);
+		
 
 	}
 

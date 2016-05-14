@@ -20,17 +20,19 @@ package org.semanticweb.ontop.cli;
  * #L%
  */
 
-import com.github.rvesse.airline.Command;
-import com.github.rvesse.airline.Option;
-import com.github.rvesse.airline.OptionType;
+
+import com.github.rvesse.airline.annotations.Command;
+import com.github.rvesse.airline.annotations.Option;
+import com.github.rvesse.airline.annotations.OptionType;
+import com.github.rvesse.airline.annotations.restrictions.AllowedValues;
 import it.unibz.krdb.obda.model.OBDADataFactory;
 import it.unibz.krdb.obda.model.OBDAModel;
 import it.unibz.krdb.obda.model.Predicate;
 import it.unibz.krdb.obda.model.impl.OBDADataFactoryImpl;
 import it.unibz.krdb.obda.ontology.Ontology;
-import it.unibz.krdb.obda.owlapi3.OWLAPI3TranslatorUtility;
+import it.unibz.krdb.obda.owlapi3.OWLAPITranslatorUtility;
 import it.unibz.krdb.obda.owlapi3.QuestOWLIndividualAxiomIterator;
-import it.unibz.krdb.obda.owlrefplatform.owlapi3.OWLAPI3Materializer;
+import it.unibz.krdb.obda.owlrefplatform.owlapi3.OWLAPIMaterializer;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.WriterDocumentTarget;
 import org.semanticweb.owlapi.model.*;
@@ -47,10 +49,10 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
     private static final int TRIPLE_LIMIT_PER_FILE = 500000;
 
     @Option(type = OptionType.COMMAND, name = {"-f", "--format"}, title = "outputFormat",
-            allowedValues = {"rdfxml", "owlxml", "turtle"},
             description = "The format of the materialized ontology. " +
-                    //" Options: rdfxml, owlxml, turtle. " +
+                    //" Options: rdfxml, owlxml, turtle, n3. " +
                     "Default: rdfxml")
+    @AllowedValues(allowedValues = {"rdfxml", "owlxml", "turtle", "n3"})
     public String format;
 
     @Option(type = OptionType.COMMAND, name = {"--separate-files"}, title = "output to separate files",
@@ -59,13 +61,12 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
     public boolean separate = false;
 
 
-    /**
-     * Necessary for materialize large RDF graphs without
-     * storing all the SQL results of one big query in memory.
-     *
-     * TODO: add an option to disable it.
-     */
-    private static boolean DO_STREAM_RESULTS = true;
+
+    @Option(type = OptionType.COMMAND, name = {"--no-streaming"}, title = "do not execute streaming of results",
+            description = "All the SQL results of one big query will be stored in memory. Not recommended. Default: false.")
+    private boolean noStream = false;
+
+    private boolean doStreamResults = true;
 
 	public static void main(String... args) {
 
@@ -75,6 +76,12 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
 
     @Override
     public void run(){
+
+        //   Streaming it's necessary to materialize large RDF graphs without
+        //   storing all the SQL results of one big query in memory.
+        if (noStream){
+            doStreamResults = false;
+        }
         if(separate) {
             runWithSeparateFiles();
         } else {
@@ -114,11 +121,15 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
                 Predicate predicate = obdaDataFactory.getObjectPropertyPredicate(owlObjectProperty.getIRI().toString());
                 predicates.add(predicate);
             }
+            for (OWLAnnotationProperty owlAnnotationProperty : ontology.getAnnotationPropertiesInSignature()) {
+                Predicate predicate = obdaDataFactory.getAnnotationPropertyPredicate(owlAnnotationProperty.getIRI().toString());
+                predicates.add(predicate);
+            }
 
 
             OBDAModel obdaModel = loadMappingFile(mappingFile);
 
-            Ontology inputOntology = OWLAPI3TranslatorUtility.translate(ontology);
+            Ontology inputOntology = OWLAPITranslatorUtility.translate(ontology);
 
             obdaModel.getOntologyVocabulary().merge(inputOntology.getVocabulary());
 
@@ -142,11 +153,11 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
     /**
      * Serializes the A-box corresponding to a predicate into one or multiple file.
      */
-    private static void serializePredicate(OWLOntology ontology, Ontology inputOntology, OBDAModel obdaModel,
+    private void serializePredicate(OWLOntology ontology, Ontology inputOntology, OBDAModel obdaModel,
                                            Predicate predicate, String outputFile, String format) throws Exception {
         final long startTime = System.currentTimeMillis();
 
-        OWLAPI3Materializer materializer = new OWLAPI3Materializer(obdaModel, inputOntology, predicate, DO_STREAM_RESULTS);
+        OWLAPIMaterializer materializer = new OWLAPIMaterializer(obdaModel, inputOntology, predicate, doStreamResults);
         QuestOWLIndividualAxiomIterator iterator = materializer.getIterator();
 
         System.err.println("Starts writing triples into files.");
@@ -175,7 +186,7 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
      * Upper bound: TRIPLE_LIMIT_PER_FILE.
      *
      */
-    private static int serializeTripleBatch(OWLOntology ontology, QuestOWLIndividualAxiomIterator iterator,
+    private int serializeTripleBatch(OWLOntology ontology, QuestOWLIndividualAxiomIterator iterator,
                                             String filePrefix, String predicateName, int fileCount, String format) throws Exception {
         String fileName = filePrefix + fileCount + ".owl";
 
@@ -222,7 +233,7 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
 
             OWLOntology ontology = null;
             OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-            OWLAPI3Materializer materializer = null;
+            OWLAPIMaterializer materializer = null;
 
             if (owlFile != null) {
             // Loading the OWL ontology from the file as with normal OWLReasoners
@@ -235,12 +246,12 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
                     ontology = extractDeclarations(manager, ontology);
                 }
 
-                Ontology onto =  OWLAPI3TranslatorUtility.translate(ontology);
+                Ontology onto =  OWLAPITranslatorUtility.translate(ontology);
                 obdaModel.getOntologyVocabulary().merge(onto.getVocabulary());
-                materializer = new OWLAPI3Materializer(obdaModel, onto, DO_STREAM_RESULTS);
+                materializer = new OWLAPIMaterializer(obdaModel, onto, doStreamResults);
             } else {
                 ontology = manager.createOntology();
-                materializer = new OWLAPI3Materializer(obdaModel, DO_STREAM_RESULTS);
+                materializer = new OWLAPIMaterializer(obdaModel, doStreamResults);
             }
 
 

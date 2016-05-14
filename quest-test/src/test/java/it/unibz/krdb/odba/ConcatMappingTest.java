@@ -12,12 +12,10 @@ import org.junit.Test;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -67,7 +65,7 @@ public class ConcatMappingTest {
         String queryBind = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  \n" +
                 "\n" +
                 "SELECT  ?f ?y " +
-                "WHERE {?f rdfs:label ?y .} \n";
+                "WHERE {?f a <http://www.optique-project.eu/resource/northwind-h2-db/NORTHWIND/LOCATION> ; rdfs:label ?y .} \n";
 
 
 
@@ -76,15 +74,12 @@ public class ConcatMappingTest {
     }
 
 
-    private int runTestQuery(Properties p, String query) throws Exception {
+    private int runTestQuery(QuestPreferences p, String query) throws Exception {
 
         // Creating a new instance of the reasoner
-        QuestOWLFactory factory = new QuestOWLFactory();
-        factory.setOBDAController(obdaModel);
-
-        factory.setPreferenceHolder(p);
-
-        QuestOWL reasoner = (QuestOWL) factory.createReasoner(ontology, new SimpleConfiguration());
+    	QuestOWLFactory factory = new QuestOWLFactory();
+        QuestOWLConfiguration config = QuestOWLConfiguration.builder().obdaModel(obdaModel).preferences(p).build();
+        QuestOWL reasoner = factory.createReasoner(ontology, config);
 
         // Now we are ready for querying
         QuestOWLConnection conn = reasoner.getConnection();
@@ -104,7 +99,7 @@ public class ConcatMappingTest {
                 while (res.nextRow()) {
                     count += 1;
                     for (int i = 1; i <= res.getColumnCount(); i++) {
-                         log.debug(res.getSignature().get(i-1) + "=" + res.getOWLObject(i));
+                         log.debug(res.getSignature().get(i-1) + "=" + res.getOWLObject(i).toString());
 
                       }
                 }

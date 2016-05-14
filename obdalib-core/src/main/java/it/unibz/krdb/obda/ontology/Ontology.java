@@ -44,6 +44,7 @@ public interface Ontology extends Serializable {
 
 	public void addSubPropertyOfAxiom(DataPropertyExpression included, DataPropertyExpression including) throws InconsistentOntologyException;
 
+	public void addSubPropertyOfAxiom(AnnotationProperty included, AnnotationProperty including);
 
 	public Collection<BinaryAxiom<ClassExpression>> getSubClassAxioms();
 
@@ -52,6 +53,9 @@ public interface Ontology extends Serializable {
 	public Collection<BinaryAxiom<ObjectPropertyExpression>> getSubObjectPropertyAxioms();
 
 	public Collection<BinaryAxiom<DataPropertyExpression>> getSubDataPropertyAxioms();
+
+	public Collection<BinaryAxiom<AnnotationProperty>> getSubAnnotationAxioms();
+
 
 
 	// DISJOINTNESS
@@ -100,22 +104,26 @@ public interface Ontology extends Serializable {
 
 	public void addDataPropertyAssertion(DataPropertyAssertion assertion);
 
+	public void addAnnotationAssertion(AnnotationAssertion assertion);
+
 	
 	public List<ClassAssertion> getClassAssertions();
 
 	public List<ObjectPropertyAssertion> getObjectPropertyAssertions();
 	
 	public List<DataPropertyAssertion> getDataPropertyAssertions();
-	
-	
 
-	
-	
+	public List<AnnotationAssertion> getAnnotationAssertions();
+
+
+
+
+
 	/**
 	 * create an auxiliary object property 
 	 * (auxiliary properties result from ontology normalization)
 	 * 
-	 * @param uri
+	 *
 	 */
 
 	public ObjectPropertyExpression createAuxiliaryObjectProperty();

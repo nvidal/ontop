@@ -47,7 +47,7 @@ public abstract class AbstractPrefixManager implements PrefixManager {
 		
 		// Check if the URI string has a matched prefix
 		for (String prefixUriDefinition : namespaceList) {
-			if (cleanUri.contains(prefixUriDefinition)) {
+			if (cleanUri.startsWith(prefixUriDefinition)) {
 				String prefix = getPrefix(prefixUriDefinition);
 				if (insideQuotes) {
 					prefix = String.format("&%s;", removeColon(prefix));
@@ -115,18 +115,6 @@ public abstract class AbstractPrefixManager implements PrefixManager {
 	public String getDefaultPrefix() {
 		return getPrefixMap().get(DEFAULT_PREFIX);
 	}
-		
-	/**
-	 * A utility method to ensure a proper naming for prefix URI
-	 */
-	protected String getProperPrefixURI(String prefixUri) {
-		if (!prefixUri.endsWith("/")) {
-			if (!prefixUri.endsWith("#")) {
-				prefixUri += "#";
-			}
-		}
-		return prefixUri;
-	} 
 	
 	private String removeColon(String prefix) {
 		if (prefix.equals(PrefixManager.DEFAULT_PREFIX)) {
