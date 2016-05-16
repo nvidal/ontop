@@ -29,6 +29,8 @@ import it.unibz.krdb.obda.ontology.AssertionFactory;
 import it.unibz.krdb.obda.ontology.InconsistentOntologyException;
 import it.unibz.krdb.obda.ontology.impl.AssertionFactoryImpl;
 import it.unibz.krdb.obda.owlrefplatform.core.translator.SesameConstructTemplate;
+import org.openrdf.model.IRI;
+import org.openrdf.model.Literal;
 import org.openrdf.model.impl.LiteralImpl;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.query.algebra.*;
@@ -175,11 +177,12 @@ public class QuestGraphResultSet implements GraphResultSet {
 				throw new RuntimeException ("Invalid query. Found unbound variable: "+ve);
 		}
 		
-		if (node_name.charAt(0) == '-') {
+		//if (node_name.charAt(0) == '-') {
+        if(ve instanceof org.openrdf.query.algebra.ValueConstant){
 			org.openrdf.query.algebra.ValueConstant vc = (org.openrdf.query.algebra.ValueConstant) ve;
-			 if (vc.getValue() instanceof URIImpl) {
+			 if (vc.getValue() instanceof IRI) {
 				 constant = dfac.getConstantURI(vc.getValue().stringValue());
-			 } else if (vc.getValue() instanceof LiteralImpl) {
+			 } else if (vc.getValue() instanceof Literal) {
 				 constant = dfac.getConstantLiteral(vc.getValue().stringValue());
 			 } else {
 				 constant = dfac.getConstantBNode(vc.getValue().stringValue());
