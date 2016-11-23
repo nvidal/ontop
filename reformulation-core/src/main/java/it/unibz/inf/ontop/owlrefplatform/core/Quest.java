@@ -1,3 +1,5 @@
+
+
 package it.unibz.inf.ontop.owlrefplatform.core;
 
 /*
@@ -59,6 +61,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.io.File;
 
 
 public class Quest implements Serializable {
@@ -232,6 +235,15 @@ public class Quest implements Serializable {
 					"When working with mappings, you must set the ABox mode to \""
 							+ QuestConstants.VIRTUAL
 							+ "\". If you want to work in \"classic abox\" mode, that is, as a triple store, you may not provide mappings (quest will take care of setting up the mappings and the database), set them to null.");
+		}
+
+		// TODO: Crude hack for hardcoding implicit constraints. Necessary since the sesame interface has no way to specify these
+		try {
+			File constr_file = new File("/opt/optique/federated.db_prefs");
+			System.out.println("Constraint file: " + constr_file.getCanonicalPath());
+			this.setImplicitDBConstraints(new ImplicitDBConstraintsReader(constr_file));
+		} catch (java.io.IOException e){
+			throw new IllegalArgumentException("The hardcoded ImplicitDBConstraints file, which should be at ~/federated.db_prefs, could not be found. Please fix.", e);
 		}
 
 		loadOBDAModel(obdaModel);
