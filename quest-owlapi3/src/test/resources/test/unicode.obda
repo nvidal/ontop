@@ -1,0 +1,21 @@
+[PrefixDeclaration]
+:		http://www.semanticweb.org/sarah/ontologies/2017/1/untitled-ontology-528#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:h2:mem:unicodedb
+username	sa
+password	
+driverClass	org.h2.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	MAPID-196580a9c3e949e1a753e3f5a8834ac0
+target		:persona{ID} a :Persona ; :tieneAño "{AÑO_NACIMENTO}" .
+source		SELECT ID, AÑO_NACIMENTO  FROM PERSONA
+]]
+

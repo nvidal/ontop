@@ -221,7 +221,12 @@ public class AliasMapVisitor {
 	public void visit(LongValue longValue) {
 	}
 
-	@Override
+		@Override
+		public void visit(HexValue hexValue) {
+
+		}
+
+		@Override
 	public void visit(DateValue dateValue) {
 	}
 
@@ -418,7 +423,12 @@ public class AliasMapVisitor {
 		
 	}
 
-	@Override
+		@Override
+		public void visit(WithinGroupExpression withinGroupExpression) {
+
+		}
+
+		@Override
 	public void visit(ExtractExpression eexpr) {
 		// TODO Auto-generated method stub
 		
@@ -459,5 +469,30 @@ public class AliasMapVisitor {
 		// TODO Auto-generated method stub
 		
 	}
+
+		@Override
+		public void visit(UserVariable userVariable) {
+
+		}
+
+		@Override
+		public void visit(NumericBind numericBind) {
+
+		}
+
+		@Override
+		public void visit(KeepExpression keepExpression) {
+
+		}
+
+		@Override
+		public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+		}
+
+		@Override
+		public void visit(RowConstructor rowConstructor) {
+
+		}
 	};
 }

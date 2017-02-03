@@ -92,7 +92,7 @@ public class ColumnsVisitor implements SelectVisitor, SelectItemVisitor, Express
 	public void visit(SetOperationList setOpList) {
 		// NOTE: don't use for loop, as loop will result duplicated columns
 		//for (PlainSelect ps: setOpList.getPlainSelects())
-		setOpList.getPlainSelects().get(0).accept(this);
+		setOpList.getSelects().get(0).accept(this);
 		
 	}
 
@@ -188,6 +188,11 @@ public class ColumnsVisitor implements SelectVisitor, SelectItemVisitor, Express
 	public void visit(LongValue longValue) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void visit(HexValue hexValue) {
+
 	}
 
 	@Override
@@ -402,6 +407,11 @@ public class ColumnsVisitor implements SelectVisitor, SelectItemVisitor, Express
 	}
 
 	@Override
+	public void visit(WithinGroupExpression withinGroupExpression) {
+
+	}
+
+	@Override
 	public void visit(ExtractExpression eexpr) {
 		// TODO Auto-generated method stub
 		
@@ -447,8 +457,30 @@ public class ColumnsVisitor implements SelectVisitor, SelectItemVisitor, Express
 		
 	}
 
-	
+	@Override
+	public void visit(UserVariable userVariable) {
 
-	
+	}
+
+	@Override
+	public void visit(NumericBind numericBind) {
+
+	}
+
+	@Override
+	public void visit(KeepExpression keepExpression) {
+
+	}
+
+	@Override
+	public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+	}
+
+	@Override
+	public void visit(RowConstructor rowConstructor) {
+
+	}
+
 
 }

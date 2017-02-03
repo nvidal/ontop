@@ -127,8 +127,10 @@ public class TableNameVisitor {
 		@Override
 		public void visit(SetOperationList list) {
 			unsupported(list);
-			for (PlainSelect plainSelect : list.getPlainSelects()) 
-				visit(plainSelect);
+			for (SelectBody plainSelect : list.getSelects())
+				if(plainSelect instanceof PlainSelect) {
+					visit((PlainSelect) plainSelect);
+				}
 		}
 
 		@Override
@@ -326,6 +328,11 @@ public class TableNameVisitor {
 		}
 
 		@Override
+		public void visit(HexValue hexValue) {
+
+		}
+
+		@Override
 		public void visit(MinorThan minorThan) {
 			visitBinaryExpression(minorThan);
 		}
@@ -454,6 +461,11 @@ public class TableNameVisitor {
 		}
 
 		@Override
+		public void visit(WithinGroupExpression withinGroupExpression) {
+
+		}
+
+		@Override
 		public void visit(ExtractExpression eexpr) {
 			unsupported(eexpr);
 		}
@@ -496,6 +508,31 @@ public class TableNameVisitor {
 		public void visit(RegExpMySQLOperator arg0) {
 			// TODO Auto-generated method stub
 			
+		}
+
+		@Override
+		public void visit(UserVariable userVariable) {
+
+		}
+
+		@Override
+		public void visit(NumericBind numericBind) {
+
+		}
+
+		@Override
+		public void visit(KeepExpression keepExpression) {
+
+		}
+
+		@Override
+		public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+		}
+
+		@Override
+		public void visit(RowConstructor rowConstructor) {
+
 		}
 
 		@Override

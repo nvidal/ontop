@@ -124,7 +124,7 @@ public class ProjectionVisitor implements SelectVisitor, SelectItemVisitor, Expr
 			@Override
 			public void visit(SetOperationList setOpList) {
 				unsupported = true;
-				setOpList.getPlainSelects().get(0).accept(this);
+				setOpList.getSelects().get(0).accept(this);
 			}
 
 			@Override
@@ -176,7 +176,7 @@ public class ProjectionVisitor implements SelectVisitor, SelectItemVisitor, Expr
 	@Override
 	public void visit(SetOperationList setOpList) { 
 		unsupported(setOpList);
-		setOpList.getPlainSelects().get(0).accept(this);
+		setOpList.getSelects().get(0).accept(this);
 	}
 
 	/* 
@@ -448,6 +448,11 @@ public class ProjectionVisitor implements SelectVisitor, SelectItemVisitor, Expr
 	}
 
 	@Override
+	public void visit(WithinGroupExpression withinGroupExpression) {
+
+	}
+
+	@Override
 	public void visit(ExtractExpression eexpr) {
 		unsupported(eexpr);
 	}
@@ -481,6 +486,31 @@ public class ProjectionVisitor implements SelectVisitor, SelectItemVisitor, Expr
 	}
 
 	@Override
+	public void visit(UserVariable userVariable) {
+
+	}
+
+	@Override
+	public void visit(NumericBind numericBind) {
+
+	}
+
+	@Override
+	public void visit(KeepExpression keepExpression) {
+
+	}
+
+	@Override
+	public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+	}
+
+	@Override
+	public void visit(RowConstructor rowConstructor) {
+
+	}
+
+	@Override
 	public void visit(JdbcParameter jdbcParameter) {
 		unsupported(jdbcParameter);
 	}
@@ -508,6 +538,11 @@ public class ProjectionVisitor implements SelectVisitor, SelectItemVisitor, Expr
 	@Override
 	public void visit(LongValue longValue) {
 		// NO-OP
+	}
+
+	@Override
+	public void visit(HexValue hexValue) {
+
 	}
 
 	@Override

@@ -20,20 +20,14 @@ package it.unibz.inf.ontop.utils;
  * #L%
  */
 
+import com.google.common.collect.ImmutableMap;
 import it.unibz.inf.ontop.model.*;
 import it.unibz.inf.ontop.model.Function;
 import it.unibz.inf.ontop.model.Predicate.COL_TYPE;
 import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl;
 import it.unibz.inf.ontop.parser.SQLQueryDeepParser;
-import it.unibz.inf.ontop.sql.Attribute;
-import it.unibz.inf.ontop.sql.DBMetadata;
-import it.unibz.inf.ontop.sql.QualifiedAttributeID;
-import it.unibz.inf.ontop.sql.QuotedID;
-import it.unibz.inf.ontop.sql.QuotedIDFactory;
-import it.unibz.inf.ontop.sql.RelationDefinition;
-import it.unibz.inf.ontop.sql.RelationID;
-import it.unibz.inf.ontop.sql.Relation2DatalogPredicate;
-import it.unibz.inf.ontop.sql.api.*;
+import it.unibz.inf.ontop.sql.*;
+import it.unibz.inf.ontop.sql.api.ParsedSQLQuery;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.*;
 import net.sf.jsqlparser.expression.operators.arithmetic.*;
@@ -43,14 +37,7 @@ import net.sf.jsqlparser.expression.operators.relational.*;
 import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.statement.select.SubSelect;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import com.google.common.collect.ImmutableMap;
+import java.util.*;
 
 public class Mapping2DatalogConverter {
 
@@ -575,6 +562,11 @@ public class Mapping2DatalogConverter {
         }
 
         @Override
+        public void visit(HexValue hexValue) {
+
+        }
+
+        @Override
         public void visit(DateValue expression) {
             String termRightName = expression.getValue().toString();
             result = fac.getConstantLiteral(termRightName, COL_TYPE.DATE);
@@ -871,6 +863,11 @@ public class Mapping2DatalogConverter {
         }
 
         @Override
+        public void visit(WithinGroupExpression withinGroupExpression) {
+
+        }
+
+        @Override
         public void visit(ExtractExpression expression) {
             throw new UnsupportedOperationException();
         }
@@ -898,6 +895,31 @@ public class Mapping2DatalogConverter {
         @Override
         public void visit(RegExpMySQLOperator regExpMySQLOperator) {
             visitBinaryExpression(regExpMySQLOperator);
+        }
+
+        @Override
+        public void visit(UserVariable userVariable) {
+
+        }
+
+        @Override
+        public void visit(NumericBind numericBind) {
+
+        }
+
+        @Override
+        public void visit(KeepExpression keepExpression) {
+
+        }
+
+        @Override
+        public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+        }
+
+        @Override
+        public void visit(RowConstructor rowConstructor) {
+
         }
     }
 }

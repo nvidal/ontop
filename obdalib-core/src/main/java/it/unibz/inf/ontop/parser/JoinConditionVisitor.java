@@ -23,10 +23,6 @@ package it.unibz.inf.ontop.parser;
 
 import it.unibz.inf.ontop.sql.QuotedIDFactory;
 import it.unibz.inf.ontop.sql.api.ParsedSQLQuery;
-
-import java.util.LinkedList;
-import java.util.List;
-
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.*;
 import net.sf.jsqlparser.expression.operators.arithmetic.*;
@@ -36,6 +32,9 @@ import net.sf.jsqlparser.expression.operators.relational.*;
 import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.schema.Table;
 import net.sf.jsqlparser.statement.select.*;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 
@@ -138,7 +137,7 @@ public class JoinConditionVisitor {
 		@Override
 		public void visit(SetOperationList operations) { //UNION
 			 notSupported = true;
-			 operations.getPlainSelects().get(0).accept(this);
+			 operations.getSelects().get(0).accept(this);
 			// we do not consider the case of union
 			/*for (PlainSelect plainSelect: operations.getPlainSelects()){
 				plainSelect.getFromItem().accept(this);
@@ -289,6 +288,11 @@ public class JoinConditionVisitor {
 		public void visit(LongValue arg0) {
 			//we do not execute anything 
 			
+		}
+
+		@Override
+		public void visit(HexValue hexValue) {
+
 		}
 
 		@Override
@@ -604,6 +608,11 @@ public class JoinConditionVisitor {
 		}
 
 		@Override
+		public void visit(WithinGroupExpression withinGroupExpression) {
+
+		}
+
+		@Override
 		public void visit(ExtractExpression arg0) {
 			// we do not consider ExtractExpression
 			notSupported = true;
@@ -643,6 +652,31 @@ public class JoinConditionVisitor {
 		public void visit(RegExpMySQLOperator arg0) {
 			// TODO Auto-generated method stub
 			
+		}
+
+		@Override
+		public void visit(UserVariable userVariable) {
+
+		}
+
+		@Override
+		public void visit(NumericBind numericBind) {
+
+		}
+
+		@Override
+		public void visit(KeepExpression keepExpression) {
+
+		}
+
+		@Override
+		public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+		}
+
+		@Override
+		public void visit(RowConstructor rowConstructor) {
+
 		}
 	};
 	

@@ -22,7 +22,9 @@ package it.unibz.inf.ontop.parser;
  */
 
 import it.unibz.inf.ontop.sql.QuotedIDFactory;
-import it.unibz.inf.ontop.sql.api.*;
+import it.unibz.inf.ontop.sql.api.AllComparison;
+import it.unibz.inf.ontop.sql.api.AnyComparison;
+import it.unibz.inf.ontop.sql.api.ParsedSQLQuery;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.*;
 import net.sf.jsqlparser.expression.operators.arithmetic.*;
@@ -85,7 +87,7 @@ public class WhereClauseVisitor {
     		public void visit(SetOperationList setOpList) {
     			// we do not consider the case of UNION
     			// ROMAN (22 Sep 2015): not sure why it is applied to the first one only 
-        		setOpList.getPlainSelects().get(0).accept(this);
+        		setOpList.getSelects().get(0).accept(this);
     		}
     		@Override
     		public void visit(WithItem withItem) {
@@ -119,7 +121,7 @@ public class WhereClauseVisitor {
     	public void visit(SetOperationList setOpList) {
     		// we do not consider the case of UNION
 			// ROMAN (22 Sep 2015): not sure why it is applied to the first one only 
-    		setOpList.getPlainSelects().get(0).accept(this);
+    		setOpList.getSelects().get(0).accept(this);
     	}
 
     	@Override
@@ -167,7 +169,12 @@ public class WhereClauseVisitor {
     		// we do not execute anything
     	}
 
-    	@Override
+		@Override
+		public void visit(HexValue hexValue) {
+
+		}
+
+		@Override
     	public void visit(DateValue dateValue) {
     		// we do not execute anything
     	}
@@ -405,7 +412,12 @@ public class WhereClauseVisitor {
     		// not supported
     	}
 
-    	@Override
+		@Override
+		public void visit(WithinGroupExpression withinGroupExpression) {
+
+		}
+
+		@Override
     	public void visit(ExtractExpression eexpr) {
     		// not supported
     	}
@@ -432,7 +444,8 @@ public class WhereClauseVisitor {
     		Expression right = binaryExpression.getRightExpression();
     		
     		if (right instanceof AnyComparisonExpression){
-    			right = new AnyComparison(((AnyComparisonExpression) right).getSubSelect());
+				AnyComparisonExpression anyComparisonExpression = (AnyComparisonExpression) right;
+				right = new AnyComparison(anyComparisonExpression.getAnyType(), anyComparisonExpression.getSubSelect());
     			binaryExpression.setRightExpression(right);
     		}
     		
@@ -460,7 +473,32 @@ public class WhereClauseVisitor {
             // do nothing
     	}
 
-    	@Override
+		@Override
+		public void visit(UserVariable userVariable) {
+
+		}
+
+		@Override
+		public void visit(NumericBind numericBind) {
+
+		}
+
+		@Override
+		public void visit(KeepExpression keepExpression) {
+
+		}
+
+		@Override
+		public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+		}
+
+		@Override
+		public void visit(RowConstructor rowConstructor) {
+
+		}
+
+		@Override
     	public void visit(JsonExpression arg0) {
             unsupported(arg0);		
     	}

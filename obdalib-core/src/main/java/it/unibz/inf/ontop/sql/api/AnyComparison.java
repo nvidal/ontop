@@ -21,6 +21,7 @@ package it.unibz.inf.ontop.sql.api;
  */
 
 import net.sf.jsqlparser.expression.AnyComparisonExpression;
+import net.sf.jsqlparser.expression.AnyType;
 import net.sf.jsqlparser.statement.select.SubSelect;
 
 /**
@@ -31,8 +32,8 @@ import net.sf.jsqlparser.statement.select.SubSelect;
 
 public class AnyComparison extends AnyComparisonExpression{
 
-	public AnyComparison(SubSelect subSelect) {
-		super(subSelect);
+	public AnyComparison(AnyType anyType ,SubSelect subSelect) {
+		super(anyType, subSelect);
 	}
 	
 	@Override

@@ -80,7 +80,7 @@ public class AggregationVisitor implements SelectVisitor, FromItemVisitor, Expre
 	@Override
 	public void visit(SetOperationList setOpList) {
 		// until now we are not considering the case of UNION statement 
-		setOpList.getPlainSelects().get(0).accept(this);
+		setOpList.getSelects().get(0).accept(this);
 	}
 
 	@Override
@@ -162,6 +162,11 @@ public class AggregationVisitor implements SelectVisitor, FromItemVisitor, Expre
 	public void visit(LongValue longValue) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void visit(HexValue hexValue) {
+
 	}
 
 	@Override
@@ -374,6 +379,11 @@ public class AggregationVisitor implements SelectVisitor, FromItemVisitor, Expre
 	}
 
 	@Override
+	public void visit(WithinGroupExpression withinGroupExpression) {
+
+	}
+
+	@Override
 	public void visit(ExtractExpression eexpr) {
 		// TODO Auto-generated method stub
 		
@@ -415,7 +425,30 @@ public class AggregationVisitor implements SelectVisitor, FromItemVisitor, Expre
 		
 	}
 
-	
+	@Override
+	public void visit(UserVariable userVariable) {
 
-	
+	}
+
+	@Override
+	public void visit(NumericBind numericBind) {
+
+	}
+
+	@Override
+	public void visit(KeepExpression keepExpression) {
+
+	}
+
+	@Override
+	public void visit(MySQLGroupConcat mySQLGroupConcat) {
+
+	}
+
+	@Override
+	public void visit(RowConstructor rowConstructor) {
+
+	}
+
+
 }
