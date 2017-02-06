@@ -24,7 +24,7 @@ driverClass	oracle.jdbc.driver.OracleDriver
 [MappingDeclaration] @collection [[
 mappingId	OperationPhysique
 target		:MontantOpe-{montantid} a :OperationPhysique, :Montant, :UniteTemporelle ; :aPourMontantDecimal {montantdecimal} ; :aPourType :Type-{TypeMontant} ; :aPourMode :Mode-{ModeMontant} ; :aPourUniteTemporelle :UtOpe-{montantid} . :UtOpe-{montantid} a :OperationPhysique, :Montant, :UniteTemporelle ; :aPourDepart {anneedepart} ; :aPourArrivee {anneeArrivee} ; :aPourDuree {Duree} . :Ope-{opeid} a :OperationPhysique, :Montant, :UniteTemporelle ; :aPourID {opeid} ; :aPourLibelle {libelle} ; :aPourMontant :MontantOpe-{montantid}, :MontantOpe-{montantid} . 
-source		select iddoss opeid, LBDOSS libelle, (iddoss ||'-Typedepense-ModePrevision') montantid, mtprevttc  montantdecimal, "Typedepense" typemontant, "ModePrevision" ModeMontant, ANCREAT anneedepart, "" anneearrive, "0" duree  from domope 
+source		select iddoss opeid, LBDOSS libelle, (iddoss ||'-Typedepense-ModePrevision') montantid, mtprevttc  montantdecimal, "Typedepense" typemontant, "ModePrevision" ModeMontant, ANCREAT anneedepart, '' anneearrive, '0' duree  from domope
 ]]
 
 [SourceDeclaration]

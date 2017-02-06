@@ -25,7 +25,6 @@ import it.unibz.inf.ontop.sql.DBMetadataExtractor;
 import it.unibz.inf.ontop.sql.QuotedIDFactory;
 import it.unibz.inf.ontop.sql.api.ParsedSQLQuery;
 import junit.framework.TestCase;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -331,11 +330,10 @@ public class JSQLParserTest extends TestCase {
 
 	}
 
-	// NO SUPPORT BY JSQL Parser
 	public void test_3_8() {
 		final boolean result = parseJSQL("SELECT ANY(id) FROM student");
 		printJSQL("test_3_8", result);
-		assertFalse(result);
+		assertTrue(result);
 
 	}
 
