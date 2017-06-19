@@ -185,12 +185,15 @@ mkdir ${QUEST_JETTY_DIST}
 cp ${ONTOP_DEP_HOME}/${JETTY_COPY_FILENAME}.zip ${QUEST_JETTY_DIST}/ontop-jetty-bundle-${VERSION}.zip || exit 1
 
 JETTY_FOLDER=${JETTY_INNER_FOLDERNAME}
-cd ${QUEST_JETTY_DIST}
-mkdir -p ${JETTY_INNER_FOLDERNAME}/webapps
-cp ${BUILD_ROOT}/quest-distribution/${QUEST_SESAME_DIST}/${OPENRDF_SESAME_FILENAME}.war ${JETTY_FOLDER}/webapps
-cp ${BUILD_ROOT}/quest-distribution/${QUEST_SESAME_DIST}/${OPENRDF_WORKBENCH_FILENAME}.war ${JETTY_FOLDER}/webapps
+mkdir -p ${JETTY_INNER_FOLDERNAME}/ontopbase
+cd ${JETTY_FOLDER}/ontopbase
+java -jar ../start.jar --add-to-start=server,client,webapp,websocket
 
-zip ontop-jetty-bundle-${VERSION}.zip ${JETTY_FOLDER}/webapps/* || exit 1
+cp ${BUILD_ROOT}/quest-distribution/${QUEST_SESAME_DIST}/${OPENRDF_SESAME_FILENAME}.war ${JETTY_FOLDER}/ontopbase/webapps
+cp ${BUILD_ROOT}/quest-distribution/${QUEST_SESAME_DIST}/${OPENRDF_WORKBENCH_FILENAME}.war ${JETTY_FOLDER}/ontopbase/webapps
+
+cd ${QUEST_JETTY_DIST}
+zip ontop-jetty-bundle-${VERSION}.zip ${JETTY_FOLDER}/ontopbase/webapps/* || exit 1
 
 rm -fr ${JETTY_FOLDER}
 cd ${BUILD_ROOT}/quest-distribution
