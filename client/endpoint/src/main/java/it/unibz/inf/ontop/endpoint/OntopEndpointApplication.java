@@ -17,12 +17,12 @@ public class OntopEndpointApplication {
     }
 
     @Bean
-    WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> portConfig(@Value("${port:8080}") int port) {
+    WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> configPort(@Value("${port:8080}") int port) {
         return server -> server.setPort(port);
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer(@Value("${cors-allowed-origins:}") String[] allowedOrigins) {
+    public WebMvcConfigurer configCORS(@Value("${cors-allowed-origins:}") String[] allowedOrigins) {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
