@@ -40,3 +40,7 @@ jobs:
       # run tests!
       #- run: mvn integration-test
       - run: ./build-release.sh
+
+      - store_artifacts:
+          path: /build/distribution/ontop-protege/ontop-protege-bundle-3.0.0.zip
+          dedestination: ontop-protege-bundle
