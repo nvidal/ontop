@@ -42,5 +42,13 @@ jobs:
       - run: ./build-release.sh
 
       - store_artifacts:
-          path: /build/distribution/ontop-protege/ontop-protege-bundle-3.0.0.zip
-          dedestination: ontop-protege-bundle
+          path: build/distribution/ontop-protege/ontop-protege-bundle-3.0.0.zip
+          destination: ontop-protege-bundle
+
+      - store_artifacts:
+         path: /home/circleci/repo/build/distribution/target/
+         destination: build/distribution/target/
+
+      - store_artifacts:
+         path: build/distribution/target/
+         destination: relative/target/
