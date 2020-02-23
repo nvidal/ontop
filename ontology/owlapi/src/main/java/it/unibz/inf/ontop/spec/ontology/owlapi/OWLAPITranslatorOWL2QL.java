@@ -19,6 +19,7 @@ import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Nonnull;
 import java.util.*;
 
 /**
@@ -662,6 +663,11 @@ public class OWLAPITranslatorOWL2QL {
         @Override
         public void visit(OWLDatatypeDefinitionAxiom ax) {
             // NO-OP: datatype definitions are handled when they are used in data property restrictions
+        }
+
+        @Override
+        public void visit(@Nonnull OWLMetamodellingAxiom axiom) {
+            // TODO: Metamodelling
         }
 
         private OWL2Datatype getCanonicalDatatype(OWLDataRange dr) throws TranslationException {

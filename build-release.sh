@@ -141,12 +141,15 @@ cp ${ONTOP_DEP_HOME}/${PROTEGE_COPY_FILENAME}.zip ${BUILD_ROOT}/build/distributi
 
 cd ${BUILD_ROOT}/build/distribution/${PROTEGE_DIST}/
 
+# ADDED
+unzip ${ONTOP_DEP_HOME}/${PROTEGE_COPY_FILENAME}.zip
 mkdir -p ${PROTEGE_MAIN_FOLDER_NAME}/plugins
 cp ${PROTEGE_PLUGIN_NAME}-${VERSION}.jar ${PROTEGE_MAIN_FOLDER_NAME}/plugins/
+cp ${PROTEGE_PLUGIN_NAME}-${VERSION}.jar
 zip ${PROTEGE_COPY_FILENAME}.zip ${PROTEGE_MAIN_FOLDER_NAME}/plugins/*
 mv ${PROTEGE_COPY_FILENAME}.zip ontop-protege-bundle-${VERSION}.zip
 
-rm -fr ${PROTEGE_MAIN_FOLDER_NAME}
+# rm -fr ${PROTEGE_MAIN_FOLDER_NAME}
 cd ${BUILD_ROOT}/build/distribution
 
 # Packing the rdf4j distribution
