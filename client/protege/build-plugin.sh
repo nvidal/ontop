@@ -4,7 +4,7 @@
 # Source: https://ontop-vkg.org/dev/debug-protege.html
 
 #Protege version
-pVersion="5.5.0"
+pVersion="5.5.0-metamodelling"
 
 # Retrieve Ontop's version from the pom.xml file (assumption: can be found in the first line matching '<version>(.*)<\version>')
 version=`grep -m 1 'version' < pom.xml | sed -r 's/.*<version>(.*)<\/version>.*/\1/' | tr -d '\n'`

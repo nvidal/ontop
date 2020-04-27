@@ -992,6 +992,12 @@ public class OWLAPITranslatorOWL2QL {
         public void visit(OWLDeclarationAxiom ax) {
             // NO-OP: DeclarationAxioms are handled in prepare()
         }
+
+        @Override
+        public void visit(OWLMetamodellingAxiom arg0) {
+            // TODO Auto-generated method stub
+
+        }
     }
 
 

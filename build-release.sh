@@ -64,9 +64,9 @@ echo "-----------------------------------------"
 echo ""
 
 # location for protege clean folder
-PROTEGE_URL="https://github.com/protegeproject/protege-distribution/releases/download/v5.5.0/Protege-5.5.0-platform-independent.zip"
-PROTEGE_COPY_FILENAME=Protege-5.5.0-platform-independent
-PROTEGE_MAIN_FOLDER_NAME=Protege-5.5.0
+PROTEGE_URL="https://github.com/nvidal/protege/releases/download/v0.0.1/protege-5.5.0-metamodelling-platform-independent.zip"
+PROTEGE_COPY_FILENAME=protege-5.5.0-metamodelling-platform-independent
+PROTEGE_MAIN_FOLDER_NAME=Protege-5.5.0-metamodelling
 if [ ! -f ${ONTOP_DEP_HOME}/${PROTEGE_COPY_FILENAME}.zip ] ; then
   wget ${PROTEGE_URL} -P ${ONTOP_DEP_HOME} || exit 1
 fi
